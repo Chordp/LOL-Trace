@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="工具">
+      <UniqueIdentifier>{c572c85f-3767-4282-8c61-57930856c4af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="绘制">
+      <UniqueIdentifier>{eb9f828c-2f5f-462d-8766-379797dbaf69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="引擎">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="绘制\ImGui">
+      <UniqueIdentifier>{3ccccf60-4188-495c-97e3-34e8beae2362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hook">
+      <UniqueIdentifier>{6168170a-a6bd-4d68-b8b4-ed92fb56585f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="工具\数学">
+      <UniqueIdentifier>{2d4a892a-d7b5-4ec4-9d13-da517029baac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="工具\Hook">
+      <UniqueIdentifier>{a44b498c-e3ef-41d1-987c-1c813facf224}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="引擎\对象">
+      <UniqueIdentifier>{9f9a9d23-23b4-44ef-953d-1275eec05988}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Trace.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx9.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>绘制\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiRendering.h">
+      <Filter>绘制</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.hpp">
+      <Filter>绘制</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawHook.h">
+      <Filter>Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>工具\数学</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.h">
+      <Filter>工具\Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartHook.hpp">
+      <Filter>工具\Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="Detour.hpp">
+      <Filter>工具\Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.hpp">
+      <Filter>引擎</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.hpp">
+      <Filter>引擎\对象</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero.hpp">
+      <Filter>引擎\对象</Filter>
+    </ClInclude>
+    <ClInclude Include="utlis.hpp">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="Offset.h">
+      <Filter>引擎</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Trace.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>绘制\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_demo.cpp">
+      <Filter>绘制\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>绘制\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx9.cpp">
+      <Filter>绘制\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>绘制\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>绘制\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiRendering.cpp">
+      <Filter>绘制</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawHook.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>引擎</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
