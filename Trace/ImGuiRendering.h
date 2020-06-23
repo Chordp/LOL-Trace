@@ -4,7 +4,6 @@
 #include "ImGui/imgui_impl_dx9.h"
 #include "ImGui/imgui_impl_win32.h"
 
-
 class ImGuiRendering
 {
 private:
@@ -14,7 +13,7 @@ private:
 	ImDrawList* _DrawList;
 	bool _IsSetup = false;
 	ImGuiRendering() {};
-	
+
 public:
 	static auto GetIns()
 	{
@@ -35,8 +34,4 @@ public:
 	void  DrawCircle(float x, float y, float rad, ImU32 clr, float thickness);
 	void  DrawBlod(float x, float y, float w, float Blod, ImU32 clr);
 	void  DrawCircle3D(Vector vPos, float flPoints, float flRadius, ImColor clrColor, float flThickness = 2.f);
-
-
-
 };
-

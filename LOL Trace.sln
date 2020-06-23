@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Trace", "Trace\Trace.vcxproj", "{57C73D86-D07A-40DE-956D-2C49D7A1CB19}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LOL Trace", "Trace\Trace.vcxproj", "{57C73D86-D07A-40DE-956D-2C49D7A1CB19}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HID", "HID\HID.vcxproj", "{F9D13EDB-B348-4FCF-8756-8D1812B32197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{57C73D86-D07A-40DE-956D-2C49D7A1CB19}.Release|x64.Build.0 = Release|x64
 		{57C73D86-D07A-40DE-956D-2C49D7A1CB19}.Release|x86.ActiveCfg = Release|Win32
 		{57C73D86-D07A-40DE-956D-2C49D7A1CB19}.Release|x86.Build.0 = Release|Win32
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Debug|x64.ActiveCfg = Debug|x64
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Debug|x64.Build.0 = Debug|x64
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Debug|x86.ActiveCfg = Debug|Win32
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Debug|x86.Build.0 = Debug|Win32
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Release|x64.ActiveCfg = Release|x64
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Release|x64.Build.0 = Release|x64
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Release|x86.ActiveCfg = Release|Win32
+		{F9D13EDB-B348-4FCF-8756-8D1812B32197}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

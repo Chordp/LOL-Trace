@@ -7,8 +7,12 @@
 #include <d3d9.h>
 #include "Vector.h"
 using namespace std;
+#include "Offset.h"
+
 
 #include "utlis.hpp"
 #include "ImGuiRendering.h"
 
 #include "Engine.hpp"
+#include "Hero.hpp"
+

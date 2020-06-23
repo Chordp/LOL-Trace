@@ -1,11 +1,18 @@
 #include "DrawHook.h"
 #include "SmartHook.hpp"
-
+#include "Menu.hpp"
+#include "Hero.hpp"
 #define Draw ImGuiRendering::GetIns()
+#define pMenu Meun::GetIns()
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace DrawHook
 {
 	
-	MakeHook<HREFTYPE, LPDIRECT3DDEVICE9,RECT*, RECT*, HWND, RGNDATA* > Present;
+	MakeHook<HRESULT, LPDIRECT3DDEVICE9,RECT*, RECT*, HWND, RGNDATA* > Present;
+	MakeHook<HRESULT, LPDIRECT3DDEVICE9, D3DPRESENT_PARAMETERS*> Reset;
+	bool Init = false;
+	auto oWndProc = WNDPROC();
+
 	DWORD FindDevice(DWORD Len)
 	{
 		DWORD dwObjBase = 0;
@@ -22,42 +29,70 @@ namespace DrawHook
 		}
 		return(dwObjBase);
 	}
-
-	bool Init = false;
-
 	DWORD GetDeviceAddress(int VTableIndex)
 	{
 		PDWORD VTable;
 		*(DWORD*)&VTable = *(DWORD*)FindDevice(0x128000);
 		return VTable[VTableIndex];
 	}
+
+	LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+	{
+		switch (uMsg)
+		{
+		case WM_KEYDOWN:
+		{
+			switch (wParam)
+			{
+			case VK_HOME: {
+				pMenu->Open = !pMenu->Open;
+				break;
+			}
+			default:break;
+			}
+			break;
+		}
+
+		default:
+			break;
+		}
+
+		if (pMenu->Open)
+		{
+			ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lParam);
+		}
+		return CallWindowProc(oWndProc, hwnd, uMsg, wParam, lParam);
+	}
+
 	void Start()
 	{
-		Present.Apply(GetDeviceAddress(17),Inline,[](
+		Present.Apply(GetDeviceAddress(17), Inline, [](
 			LPDIRECT3DDEVICE9 _this,
-			RECT* pSourceRect, 
-			RECT* pDestRect, 
-			HWND hDestWindowOverride, 
+			RECT* pSourceRect,
+			RECT* pDestRect,
+			HWND hDestWindowOverride,
 			RGNDATA* pDirtyRegion)->auto
 		{
-			if(!Init)
+			if (!Init)
 			{
-				Draw->Setup(Engine::GetGameWindow(), _this);
+				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
+				Draw->Setup(Engine::GetWindow(), _this);
 				Init = true;
 			}
 
 			Draw->PreRender();
 
-			ImGui::Begin("123");
-			ImGui::End();
-			
+			pMenu->Show();
+
 			Draw->EndRender();
 
 
 
-			
+
 			return Present.CallOriginal(_this, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
 		});
+
+		Reset.Apply(GetDeviceAddress(16), Inline, []( LPDIRECT3DDEVICE9 _this, D3DPRESENT_PARAMETERS* pp)->auto { if (Init) { ImGui_ImplDX9_InvalidateDeviceObjects(); auto hRet = Reset.CallOriginal(_this, pp); ImGui_ImplDX9_CreateDeviceObjects(); return hRet; } return Reset.CallOriginal(_this, pp); }); 
 	}
 
 }

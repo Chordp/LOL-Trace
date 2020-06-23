@@ -8,22 +8,19 @@ void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 
-	
 	ImGui_ImplWin32_Init(hWnd);
 	ImGui_ImplDX9_Init(device);
 
-	_Font =  io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhl.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
+	_Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 
 	ImGuiStyle style = ImGui::GetStyle();
 	ImGui::StyleColorsLight();
 	_DrawList = ImGui::GetOverlayDrawList();
 	_IsSetup = true;
-	
 }
 void ImGuiRendering::Clear()
 {
 	if (!_IsSetup)return;
-	
 }
 
 void ImGuiRendering::PreRender()
@@ -44,7 +41,6 @@ void ImGuiRendering::EndRender()
 
 void ImGuiRendering::DrawString(ImFont* font, float x, float y, ImU32 color, const char* message, ...)
 {
-	
 	char output[1024] = {};
 	va_list args;
 	va_start(args, message);
@@ -73,7 +69,6 @@ void ImGuiRendering::DrawString(float x, float y, ImU32 color, const char* messa
 	_DrawList->AddText(coord2, IM_COL32(0, 0, 0, 200), output);
 	_DrawList->AddText(coord_out, IM_COL32(0, 0, 0, 200), output);
 	_DrawList->AddText(coord, color, output);
-
 }
 void ImGuiRendering::DrawBox(float x, float y, float w, float h, ImU32 clr, float width)
 {
@@ -96,7 +91,6 @@ void ImGuiRendering::DrawBox(Vector leftUpCorn, Vector rightDownCorn, ImU32 clr,
 void ImGuiRendering::DrawLine(float x1, float y1, float x2, float y2, ImU32 clr, float thickness = 1.0f)
 {
 	_DrawList->AddLine(ImVec2(x1, y1), ImVec2(x2, y2), clr, thickness);
-
 }
 void ImGuiRendering::DrawCircle(float x, float y, float rad, ImU32 clr, float thickness)
 {

@@ -99,6 +99,9 @@
     <ClInclude Include="Offset.h">
       <Filter>引擎</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.hpp">
+      <Filter>绘制</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -130,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>引擎</Filter>
+    </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>引擎\对象</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

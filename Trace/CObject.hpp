@@ -3,5 +3,5 @@
 class  CObject
 {
 public :
-	
+
 };
