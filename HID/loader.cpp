@@ -12,5 +12,5 @@ BOOL APIENTRY DllMain(
 			LoadLibraryA("LOL Trace.dll");
 		}
 	}
-	return false;
+	return FALSE;
 }

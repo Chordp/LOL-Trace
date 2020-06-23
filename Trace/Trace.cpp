@@ -25,6 +25,7 @@ BOOL APIENTRY DllMain(
 	{
 	case DLL_PROCESS_ATTACH:
 	{
+		//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)OnStart, hModule, 0, 0);
 		thread(OnStart).detach();
 	}
 	case DLL_THREAD_ATTACH:

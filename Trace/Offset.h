@@ -39,7 +39,7 @@
 
 namespace GameInfo
 {
-	const auto GameTime = 0x01c51bf4;
+	const auto GameTime = 0x34ECAEC;
 	const auto BuildVersion = 0x034ff0b0;
 };
 namespace ObjectManager
