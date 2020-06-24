@@ -34,6 +34,9 @@
     <Filter Include="引擎\对象">
       <UniqueIdentifier>{9f9a9d23-23b4-44ef-953d-1275eec05988}</UniqueIdentifier>
     </Filter>
+    <Filter Include="工具\配置">
+      <UniqueIdentifier>{cb894faf-fd07-45f3-9d1d-0daa94039f51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Trace.h">
@@ -102,6 +105,9 @@
     <ClInclude Include="Menu.hpp">
       <Filter>绘制</Filter>
     </ClInclude>
+    <ClInclude Include="Config.hpp">
+      <Filter>工具\配置</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -137,5 +143,11 @@
     <ClCompile Include="Hero.cpp">
       <Filter>引擎\对象</Filter>
     </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>工具\配置</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

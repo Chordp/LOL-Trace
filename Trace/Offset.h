@@ -1,59 +1,63 @@
 #pragma once
 
-//#define oGameVersion  0x034ff0b0
-//#define oNetClient  0x034f5bb4
-//#define oChatClientPtr  0x0289e8e8
-//#define oObjManager  0x01c51bf4
-//#define oZoomClass  0x034eca70
-//#define oGameTime  0x034ecaec
-//#define oGameInfo   0x034edba0
-//#define oLocalPlayer  0x034f489c
-//#define oHudInstance  0x01c51c30
-//#define oRenderer  0x0351507c
-//#define oUnderMouseObject  0x0289e898
-//#define oD3DRenderer  0x03517bf4
+//[*] League of Legends Client Update Tool
+//[*] By Chord
+//[*] Started at: 2020-06-24 14:31:49.655000
+//[*] 
+//----------------------------
+//#define oGameVersion  0x034ef230
+//#define oNetClient  0x034e5d2c
+//#define oChatClientPtr  0x0288ea10
+//#define oObjManager  0x01c41db0
+//#define oZoomClass  0x034dcb9c
+//#define oGameTime  0x034dcc14
+//#define oGameInfo   0x034ddcc0
+//#define oLocalPlayer  0x034e4a70
+//#define oHudInstance  0x01c41dec
+//#define oRenderer  0x035058d4
+//#define oUnderMouseObject  0x0288e9c0
+//#define oD3DRenderer  0x035085a4
 //FUNCTIONS
 //#define oCastSpell  0x-0400001
-//#define oDrawCircle  0x005192c0
-//#define oGetBasicAttack	 0x00174970
-//#define oGetAttackCastDelay  0x002b2500
-//#define oGetAttackDelay  0x002b2600
+//#define oDrawCircle  0x004ff9f0
+//#define oGetBasicAttack	 0x00175ce0
+//#define oGetAttackCastDelay  0x002b4150
+//#define oGetAttackDelay  0x002b4250
 //#define oGetPing  0x-0400001
-//#define oGetSpellState  0x004fd740
-//#define oIsTargetable  0x001ec150
-//#define oIsAlive  0x001b1a60
+//#define oGetSpellState  0x004fcc90
+//#define oIsTargetable  0x001ecab0
+//#define oIsAlive  0x001b2120
 //#define oIsBaron   0x-0400001
-//#define oIsTurret  0x001c4080
-//#define oIsInhib  0x001c3d10
-//#define oIsTroy 0x001c4170
+//#define oIsTurret  0x001c46f0
+//#define oIsInhib  0x001c4380
+//#define oIsTroy 0x-0400001
 //#define oIsHero  0x-0400001
 //#define oIsMinion  0x-0400001
-//#define oIsDragon  0x-0400001
-//#define oIsMissile  0x001c3ef0
-//#define oIsNexus  0x001c3e10
-//#define oIsNotWall  0x008dd580
-//#define oIssueOrder  0x00186310
+//#define oIsDragon  0x002e9470
+//#define oIsMissile  0x-0400001
+//#define oIsNexus  0x001c4480
+//#define oIsNotWall  0x008ca120
+//#define oIssueOrder  0x00187480
 //#define oPrintChat  0x-0400001
-//#define oWorldToScreen  0x0095a650
-//#define oSetBaseCharacterData  0x001ac2f
-
+//#define oWorldToScreen  0x00947380
+//#define oSetBaseCharacterData  0x001ac9f0
 namespace GameInfo
 {
-	const auto GameTime = 0x34ECAEC;
-	const auto BuildVersion = 0x034ff0b0;
+	const auto GameTime = 0x034dcc14;
+	const auto BuildVersion = 0x034ef230;
 };
 namespace ObjectManager
 {
-	const auto ObjManager = 0x01c51bf4;
-	const auto LocalPlayer = 0x034f489c;
+	const auto ObjManager = 0x01c41db0;
+	const auto LocalPlayer = 0x034e4a70;
 	
 };
 namespace ObjectStruct
 {
-	const auto ChampionName = 0x3594;
+	const auto ChampionName = 0x358C;
 }
 namespace Function
 {
-	const auto WorldToScreen = 0x0095a650;
-	const auto SetBaseCharacterData = 0x001ac2f0;
+	const auto WorldToScreen = 0x00947380;
+	const auto SetBaseCharacterData = 0x001ac9f0;
 };

@@ -4,6 +4,7 @@
 #include "Hero.hpp"
 #define Draw ImGuiRendering::GetIns()
 #define pMenu Meun::GetIns()
+#define Me Engine::GetLocalPlayer()
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace DrawHook
 {
@@ -75,8 +76,11 @@ namespace DrawHook
 		{
 			if (!Init)
 			{
+
 				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
 				Draw->Setup(Engine::GetWindow(), _this);
+				auto Skin = Config::GetIns()->Loader().HeroOption[Me->GetChampionName()].Skin;
+				Me->SetCharacter(Skin);
 				Init = true;
 			}
 

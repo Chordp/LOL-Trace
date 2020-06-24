@@ -5,7 +5,6 @@ class Meun
 {
 public :
 	bool Open = true;
-	int Skin = 0;
 public:
 	static auto GetIns()
 	{
@@ -15,11 +14,12 @@ public:
 	void Show()
 	{
 		if (!Open) return;
-		
+		auto &HeroOp  = Config::GetIns()->Setting.HeroOption[Engine::GetLocalPlayer()->GetChampionName()];
 		ImGui::Begin(u8"Éµ±ÆÖúÊÖ");
-		if (ImGui::SliderInt(u8"Æ¤·ô", &Skin, 0, 100))
+		if (ImGui::SliderInt(u8"Æ¤·ô", &HeroOp.Skin, 0, 100))
 		{
-			Engine::GetLocalPlayer()->SetCharacter(Skin);
+			Engine::GetLocalPlayer()->SetCharacter(HeroOp.Skin);
+			Config::GetIns()->Save();
 		}
 		ImGui::End();
 		
