@@ -37,6 +37,9 @@
     <Filter Include="工具\配置">
       <UniqueIdentifier>{cb894faf-fd07-45f3-9d1d-0daa94039f51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="引擎\技能">
+      <UniqueIdentifier>{982bd2d5-242d-4d56-aed7-cf3f04cc7bc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Trace.h">
@@ -108,6 +111,18 @@
     <ClInclude Include="Config.hpp">
       <Filter>工具\配置</Filter>
     </ClInclude>
+    <ClInclude Include="ObjManager.hpp">
+      <Filter>引擎</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellBook.hpp">
+      <Filter>引擎\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellSlot.h">
+      <Filter>引擎\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>引擎</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -145,6 +160,18 @@
     </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>工具\配置</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>引擎\对象</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjManager.cpp">
+      <Filter>引擎</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellSlot.cpp">
+      <Filter>引擎\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>引擎</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

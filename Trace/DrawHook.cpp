@@ -67,6 +67,7 @@ namespace DrawHook
 
 	void Start()
 	{
+		
 		Present.Apply(GetDeviceAddress(17), Inline, [](
 			LPDIRECT3DDEVICE9 _this,
 			RECT* pSourceRect,
@@ -79,7 +80,9 @@ namespace DrawHook
 
 				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
 				Draw->Setup(Engine::GetWindow(), _this);
-				auto Skin = Config::GetIns()->Loader().HeroOption[Me->GetChampionName()].Skin;
+
+
+				auto Skin = Config::GetIns()->Setting.HeroOption[Me->GetChampionName()].Skin;
 				Me->SetCharacter(Skin);
 				Init = true;
 			}
@@ -87,6 +90,12 @@ namespace DrawHook
 			Draw->PreRender();
 
 			pMenu->Show();
+			//for ( auto hero : Engine::GetObjManager()->GetAllHero() )
+			//{
+			//	Draw->DrawCircle3D(hero->GetPos(), 80, hero->GetAttackRange() + hero->GetBoundingRadius(), Color::White);
+			//}
+			auto q = Me->GetSpellBook()->GetSpellSlotByID(0)->GetCooldown();
+			Engine::PrintChats(Color::Green, "%f", q);
 
 			Draw->EndRender();
 

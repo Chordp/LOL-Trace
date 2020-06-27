@@ -105,17 +105,17 @@ void ImGuiRendering::DrawBlod(float x, float y, float w, float Blod, ImU32 clr)
 }
 void ImGuiRendering::DrawCircle3D(Vector vPos, float flPoints, float flRadius, ImColor clrColor, float flThickness)
 {
-	//float flPoint = D3DX_PI * 2.0f / flPoints;
+	float flPoint = M_PI * 2.0f / flPoints;
 
-	//for (float flAngle = 0; flAngle < (D3DX_PI * 2.0f); flAngle += flPoint)
-	//{
-	//	Vector vStart(flRadius * cosf(flAngle) + vPos.X, vPos.Y, flRadius * sinf(flAngle) + vPos.Z);
-	//	Vector vEnd(flRadius * cosf(flAngle + flPoint) + vPos.X, vPos.Y, flRadius * sinf(flAngle + flPoint) + vPos.Z);
+	for (float flAngle = 0; flAngle < (M_PI * 2.0f); flAngle += flPoint)
+	{
+		Vector vStart(flRadius * cosf(flAngle) + vPos.X, vPos.Y, flRadius * sinf(flAngle) + vPos.Z);
+		Vector vEnd(flRadius * cosf(flAngle + flPoint) + vPos.X, vPos.Y, flRadius * sinf(flAngle + flPoint) + vPos.Z);
 
-	//	Vector vStartScreen, vEndScreen;
-	//	if (!Functions.WorldToScreen(&vStart, &vStartScreen) || !Functions.WorldToScreen(&vEnd, &vEndScreen))
-	//		continue;
-
-	//	DrawLine(vStartScreen.X, vStartScreen.Y, vEndScreen.X, vEndScreen.Y, clrColor, flThickness);
-	//}
+		Vector vStartScreen, vEndScreen;
+		//if (!Engine::WorldToScreen(&vStart, &vStartScreen) || !Engine::WorldToScreen(&vEnd, &vEndScreen))
+		//	continue;
+		Engine::WorldToScreen(&vStart, &vStartScreen); Engine::WorldToScreen(&vEnd, &vEndScreen);
+		DrawLine(vStartScreen.X, vStartScreen.Y, vEndScreen.X, vEndScreen.Y, clrColor, flThickness);
+	}
 }

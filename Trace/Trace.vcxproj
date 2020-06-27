@@ -147,9 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CObject.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DrawHook.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="ImGuiRendering.cpp" />
     <ClCompile Include="ImGui\imgui.cpp" />
@@ -158,12 +160,16 @@
     <ClCompile Include="ImGui\imgui_impl_dx9.cpp" />
     <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="ObjManager.cpp" />
+    <ClCompile Include="SpellSlot.cpp" />
     <ClCompile Include="Trace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CObject.hpp" />
     <ClInclude Include="Color.hpp" />
     <ClInclude Include="Config.hpp" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="SpellBook.hpp" />
     <ClInclude Include="Detour.hpp" />
     <ClInclude Include="detours.h" />
     <ClInclude Include="DrawHook.h" />
@@ -179,8 +185,10 @@
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
     <ClInclude Include="Menu.hpp" />
+    <ClInclude Include="ObjManager.hpp" />
     <ClInclude Include="Offset.h" />
     <ClInclude Include="SmartHook.hpp" />
+    <ClInclude Include="SpellSlot.h" />
     <ClInclude Include="Trace.h" />
     <ClInclude Include="utlis.hpp" />
     <ClInclude Include="Vector.h" />

@@ -1,6 +1,5 @@
 #include "Hero.hpp"
 
-
 char* Hero::GetChampionName() {
 	return GetStr(reinterpret_cast<DWORD>(this) + ObjectStruct::ChampionName);
 }
@@ -15,4 +14,8 @@ void Hero::SetCharacter(int SkinId)
 	auto key = ~*reinterpret_cast<DWORD*>(_this + 0x1090);
 	*reinterpret_cast<DWORD*>(_this + *reinterpret_cast<BYTE*>(_this + 0x1094) * 4 + 0x1098) = key ^ SkinId;
 	SetBaseCharacterData(GetChampionName(), SkinId, true);
+}
+
+SpellBook* Hero::GetSpellBook() {
+	return (SpellBook*)((DWORD)this + ObjectStruct::SpellBook);
 }

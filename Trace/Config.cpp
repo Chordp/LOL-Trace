@@ -34,6 +34,7 @@ Json::Setting Config::Loader()
 	ifstream InFile("Trace.json");
 	if (InFile.is_open())
 		InFile >> j;
+	InFile.close();
 	Setting = j;
 	return j;
 }
@@ -43,8 +44,9 @@ bool Config::Save(Json::Setting p)
 	ofstream outFile("Trace.json");
 	if (outFile.is_open())
 	{
-	
+		//cout << j << endl;
 		outFile << j;
+		outFile.close();
 		return true;
 	}
 	return false;

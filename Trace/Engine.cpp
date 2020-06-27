@@ -15,11 +15,15 @@ HWND Engine::GetWindow()
 
  Hero* Engine::GetLocalPlayer()
 {
-	return *reinterpret_cast<Hero**>(GetBaseModule() + ObjectManager::LocalPlayer);
+	return *reinterpret_cast<Hero**>(GetBaseModule() + GameClass::LocalPlayer);
 }
+ ObjManager* Engine::GetObjManager()
+ {
+	 return *reinterpret_cast<ObjManager**>(Engine::GetBaseModule()+GameClass::ObjManager);
+ }
  float Engine::GetGameTime()
 {
-	return *(float*)(GetBaseModule() + GameInfo::GameTime);
+	return *(float*)(GetBaseModule() + GameClass::GameTime);
 }
  bool Engine::WorldToScreen(Vector* World, Vector* Screen)
 {
@@ -31,12 +35,23 @@ HWND Engine::GetWindow()
 	return Engine::WorldToScreen(&World, &Screen);
 }
 
-  char* Engine::GetBuildVersion()
- {
-	 return (char*)(GetBaseModule() + GameInfo::BuildVersion);
- }
+char* Engine::GetBuildVersion()
+{
+	return (char*)(GetBaseModule() + GameClass::BuildVersion);
+}
  void Engine::PrintChat(DWORD ChatClient, const char* Massage, int Color)
 {
-	 auto fnPrintChat = reinterpret_cast<void(__thiscall*)(DWORD, const char*, int)>(GetBaseModule());
+	 auto fnPrintChat = reinterpret_cast<void(__thiscall*)(DWORD, const char*, int)>(GetBaseModule()+ Function::PrintChat);
 	return fnPrintChat(ChatClient, Massage, Color);
 }
+
+ void Engine::PrintChats(int Color, const char* message, ...)
+ {
+	 char output[1024] = {};
+	 va_list args;
+	 va_start(args, message);
+	 vsprintf_s(output, message, args);
+	 va_end(args);
+
+	 PrintChat(*(DWORD*)(GetBaseModule() + GameClass::ChatClient), output, Color);
+ }
