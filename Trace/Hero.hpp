@@ -1,11 +1,14 @@
 #pragma once
 #include "CObject.hpp"
 #include "SpellBook.hpp"
+#include "AIManager.h"
 class SpellBook;
 class CObject;
 class Hero :public CObject
 {
 public:
+
+	string GetTitle();
 	/// <summary>
 	/// 获取英雄名
 	/// </summary>
@@ -23,6 +26,12 @@ public:
 	/// </summary>
 	/// <param name="SkinId">皮肤号</param>
 	void SetCharacter(int SkinId);
-
+	/// <summary>
+	/// 技能
+	/// </summary>
+	/// <returns></returns>
 	SpellBook* GetSpellBook();
+	
+	AIManager* GetAIManager();
+
 };

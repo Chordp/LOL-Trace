@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AIManager.cpp" />
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DrawHook.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Trace.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AIManager.h" />
     <ClInclude Include="CObject.hpp" />
     <ClInclude Include="Color.hpp" />
     <ClInclude Include="Config.hpp" />

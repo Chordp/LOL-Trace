@@ -40,6 +40,9 @@
     <Filter Include="引擎\技能">
       <UniqueIdentifier>{982bd2d5-242d-4d56-aed7-cf3f04cc7bc2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="引擎\路径">
+      <UniqueIdentifier>{11b8ca51-03be-4810-9741-c69ba411e11e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Trace.h">
@@ -123,6 +126,9 @@
     <ClInclude Include="Game.h">
       <Filter>引擎</Filter>
     </ClInclude>
+    <ClInclude Include="AIManager.h">
+      <Filter>引擎\路径</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -172,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>引擎</Filter>
+    </ClCompile>
+    <ClCompile Include="AIManager.cpp">
+      <Filter>引擎\路径</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

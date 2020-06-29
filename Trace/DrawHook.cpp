@@ -2,9 +2,9 @@
 #include "SmartHook.hpp"
 #include "Menu.hpp"
 #include "Hero.hpp"
-#define Draw ImGuiRendering::GetIns()
+#include "Game.h"
 #define pMenu Meun::GetIns()
-#define Me Engine::GetLocalPlayer()
+#define setting Config::GetIns()->Setting
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace DrawHook
 {
@@ -53,6 +53,8 @@ namespace DrawHook
 			}
 			break;
 		}
+		case WM_CLOSE:
+			Config::GetIns()->Save();
 
 		default:
 			break;
@@ -90,13 +92,13 @@ namespace DrawHook
 			Draw->PreRender();
 
 			pMenu->Show();
-			//for ( auto hero : Engine::GetObjManager()->GetAllHero() )
-			//{
-			//	Draw->DrawCircle3D(hero->GetPos(), 80, hero->GetAttackRange() + hero->GetBoundingRadius(), Color::White);
-			//}
-			auto q = Me->GetSpellBook()->GetSpellSlotByID(0)->GetCooldown();
-			Engine::PrintChats(Color::Green, "%f", q);
-
+			Game::GetIns()->GetCache();
+			if(setting.DrawCd)
+				Game::GetIns()->DrawCD();
+			if(setting.Gank)
+				Game::GetIns()->GankTips();
+			if (setting.Path)
+				Game::GetIns()->DrawPath();
 			Draw->EndRender();
 
 

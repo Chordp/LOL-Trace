@@ -54,6 +54,13 @@ public:
 	/// <returns></returns>
 	static bool WorldToScreen(Vector& World, Vector& Screen);
 	/// <summary>
+	/// 世界坐标转屏幕坐标
+	/// </summary>
+	/// <param name="World"></param>
+	/// <param name="Screen"></param>
+	/// <returns></returns>
+	static bool WorldToScreens(Vector World, Vector& Screen);
+	/// <summary>
 	/// 游戏聊天窗口 打印字体
 	/// </summary>
 	/// <param name="ChatClient"></param>

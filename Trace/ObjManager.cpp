@@ -25,15 +25,15 @@ vector<CObject*> ObjManager::GetAllObject()
 	return  Object;
 }
 
-vector<CObject*> ObjManager::GetAllHero()
+vector<Hero*> ObjManager::GetAllHero()
 {
-	vector<CObject*> Object;
+	vector<Hero*> Object;
 	auto obj = GetFirstObject();
 	while (obj)
 	{
 		if(obj->IsHero())
 		{ 
-			Object.push_back(obj);
+			Object.push_back((Hero*)obj);
 		}
 		obj = GetNextObject(obj);
 	}

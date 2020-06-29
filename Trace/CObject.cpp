@@ -48,6 +48,22 @@ bool CObject::CompareObjectTypeFlags(int objectTypeFlag)
 
 	return (objectId & objectTypeFlag) != 0;
 }
+int CObject::GetIndex()
+{
+	return *(int*)((DWORD)this + ObjectStruct::Index);
+}
+char* CObject::GetName()
+{
+	return GetStr((DWORD)this + ObjectStruct::Name);
+}
+int CObject::GetTeam()
+{
+	return *(int*)((DWORD)this + ObjectStruct::Team);
+}
+int CObject::GetNetworkId()
+{
+	return *(int*)((DWORD)this + ObjectStruct::NetworkID);
+}
 bool CObject::IsHero()
 {
 	return CompareObjectTypeFlags((int)ObjectTypeFlags::Hero);
@@ -68,4 +84,14 @@ float CObject::GetBoundingRadius() {
 
 	return CallVirtual<OriginalFn>(this, 36)(this);
 
+}
+
+float CObject::GetHealth()
+{
+	return *(float*)((DWORD)this + ObjectStruct::Health);
+}
+
+bool CObject::IsAlive() {
+	static auto  fnIsAlive = reinterpret_cast<bool(__thiscall*)(CObject*)>(Engine::GetBaseModule() + Function::IsAlive);
+	return fnIsAlive(this) && this->GetHealth() > 0.0f;
 }

@@ -27,13 +27,18 @@ HWND Engine::GetWindow()
 }
  bool Engine::WorldToScreen(Vector* World, Vector* Screen)
 {
-	 auto fnW2S = reinterpret_cast<bool(__cdecl*)(Vector*, Vector*)>(GetBaseModule() + Function::WorldToScreen);
+	auto fnW2S = reinterpret_cast<bool(__cdecl*)(Vector*, Vector*)>(GetBaseModule() + Function::WorldToScreen);
 	return fnW2S(World, Screen);
 }
  bool Engine::WorldToScreen(Vector& World, Vector& Screen)
 {
 	return Engine::WorldToScreen(&World, &Screen);
 }
+
+ bool Engine::WorldToScreens(Vector World, Vector& Screen)
+ {
+	 return  Engine::WorldToScreen(&World, &Screen);
+ }
 
 char* Engine::GetBuildVersion()
 {

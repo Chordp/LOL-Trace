@@ -20,7 +20,27 @@ enum class ObjectTypeFlags {
 class CObject
 {
 public:
-	bool CompareObjectTypeFlags(int objectTypeFlag);
+	
+	/// <summary>
+	/// 获取id
+	/// </summary>
+	/// <returns></returns>
+	int GetIndex();
+	/// <summary>
+	/// 获取对象名
+	/// </summary>
+	/// <returns></returns>
+	char* GetName();
+	/// <summary>
+	/// 获取团队号
+	/// </summary>
+	/// <returns></returns>
+	int GetTeam();
+	/// <summary>
+	/// 获取网络id
+	/// </summary>
+	/// <returns></returns>
+	int GetNetworkId();
 	/// <summary>
 	/// 你是英雄吗?
 	/// </summary>
@@ -36,6 +56,21 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Vector GetPos();
-
+	/// <summary>
+	/// 获取范围
+	/// </summary>
+	/// <returns></returns>
 	float GetBoundingRadius();
+	/// <summary>
+	/// 获取血量
+	/// </summary>
+	/// <returns></returns>
+	float GetHealth();
+	/// <summary>
+	/// 是否存活
+	/// </summary>
+	/// <returns></returns>
+	bool IsAlive();
+
+	bool CompareObjectTypeFlags(int objectTypeFlag);
 };

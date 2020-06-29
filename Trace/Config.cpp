@@ -9,12 +9,18 @@ namespace Json
 
 	void to_json(nlohmann::json& j, const Setting& p)
 	{
+		j["Path"] = p.Path;
+		j["Gank"] = p.Gank;
+		j["DrawCd"] = p.DrawCd;
 		j["HeroOption"] = p.HeroOption;
 	}
 	void from_json(const nlohmann::json& j, Setting& p) {
 		try
 		{
-			j[u8"HeroOption"].get_to(p.HeroOption);
+			p.Path = j["Path"];
+			p.Gank = j["Gank"];
+			p.DrawCd = j["DrawCd"];
+			j["HeroOption"].get_to(p.HeroOption);
 				
 		}
 		catch (const std::exception&)
@@ -24,19 +30,50 @@ namespace Json
 		
 
 	}
+
+	void from_json(const nlohmann::json& j, Contrast& p) {
+		try
+		{
+			//j[u8"HeroOption"].get_to(p.HeroOption);
+			p.name = j["name"];
+			p.title = j["title"];
+		}
+		catch (const std::exception&)
+		{
+
+		}
+
+
+	}
+
 }
 
 
 
 Json::Setting Config::Loader()
 {
-	nlohmann::json j;
-	ifstream InFile("Trace.json");
-	if (InFile.is_open())
-		InFile >> j;
-	InFile.close();
-	Setting = j;
-	return j;
+	try
+	{
+		nlohmann::json j;
+		ifstream InFile("Trace.json");
+		if (InFile.is_open())
+			InFile >> j;
+		InFile.close();
+		Setting = j;
+		j.clear();
+		InFile.open("contrast.json");
+		if (InFile.is_open())
+			InFile >> j;
+	
+		j.get_to(Contrast);
+		InFile.close();
+	}
+	catch (const std::exception&)
+	{
+
+	}
+	
+	return Setting;
 }
 bool Config::Save(Json::Setting p)
 {

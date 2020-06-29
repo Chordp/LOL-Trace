@@ -10,7 +10,16 @@ namespace Json
 	};
 	struct Setting
 	{
+		bool DrawCd;
+		bool Gank;
+		bool Path;
 		map<string, Hero> HeroOption;
+	};
+	struct Contrast
+	{
+		string name;
+		string title;
+
 	};
 
 
@@ -20,6 +29,7 @@ class Config
 private:
 	Config() {};
 public:
+	map<string,Json::Contrast> Contrast;
 	Json::Setting Setting;
 public:
 	/// <summary>

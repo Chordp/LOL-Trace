@@ -141,10 +141,18 @@ namespace GameClass
 };
 namespace ObjectStruct
 {
+	const auto Index = 0x0020;
+	const auto Team = 0x004C;
+	const auto Name = 0x006C;
+	const auto NetworkID = 0x00CC;
 	const auto ObjPos = 0x1D8;
-	const auto ChampionName = 0x358C;
+	const auto Health = 0x0F88;
+	const auto MaxHealth = 0x0F98;
 	const auto ObjAtkRange = 0x1484;
 	const auto SpellBook = 0x2AD8;
+	const auto ChampionName = 0x358C;
+
+	
 }
 namespace Function
 {
@@ -153,5 +161,16 @@ namespace Function
 	const auto GetFirstObj = 0x2b9a10;
 	const auto GetNextObj = 0x2ba950;
 	const auto PrintChat = 0x569B30;
-
+	const auto IsAlive = 0x1b2120;
 };
+namespace AIMGR
+{
+	const auto  TARGETPOS = 0x10; //NOT VERIFIED
+	const auto  ISMOVING = 0x198; //NOT VERIFIED
+	const auto  ISDASHING = 0x1E8;//NOT VERIFIED
+	const auto  NAVBEGIN = 0x1BC; //NOT VERIFIED
+	const auto  NAVEND = 0x1C0; //NOT VERIFIED
+	const auto  HASNAVPATH = 0x19C; //NOT VERIFIED
+	const auto  CURRENTPOS = 0x2BC; //NOT VERIFIED
+	const auto  VELOCITY = 0x2C0; //NOT VERIFIED
+}

@@ -1,5 +1,12 @@
 #include "Hero.hpp"
 
+string Hero::GetTitle()
+{
+	if (Config::GetIns()->Contrast.empty())
+		return GetChampionName();
+	return Config::GetIns()->Contrast[GetChampionName()].name;
+}
+
 char* Hero::GetChampionName() {
 	return GetStr(reinterpret_cast<DWORD>(this) + ObjectStruct::ChampionName);
 }
@@ -18,4 +25,9 @@ void Hero::SetCharacter(int SkinId)
 
 SpellBook* Hero::GetSpellBook() {
 	return (SpellBook*)((DWORD)this + ObjectStruct::SpellBook);
+}
+
+AIManager* Hero::GetAIManager() {
+	typedef AIManager* (__thiscall* OriginalFn)(PVOID);
+	return CallVirtual<OriginalFn>(this, 148)(this);
 }

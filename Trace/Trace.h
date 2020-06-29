@@ -18,4 +18,5 @@ using namespace std;
 #include "Hero.hpp"
 
 
-
+#define Draw ImGuiRendering::GetIns()
+#define Me Engine::GetLocalPlayer()
