@@ -1,14 +1,14 @@
 #pragma once
 #include "Trace.h"
 
-class CObject;
+class GameObject;
 class Hero;
 class ObjManager
 {
 public:
-	CObject* GetFirstObject();
-	CObject* GetNextObject(CObject* object);
-	vector<CObject*> GetAllObject();
-	vector<Hero*> GetAllHero();
+	GameObject* GetFirstObject();
+	GameObject* GetNextObject(GameObject* object);
+	vector<GameObject*> GetAllObject();
+	vector<Hero*> GetHeroList();
 };
 

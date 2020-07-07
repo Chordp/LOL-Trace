@@ -129,6 +129,31 @@
 //	char pad_359C[6408]; //0x359C
 //	int32_t oObjLevel; //0x4EA4
 //}; //Size: 0x4EA8
+#define Make_Offset(name,a) const auto name = a
+enum class Entity
+{
+	Index = 0x0020,
+	Team = 0x004C,
+	Name = 0x006C,
+	NetworkID = 0x00CC,
+	ObjPos = 0x1D8,
+	Health = 0x0F88,
+	MaxHealth = 0x0F98,
+	ObjAtkRange = 0x1484,
+	SpellBook = 0x2AD8,
+	ChampionName = 0x358C
+};
+enum class AI_Manager
+{
+	TARGETPOS = 0x10, //NOT VERIFIED
+	ISMOVING = 0x198, //NOT VERIFIED
+	ISDASHING = 0x1E8,//NOT VERIFIED
+	NAVBEGIN = 0x1BC, //NOT VERIFIED
+	NAVEND = 0x1C0, //NOT VERIFIED
+	HASNAVPATH = 0x19C, //NOT VERIFIED
+	CURRENTPOS = 0x2BC, //NOT VERIFIED
+	VELOCITY = 0x2C0 //NOT VERIFIED
+};
 namespace GameClass
 {
 	const auto GameTime = 0x034dcc14;
@@ -139,38 +164,18 @@ namespace GameClass
 	const auto ChatClient = 0x1C3F608;
 
 };
-namespace ObjectStruct
-{
-	const auto Index = 0x0020;
-	const auto Team = 0x004C;
-	const auto Name = 0x006C;
-	const auto NetworkID = 0x00CC;
-	const auto ObjPos = 0x1D8;
-	const auto Health = 0x0F88;
-	const auto MaxHealth = 0x0F98;
-	const auto ObjAtkRange = 0x1484;
-	const auto SpellBook = 0x2AD8;
-	const auto ChampionName = 0x358C;
 
-	
-}
+
 namespace Function
 {
+	Make_Offset(IsMissile, 0x1C4560);
 	const auto WorldToScreen = 0x00947380;
 	const auto SetBaseCharacterData = 0x001ac9f0;
 	const auto GetFirstObj = 0x2b9a10;
 	const auto GetNextObj = 0x2ba950;
 	const auto PrintChat = 0x569B30;
+
 	const auto IsAlive = 0x1b2120;
+	const auto BaseDrawPosition = 0x177F30;
 };
-namespace AIMGR
-{
-	const auto  TARGETPOS = 0x10; //NOT VERIFIED
-	const auto  ISMOVING = 0x198; //NOT VERIFIED
-	const auto  ISDASHING = 0x1E8;//NOT VERIFIED
-	const auto  NAVBEGIN = 0x1BC; //NOT VERIFIED
-	const auto  NAVEND = 0x1C0; //NOT VERIFIED
-	const auto  HASNAVPATH = 0x19C; //NOT VERIFIED
-	const auto  CURRENTPOS = 0x2BC; //NOT VERIFIED
-	const auto  VELOCITY = 0x2C0; //NOT VERIFIED
-}
+

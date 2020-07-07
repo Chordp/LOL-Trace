@@ -96,9 +96,6 @@
     <ClInclude Include="Engine.hpp">
       <Filter>引擎</Filter>
     </ClInclude>
-    <ClInclude Include="CObject.hpp">
-      <Filter>引擎\对象</Filter>
-    </ClInclude>
     <ClInclude Include="Hero.hpp">
       <Filter>引擎\对象</Filter>
     </ClInclude>
@@ -128,6 +125,15 @@
     </ClInclude>
     <ClInclude Include="AIManager.h">
       <Filter>引擎\路径</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.hpp">
+      <Filter>引擎\对象</Filter>
+    </ClInclude>
+    <ClInclude Include="Missile.h">
+      <Filter>引擎\对象</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>工具</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +173,6 @@
     <ClCompile Include="Config.cpp">
       <Filter>工具\配置</Filter>
     </ClCompile>
-    <ClCompile Include="CObject.cpp">
-      <Filter>引擎\对象</Filter>
-    </ClCompile>
     <ClCompile Include="ObjManager.cpp">
       <Filter>引擎</Filter>
     </ClCompile>
@@ -181,6 +184,15 @@
     </ClCompile>
     <ClCompile Include="AIManager.cpp">
       <Filter>引擎\路径</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>引擎\对象</Filter>
+    </ClCompile>
+    <ClCompile Include="Missile.cpp">
+      <Filter>引擎\对象</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>工具</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

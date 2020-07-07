@@ -8,11 +8,11 @@ string Hero::GetTitle()
 }
 
 char* Hero::GetChampionName() {
-	return GetStr(reinterpret_cast<DWORD>(this) + ObjectStruct::ChampionName);
+	return GetStr(reinterpret_cast<DWORD>(this) + (int)Entity::ChampionName);
 }
 void Hero::SetBaseCharacterData(char* dataName, int skinID, bool one)
 {
-	static auto fnSetBaseCharacterData = reinterpret_cast<void(__thiscall*)(CObject*, char*, int, bool)>(Engine::GetBaseModule() + Function::SetBaseCharacterData);
+	static auto fnSetBaseCharacterData = reinterpret_cast<void(__thiscall*)(GameObject*, char*, int, bool)>(Engine::GetBaseModule() + Function::SetBaseCharacterData);
 	fnSetBaseCharacterData(this, dataName, skinID, one);
 }
 void Hero::SetCharacter(int SkinId)
@@ -24,10 +24,29 @@ void Hero::SetCharacter(int SkinId)
 }
 
 SpellBook* Hero::GetSpellBook() {
-	return (SpellBook*)((DWORD)this + ObjectStruct::SpellBook);
+	return (SpellBook*)((DWORD)this + (int)Entity::SpellBook);
 }
 
 AIManager* Hero::GetAIManager() {
 	typedef AIManager* (__thiscall* OriginalFn)(PVOID);
 	return CallVirtual<OriginalFn>(this, 148)(this);
+}
+
+bool Hero::GetHpBarPosition(Vector& out)
+{
+	static auto  BaseDrawPosition = reinterpret_cast<int(__thiscall*)(GameObject*, Vector*)> (Engine::GetBaseModule() + Function::BaseDrawPosition);
+
+	Vector baseDrawPosition;
+	BaseDrawPosition(this, &baseDrawPosition);
+
+	float delta = abs(baseDrawPosition.Y - this->GetPos().Y);
+	delta *= 5 / 6.0f;
+	if (!Engine::WorldToScreen(baseDrawPosition, out))
+		return false;
+
+	out.X += 20;
+	out.Y -= delta;
+	out.Z = 0;
+	return true;
+
 }

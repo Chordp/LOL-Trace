@@ -41,7 +41,8 @@ void Game::DrawCD()
 		{
 			int i = 0;
 			auto Screen = Vector();
-			if (Engine::WorldToScreens(hero->GetPos(), Screen))
+			//if (Engine::WorldToScreens(hero->GetPos(), Screen))
+			if(hero->GetHpBarPosition(Screen))
 			{
 				for (auto Spell : hero->GetSpellBook()->GetAllSpellSlot())
 				{

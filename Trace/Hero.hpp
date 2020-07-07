@@ -1,10 +1,11 @@
 #pragma once
-#include "CObject.hpp"
+#include "GameObject.hpp"
 #include "SpellBook.hpp"
 #include "AIManager.h"
 class SpellBook;
-class CObject;
-class Hero :public CObject
+class GameObject;
+
+class Hero :public GameObject
 {
 public:
 
@@ -33,5 +34,7 @@ public:
 	SpellBook* GetSpellBook();
 	
 	AIManager* GetAIManager();
+
+	bool GetHpBarPosition(Vector& out);
 
 };

@@ -1,21 +1,21 @@
 #include "ObjManager.hpp"
 
-CObject* ObjManager::GetFirstObject()
+GameObject* ObjManager::GetFirstObject()
 {
-	static auto fnGetFirst = reinterpret_cast<CObject * (__thiscall*)(ObjManager*)>(Engine::GetBaseModule()+Function::GetFirstObj);
+	static auto fnGetFirst = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*)>(Engine::GetBaseModule()+Function::GetFirstObj);
 	return fnGetFirst(this);
 }
 
-CObject* ObjManager::GetNextObject(CObject* object)
+GameObject* ObjManager::GetNextObject(GameObject* object)
 {
-	static auto fnGetNext = reinterpret_cast<CObject * (__thiscall*)(ObjManager*,CObject*)>(Engine::GetBaseModule() + Function::GetNextObj);
+	static auto fnGetNext = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*,GameObject*)>(Engine::GetBaseModule() + Function::GetNextObj);
 	return fnGetNext(this, object);
 	return nullptr;
 }
 
-vector<CObject*> ObjManager::GetAllObject()
+vector<GameObject*> ObjManager::GetAllObject()
 {
-	vector<CObject*> Object;
+	vector<GameObject*> Object;
 	auto obj = GetFirstObject();
 	while (obj)
 	{
@@ -25,7 +25,7 @@ vector<CObject*> ObjManager::GetAllObject()
 	return  Object;
 }
 
-vector<Hero*> ObjManager::GetAllHero()
+vector<Hero*> ObjManager::GetHeroList()
 {
 	vector<Hero*> Object;
 	auto obj = GetFirstObject();
@@ -39,3 +39,19 @@ vector<Hero*> ObjManager::GetAllHero()
 	}
 	return Object;
 }
+
+
+//vector<Missile*> ObjManager::GetMissileList()
+//{
+//	vector<Missile*> Object;
+//	auto obj = GetFirstObject();
+//	while (obj)
+//	{
+//		if (obj->IsMissile())
+//		{
+//			Object.push_back((Missile*)obj);
+//		}
+//		obj = GetNextObject(obj);
+//	}
+//	return Object;
+//}

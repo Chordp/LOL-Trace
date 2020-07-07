@@ -7,12 +7,11 @@ class Game
 {
 private:
 	vector<Hero*> HeroCache;
-	map<Hero*, bool> SpellCache;
 	Game() {};
 public:
 	void GetCache()
 	{
-		HeroCache = ObjManager->GetAllHero();
+		HeroCache = ObjManager->GetHeroList();
 	}
 	static auto GetIns()
 	{

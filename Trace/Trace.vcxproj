@@ -148,7 +148,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AIManager.cpp" />
-    <ClCompile Include="CObject.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="DrawHook.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -161,16 +162,19 @@
     <ClCompile Include="ImGui\imgui_impl_dx9.cpp" />
     <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
     <ClCompile Include="SpellSlot.cpp" />
     <ClCompile Include="Trace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIManager.h" />
-    <ClInclude Include="CObject.hpp" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Color.hpp" />
     <ClInclude Include="Config.hpp" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Missile.h" />
     <ClInclude Include="SpellBook.hpp" />
     <ClInclude Include="Detour.hpp" />
     <ClInclude Include="detours.h" />

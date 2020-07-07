@@ -14,9 +14,11 @@ using namespace std;
 #include "ImGuiRendering.h"
 #include "Color.hpp"
 #include "Engine.hpp"
-#include "CObject.hpp"
+#include "GameObject.hpp"
 #include "Hero.hpp"
+//#include "Missile.h"
 
 
 #define Draw ImGuiRendering::GetIns()
 #define Me Engine::GetLocalPlayer()
+//#define setting Config::GetIns()->Setting

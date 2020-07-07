@@ -1,23 +1,23 @@
 #include "AIManager.h"
 
 Vector AIManager::GetVelocity() {
-	return *(Vector*)((DWORD)this + AIMGR::VELOCITY);
+	return *(Vector*)((DWORD)this + (int)AI_Manager::VELOCITY);
 }
 
 bool AIManager::HasNavPath() {
-	return *(BYTE*)((DWORD)this + AIMGR::HASNAVPATH) == 1;
+	return *(BYTE*)((DWORD)this + (int)AI_Manager::HASNAVPATH) == 1;
 }
 
 bool AIManager::IsMoving() {
-	return *(bool*)((DWORD)this + AIMGR::ISMOVING);
+	return *(bool*)((DWORD)this + (int)AI_Manager::ISMOVING);
 }
 
 Vector** AIManager::GetNavigationStart() {
-	return (Vector**)((DWORD)this + AIMGR::NAVBEGIN);
+	return (Vector**)((DWORD)this + (int)AI_Manager::NAVBEGIN);
 }
 
 Vector** AIManager::GetNavigationEnd() {
-	return (Vector**)((DWORD)this + AIMGR::NAVEND);
+	return (Vector**)((DWORD)this + (int)AI_Manager::NAVEND);
 }
 
 std::vector<Vector> AIManager::GetPathList()
