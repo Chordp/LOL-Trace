@@ -2,7 +2,7 @@
 #include "GameObject.hpp"
 
 
-int GameObject::GetType()
+int GameObject::DecType()
 {
 	unsigned __int8* v2; // edi
 	unsigned int v3; // edx
@@ -48,6 +48,38 @@ int GameObject::GetType()
 
 	return objectId;
 }
+ObjectType GameObject::GetType()
+{
+	if (this->IsHero())
+		return ObjectType::Hero;
+	if (this->IsMissile())
+		return ObjectType::Missile;
+	return (ObjectType)0;
+}
+bool GameObject::GetHpBarPosition(Vector& out)
+{
+	static auto fnHpBarPos = reinterpret_cast<void(*)(PVOID, Vector*)>(Engine::GetBaseModule()+ Function::GetHpBarPos);
+	fnHpBarPos(this->GetUnitInfoComponent(), &out);
+	//Engine::PrintChats(Color::Red, "%p", this->GetUnitInfoComponent());
+	return false ;
+}
+GameObject* GameObject::GetFirst() {
+	static auto fnGetFirst = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*)>(Engine::GetBaseModule() + Function::GetFirstObj);
+	static auto ObjMana = Engine::GetObjManager();
+	return fnGetFirst(ObjMana);
+}
+GameObject* GameObject::GetNext() {
+	static auto fnGetNext = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*, GameObject*)>(Engine::GetBaseModule() + Function::GetNextObj);
+	static auto ObjMana = Engine::GetObjManager();
+	return fnGetNext(ObjMana, this);
+}
+PVOID GameObject::GetUnitInfoComponent()
+{
+	auto a3 = *(DWORD*)((DWORD)(this) + 4 * *(unsigned __int8*)((DWORD)(this) + 0x4AB8) + 0x4ABC);
+	auto v32 = *(DWORD*)((DWORD)(this) + 0x4AB4);
+	a3 ^= ~v32;
+	return PVOID(a3);
+}
 int GameObject::GetIndex()
 {
 	return *(int*)((DWORD)this + (int)Entity::Index);
@@ -66,12 +98,13 @@ int GameObject::GetNetworkId()
 }
 bool GameObject::IsHero()
 {
-	return (GetType() & (int)ObjectType::Hero) != 0;
+	//Engine::PrintChats(Color::White, "type %d", DecType());
+	return (DecType() & (int)ObjectType::Hero) != 0;
 }
 bool GameObject::IsMissile()
 {
-	static auto  fnIsMissile = reinterpret_cast<bool(__thiscall*)(GameObject*)>(Engine::GetBaseModule() + Function::IsMissile);
-	return fnIsMissile(this);
+	//static auto  fnIsMissile = reinterpret_cast<bool(__thiscall*)(GameObject*)>(Engine::GetBaseModule() + Function::IsMissile);
+	return (DecType() & (int)ObjectType::Missile) != 0; //fnIsMissile(this);
 }
 float GameObject::GetAttackRange()
 {

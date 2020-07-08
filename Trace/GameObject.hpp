@@ -25,6 +25,9 @@ class GameObject
 {
 public:
 	
+	static GameObject* GetFirst();
+	GameObject* GetNext();
+	PVOID GetUnitInfoComponent();
 	/// <summary>
 	/// ªÒ»°id
 	/// </summary>
@@ -77,5 +80,7 @@ public:
 	/// <returns></returns>
 	bool IsAlive();
 
-	int GetType();
+	int DecType();
+	ObjectType GetType();
+	bool GetHpBarPosition(Vector& out);
 };

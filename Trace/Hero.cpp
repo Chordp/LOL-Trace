@@ -32,21 +32,21 @@ AIManager* Hero::GetAIManager() {
 	return CallVirtual<OriginalFn>(this, 148)(this);
 }
 
-bool Hero::GetHpBarPosition(Vector& out)
-{
-	static auto  BaseDrawPosition = reinterpret_cast<int(__thiscall*)(GameObject*, Vector*)> (Engine::GetBaseModule() + Function::BaseDrawPosition);
-
-	Vector baseDrawPosition;
-	BaseDrawPosition(this, &baseDrawPosition);
-
-	float delta = abs(baseDrawPosition.Y - this->GetPos().Y);
-	delta *= 5 / 6.0f;
-	if (!Engine::WorldToScreen(baseDrawPosition, out))
-		return false;
-
-	out.X += 20;
-	out.Y -= delta;
-	out.Z = 0;
-	return true;
-
-}
+//bool Hero::GetHpBarPosition(Vector& out)
+//{
+//	static auto  BaseDrawPosition = reinterpret_cast<int(__thiscall*)(GameObject*, Vector*)> (Engine::GetBaseModule() + Function::BaseDrawPosition);
+//
+//	Vector baseDrawPosition;
+//	BaseDrawPosition(this, &baseDrawPosition);
+//
+//	float delta = abs(baseDrawPosition.Y - this->GetPos().Y);
+//	delta *= 5 / 6.0f;
+//	if (!Engine::WorldToScreen(baseDrawPosition, out))
+//		return false;
+//
+//	out.X += 20;
+//	out.Y -= delta;
+//	out.Z = 0;
+//	return true;
+//
+//}

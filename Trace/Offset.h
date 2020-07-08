@@ -143,6 +143,19 @@ enum class Entity
 	SpellBook = 0x2AD8,
 	ChampionName = 0x358C
 };
+
+enum class MissileClient
+{
+	SpellInfo = 0x230,
+	StartPos = SpellInfo + 0x78,//10.1
+	EndPos = SpellInfo + 0x84, //10.1
+	IsAutoAttack = SpellInfo + 0xA8,
+	IsBasicAttack = SpellInfo + 0x4cc,
+	SpellWidth = SpellInfo + 0x44C
+
+
+};
+
 enum class AI_Manager
 {
 	TARGETPOS = 0x10, //NOT VERIFIED
@@ -168,13 +181,13 @@ namespace GameClass
 
 namespace Function
 {
-	Make_Offset(IsMissile, 0x1C4560);
+	Make_Offset(IsMissile, 0x1c4560);
 	const auto WorldToScreen = 0x00947380;
 	const auto SetBaseCharacterData = 0x001ac9f0;
 	const auto GetFirstObj = 0x2b9a10;
 	const auto GetNextObj = 0x2ba950;
 	const auto PrintChat = 0x569B30;
-
+	const auto GetHpBarPos = 0x58c7e0;
 	const auto IsAlive = 0x1b2120;
 	const auto BaseDrawPosition = 0x177F30;
 };

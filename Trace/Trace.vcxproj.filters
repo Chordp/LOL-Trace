@@ -111,9 +111,6 @@
     <ClInclude Include="Config.hpp">
       <Filter>工具\配置</Filter>
     </ClInclude>
-    <ClInclude Include="ObjManager.hpp">
-      <Filter>引擎</Filter>
-    </ClInclude>
     <ClInclude Include="SpellBook.hpp">
       <Filter>引擎\技能</Filter>
     </ClInclude>
@@ -134,6 +131,9 @@
     </ClInclude>
     <ClInclude Include="Event.h">
       <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjManager.hpp">
+      <Filter>引擎\对象</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +173,6 @@
     <ClCompile Include="Config.cpp">
       <Filter>工具\配置</Filter>
     </ClCompile>
-    <ClCompile Include="ObjManager.cpp">
-      <Filter>引擎</Filter>
-    </ClCompile>
     <ClCompile Include="SpellSlot.cpp">
       <Filter>引擎\技能</Filter>
     </ClCompile>
@@ -193,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="Event.cpp">
       <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjManager.cpp">
+      <Filter>引擎\对象</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

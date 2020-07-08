@@ -35,6 +35,6 @@ public:
 	
 	AIManager* GetAIManager();
 
-	bool GetHpBarPosition(Vector& out);
+	//bool GetHpBarPosition(Vector& out);
 
 };

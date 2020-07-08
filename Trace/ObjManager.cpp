@@ -1,5 +1,5 @@
 #include "ObjManager.hpp"
-
+#include "Hero.hpp"
 GameObject* ObjManager::GetFirstObject()
 {
 	static auto fnGetFirst = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*)>(Engine::GetBaseModule()+Function::GetFirstObj);
@@ -10,7 +10,6 @@ GameObject* ObjManager::GetNextObject(GameObject* object)
 {
 	static auto fnGetNext = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*,GameObject*)>(Engine::GetBaseModule() + Function::GetNextObj);
 	return fnGetNext(this, object);
-	return nullptr;
 }
 
 vector<GameObject*> ObjManager::GetAllObject()

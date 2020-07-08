@@ -1,6 +1,6 @@
 #pragma once
 #include "Trace.h"
-
+#include "Hero.hpp"
 class Meun
 {
 public :
