@@ -88,7 +88,7 @@ void Game::DrawPath()
 					Engine::WorldToScreens(path.back(), end))
 				{ 
 					
-					Draw->DrawLine(start.X, start.Y, end.X, end.Y,Color::¾°Ì©À¶ ,2);
+					Draw->DrawLine(start.X, start.Y, end.X, end.Y,Color::ëÙÖ¬ºì ,2);
 					Draw->DrawString(end.X, end.Y, IM_COL32(255,255,255,255), "[%s]", hero->GetTitle().c_str());
 				}
 			}
