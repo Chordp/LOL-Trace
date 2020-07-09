@@ -56,13 +56,13 @@ ObjectType GameObject::GetType()
 		return ObjectType::Missile;
 	return (ObjectType)0;
 }
-bool GameObject::GetHpBarPosition(Vector& out)
-{
-	static auto fnHpBarPos = reinterpret_cast<void(*)(PVOID, Vector*)>(Engine::GetBaseModule()+ Function::GetHpBarPos);
-	fnHpBarPos(this->GetUnitInfoComponent(), &out);
-	//Engine::PrintChats(Color::Red, "%p", this->GetUnitInfoComponent());
-	return false ;
-}
+//bool GameObject::GetHpBarPosition(Vector& out)
+//{
+//	static auto fnHpBarPos = reinterpret_cast<void(*)(PVOID, Vector*)>(Engine::GetBaseModule()+ Function::GetHpBarPos);
+//	fnHpBarPos(this->GetUnitInfoComponent(), &out);
+//	//Engine::PrintChats(Color::Red, "%p", this->GetUnitInfoComponent());
+//	return false ;
+//}
 GameObject* GameObject::GetFirst() {
 	static auto fnGetFirst = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*)>(Engine::GetBaseModule() + Function::GetFirstObj);
 	static auto ObjMana = Engine::GetObjManager();

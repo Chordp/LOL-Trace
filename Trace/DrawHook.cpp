@@ -67,6 +67,15 @@ namespace DrawHook
 		return CallWindowProc(oWndProc, hwnd, uMsg, wParam, lParam);
 	}
 
+
+	void init()
+	{
+		auto Skin = Config::GetIns()->Setting.HeroOption[Me->GetChampionName()].Skin;
+		//Engine::PrintChats(Color::White, "%s", Me->GetChampionName());
+		Me->SetCharacter(Skin);
+
+
+	}
 	void Start()
 	{
 		
@@ -83,9 +92,8 @@ namespace DrawHook
 				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
 				Draw->Setup(Engine::GetWindow(), _this);
 
+				thread(init).detach();
 
-				auto Skin = Config::GetIns()->Setting.HeroOption[Me->GetChampionName()].Skin;
-				Me->SetCharacter(Skin);
 				Init = true;
 			}
 
@@ -99,7 +107,7 @@ namespace DrawHook
 				Game::GetIns()->GankTips();
 			if (setting.Path)
 				Game::GetIns()->DrawPath();
-			Game::GetIns()->DrawMissile();
+			//Game::GetIns()->DrawMissile();
 			Draw->EndRender();
 
 

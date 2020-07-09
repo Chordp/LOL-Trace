@@ -73,7 +73,9 @@ void Game::DrawPath()
 	{
 		if (hero->GetTeam() == Me->GetTeam())
 			continue;
+
 		AIManager* AiMGR = hero->GetAIManager();
+
 		if (AiMGR && AiMGR->IsMoving())
 		{
 			auto path = AiMGR->GetPathList();
