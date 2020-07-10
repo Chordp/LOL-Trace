@@ -107,7 +107,7 @@ namespace DrawHook
 				Game::GetIns()->GankTips();
 			if (setting.Path)
 				Game::GetIns()->DrawPath();
-			//Game::GetIns()->DrawMissile();
+			Game::GetIns()->DrawMissile();
 			Draw->EndRender();
 
 
