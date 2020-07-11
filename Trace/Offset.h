@@ -1,57 +1,5 @@
 #pragma once
 
-//[*] League of Legends Client Update Tool
-//[*] By Chord
-//[*] Started at: 2020-06-24 14:31:49.655000
-//[*] 
-//----------------------------
-//#define oGameVersion  0x034ef230
-//#define oNetClient  0x034e5d2c
-//#define oChatClientPtr  0x0288ea10
-//#define oObjManager  0x01c41db0
-//#define oZoomClass  0x034dcb9c
-//#define oGameTime  0x034dcc14
-//#define oGameInfo   0x034ddcc0
-//#define oLocalPlayer  0x034e4a70
-//#define oHudInstance  0x01c41dec
-//#define oRenderer  0x035058d4
-//#define oUnderMouseObject  0x0288e9c0
-//#define oD3DRenderer  0x035085a4
-//FUNCTIONS
-//#define oCastSpell  0x-0400001
-//#define oDrawCircle  0x004ff9f0
-//#define oGetBasicAttack	 0x00175ce0
-//#define oGetAttackCastDelay  0x002b4150
-//#define oGetAttackDelay  0x002b4250
-//#define oGetPing  0x-0400001
-//#define oGetSpellState  0x004fcc90
-//#define oIsTargetable  0x001ecab0
-//#define oIsAlive  0x001b2120
-//#define oIsBaron   0x-0400001
-//#define oIsTurret  0x001c46f0
-//#define oIsInhib  0x001c4380
-//#define oIsTroy 0x-0400001
-//#define oIsHero  0x-0400001
-//#define oIsMinion  0x-0400001
-//#define oIsDragon  0x002e9470
-//#define oIsMissile  0x-0400001
-//#define oIsNexus  0x001c4480
-//#define oIsNotWall  0x008ca120
-//#define oIssueOrder  0x00187480
-//#define oPrintChat  0x-0400001
-//#define oWorldToScreen  0x00947380
-//#define oSetBaseCharacterData  0x001ac9f0
-
-
-
-
-
-
-
-
-
-
-
 //class LocalPlayer
 //{
 //public:
@@ -129,7 +77,6 @@
 //	char pad_359C[6408]; //0x359C
 //	int32_t oObjLevel; //0x4EA4
 //}; //Size: 0x4EA8
-#define Make_Offset(name,a) const auto name = a
 enum class Entity
 {
 	Index = 0x0020,
@@ -137,11 +84,12 @@ enum class Entity
 	Name = 0x006C,
 	NetworkID = 0x00CC,
 	ObjPos = 0x1D8,
-	Health = 0x0F88,
-	MaxHealth = 0x0F98,
-	ObjAtkRange = 0x1484,
-	SpellBook = 0x2AD8,
-	ChampionName = 0x358C
+	Health = 0x0FA8,
+	MaxHealth = 0x0FB8,
+	Armor = 0x1484,
+	ObjAtkRange = 0x14A4,
+	SpellBook = 0x2AF0,
+	ChampionName = 0x35AC
 };
 
 enum class MissileClient
@@ -151,8 +99,7 @@ enum class MissileClient
 	EndPos = SpellInfo + 0x84, //10.1
 	IsAutoAttack = SpellInfo + 0xA8,
 	IsBasicAttack = SpellInfo + 0x4cc,
-	SpellWidth = SpellInfo + 0x44C
-
+	SpellWidth = SpellInfo + 0x528
 
 };
 
@@ -167,28 +114,29 @@ enum class AI_Manager
 	CURRENTPOS = 0x2BC, //NOT VERIFIED
 	VELOCITY = 0x2C0 //NOT VERIFIED
 };
+//[*] League of Legends Client Update Tool
+//[*] By Chord
+//[*] Started at: 2020-07-09 11:59:10.072000
+//----------------------------
 namespace GameClass
 {
-	const auto GameTime = 0x034dcc14;
-	const auto BuildVersion = 0x034ef230;
-
-	const auto ObjManager = 0x01c41db0;
-	const auto LocalPlayer = 0x034e4a70;
-	const auto ChatClient = 0x1C3F608;
-
+	const auto GameTime = 0x34fa7bc;
+	const auto BuildVersion = 0x3512a50;
+	const auto ObjManager = 0x1c5f930;
+	const auto LocalPlayer = 0x3501f1c;
+	const auto ChatClient = 0x1c5d320;
 };
 
 
 namespace Function
 {
-	Make_Offset(IsMissile, 0x1c4560);
-	const auto WorldToScreen = 0x00947380;
-	const auto SetBaseCharacterData = 0x001ac9f0;
-	const auto GetFirstObj = 0x2b9a10;
-	const auto GetNextObj = 0x2ba950;
-	const auto PrintChat = 0x569B30;
-	const auto GetHpBarPos = 0x58c7e0;
-	const auto IsAlive = 0x1b2120;
-	const auto BaseDrawPosition = 0x177F30;
+	const auto IsMissile = 0x1cbae0;
+	const auto WorldToScreen = 0x969aa0;
+	const auto SetBaseCharacterData = 0x1b23d0;
+	const auto GetFirstObj = 0x2bb8e0;
+	const auto GetNextObj = 0x2bc8b0;
+	const auto PrintChat = 0x57a9d0;
+	const auto GetHpBarPos = 0x5a0990;
+	const auto IsAlive = 0x1b7f20;
+	const auto BaseDrawPosition = 0x179630;
 };
-
