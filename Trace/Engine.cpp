@@ -13,9 +13,9 @@ HWND Engine::GetWindow()
 	return hWnd;
 }
 
- Hero* Engine::GetLocalPlayer()
+LocalPlayer* Engine::GetLocalPlayer()
 {
-	return *reinterpret_cast<Hero**>(GetBaseModule() + GameClass::LocalPlayer);
+	return *reinterpret_cast<LocalPlayer**>(GetBaseModule() + GameClass::LocalPlayer);
 }
  ObjManager* Engine::GetObjManager()
  {

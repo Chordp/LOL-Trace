@@ -162,6 +162,7 @@
     <ClCompile Include="ImGui\imgui_impl_dx9.cpp" />
     <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="LocalPlayer.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
     <ClCompile Include="SpellSlot.cpp" />

@@ -43,6 +43,9 @@
     <Filter Include="引擎\路径">
       <UniqueIdentifier>{11b8ca51-03be-4810-9741-c69ba411e11e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="引擎\走砍">
+      <UniqueIdentifier>{e8fec8c5-ff21-48c0-922b-571ecd9efc73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Trace.h">
@@ -192,6 +195,9 @@
       <Filter>工具</Filter>
     </ClCompile>
     <ClCompile Include="ObjManager.cpp">
+      <Filter>引擎\对象</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalPlayer.cpp">
       <Filter>引擎\对象</Filter>
     </ClCompile>
   </ItemGroup>

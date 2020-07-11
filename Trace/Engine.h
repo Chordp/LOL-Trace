@@ -1,7 +1,7 @@
 #pragma once
 #include "Trace.h"
-#include "ObjManager.hpp"
-class LocalPlayer;
+#include "ObjManager.h"
+#include "Hero.h"
 class ObjManager;
 class Engine
 {
@@ -74,5 +74,9 @@ public:
 	/// <param name="message"></param>
 	/// <param name=""></param>
 	static void PrintChats(int Color, const char* message, ...);
+
+	static int GetPing();
+
+	static Vector GetMouseWorldPosition();
 };
 

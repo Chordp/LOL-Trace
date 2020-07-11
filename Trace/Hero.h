@@ -1,9 +1,9 @@
 #pragma once
-#include "GameObject.hpp"
-#include "SpellBook.hpp"
+#include "GameObject.h"
+#include "SpellBook.h"
 #include "AIManager.h"
-class SpellBook;
 class GameObject;
+class SpellBook;
 
 class Hero :public GameObject
 {
@@ -35,15 +35,21 @@ public:
 	
 	AIManager* GetAIManager();
 
-	//bool GetHpBarPosition(Vector& out);
+	bool GetHpBarPosition(Vector& out);
+	/// <summary>
+	/// »ñÈ¡¹¥»÷ÑÓ³Ù
+	/// </summary>
+	/// <returns></returns>
+	float GetAttackDelay();
+
+	float GetAttackCastDelay();
 
 };
 
-
-class LocalPlayer :public Hero
-{
-public :
-	int IssueOrder(int Order, Vector* Loc, GameObject* Target, bool IsAttackMove, bool IsMinion, DWORD Unknown);
-	void MoveTo(Vector pos);
-	void Attack(GameObject* target, bool isMinion);
-};
+//class LocalPlayer : public Hero
+//{
+//public:
+//	int IssueOrder(int Order, Vector* Loc, GameObject* Target, bool IsAttackMove, bool IsMinion, DWORD Unknown);
+//	void MoveTo(Vector pos);
+//	void Attack(GameObject* target, bool isMinion);
+//};
