@@ -114,29 +114,35 @@ enum class AI_Manager
 	CURRENTPOS = 0x2BC, //NOT VERIFIED
 	VELOCITY = 0x2C0 //NOT VERIFIED
 };
+
 //[*] League of Legends Client Update Tool
 //[*] By Chord
-//[*] Started at: 2020-07-09 11:59:10.072000
+//[*] Started at: 2020-07-13 17:01:55.119000
 //----------------------------
 namespace GameClass
 {
-	const auto GameTime = 0x34fa7bc;
-	const auto BuildVersion = 0x3512a50;
-	const auto ObjManager = 0x1c5f930;
-	const auto LocalPlayer = 0x3501f1c;
-	const auto ChatClient = 0x1c5d320;
+	const auto GameTime = 0x34FA7BC;	//0x38FA7BC
+	const auto BuildVersion = 0x3512A50;	//0x3912A50
+	const auto ObjManager = 0x1C5F930;	//0x205F930
+	const auto LocalPlayer = 0x3501F1C;	//0x3901F1C
+	const auto ChatClient = 0x1C5D320;	//0x205D320
+	const auto HudInstance = 0x1C5F96C;	//0x205F96C
+	const auto PingInstance = 0x3508F9C;	//0x3908F9C
 };
 
 
 namespace Function
 {
-	const auto IsMissile = 0x1cbae0;
-	const auto WorldToScreen = 0x969aa0;
-	const auto SetBaseCharacterData = 0x1b23d0;
-	const auto GetFirstObj = 0x2bb8e0;
-	const auto GetNextObj = 0x2bc8b0;
-	const auto PrintChat = 0x57a9d0;
-	const auto GetHpBarPos = 0x5a0990;
-	const auto IsAlive = 0x1b7f20;
-	const auto BaseDrawPosition = 0x179630;
+	const auto IsAlive = 0x1B7F20;	//0x5B7F20
+	const auto IsMissile = 0x1CBAE0;	//0x5CBAE0
+	const auto GetPing = 0x342AC0;	//0x742AC0
+	const auto GetFirstObj = 0x2BB8E0;	//0x6BB8E0
+	const auto GetNextObj = 0x2BC8B0;	//0x6BC8B0
+	const auto PrintChat = 0x57A9D0;	//0x97A9D0
+	const auto GetHpBarPos = 0x5A0990;	//0x9A0990
+	const auto WorldToScreen = 0x969AA0;	//0xD69AA0
+	const auto BaseDrawPosition = 0x179630;	//0x579630
+	const auto GetAttackDelay = 0x2B63B0;	//0x6B63B0
+	const auto GetAttackCastDelay = 0x2B62B0;	//0x6B62B0
+	const auto SetBaseCharacterData = 0x1B23D0;	//0x5B23D0
 };

@@ -92,8 +92,8 @@ namespace DrawHook
 				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
 				Draw->Setup(Engine::GetWindow(), _this);
 
-				thread(init).detach();
-
+				//thread(init).detach();
+				init();
 				Init = true;
 			}
 
@@ -107,7 +107,7 @@ namespace DrawHook
 				Game::GetIns()->GankTips();
 			if (setting.Path)
 				Game::GetIns()->DrawPath();
-			Game::GetIns()->DrawMissile();
+			//Game::GetIns()->DrawMissile();
 			Draw->EndRender();
 
 

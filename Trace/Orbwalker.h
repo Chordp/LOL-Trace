@@ -11,8 +11,8 @@ public:
 		static auto _Orbwalker = new Orbwalker();
 		return _Orbwalker;
 	}
-	bool AttackReady();
-	bool MoveReady(float sleep);
+	bool AttackReady(int sleep = 25);
+	bool MoveReady(int sleep = 10);
 	GameObject* GetTarget(vector<GameObject*> targets);
 	void ComBo();
 };

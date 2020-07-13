@@ -2,7 +2,7 @@
 
 int LocalPlayer::IssueOrder(int Order, Vector* Loc, GameObject* Target, bool IsAttackMove, bool IsMinion, DWORD Unknown)
 {
-	static auto fnIssueOrder = reinterpret_cast<int(__thiscall*)(PVOID, int, Vector*, GameObject*, bool, bool, DWORD)>(Engine::GetBaseModule());
+	static auto fnIssueOrder = reinterpret_cast<int(__thiscall*)(PVOID, int, Vector*, GameObject*, bool, bool, DWORD)>(Engine::GetBaseModule() + Function::IssueOrder);
 	return fnIssueOrder(this, Order, Loc, Target, IsAccelerator, IsMinion, Unknown);
 }
 void LocalPlayer::MoveTo(Vector pos)
@@ -21,4 +21,16 @@ void LocalPlayer::MoveTo(Vector pos)
 void LocalPlayer::Attack(GameObject* target, bool isMinion)
 {
 	IssueOrder(3, &target->GetPos(), target, 1, isMinion, 0);
+}
+
+float LocalPlayer::GetAttackDelay()
+{
+	static auto fnGetAttackDelay = reinterpret_cast<float(__thiscall*)(PVOID)>(Engine::GetBaseModule() + Function::GetAttackDelay);
+	return fnGetAttackDelay(this);
+}
+
+float LocalPlayer::GetAttackCastDelay()
+{
+	static auto fnGetAttackCastDelay = reinterpret_cast<float(__thiscall*)(PVOID)>(Engine::GetBaseModule()+Function::GetAttackCastDelay);
+	return fnGetAttackCastDelay(this);
 }

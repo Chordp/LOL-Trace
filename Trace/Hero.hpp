@@ -46,4 +46,7 @@ public :
 	int IssueOrder(int Order, Vector* Loc, GameObject* Target, bool IsAttackMove, bool IsMinion, DWORD Unknown);
 	void MoveTo(Vector pos);
 	void Attack(GameObject* target, bool isMinion);
+	float GetAttackDelay();
+	float GetAttackCastDelay();
+
 };

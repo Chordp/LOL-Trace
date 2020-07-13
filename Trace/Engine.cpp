@@ -2,13 +2,13 @@
 
 DWORD_PTR Engine::GetBaseModule()
 {
-	 auto Base = reinterpret_cast<DWORD_PTR> (GetModuleHandleA(nullptr));
+	static auto Base = reinterpret_cast<DWORD_PTR> (GetModuleHandleA(nullptr));
 	return Base;
 }
 
 HWND Engine::GetWindow()
 {
-	 auto hWnd = FindWindowA(0, "League of Legends (TM) Client");
+	static auto hWnd = FindWindowA(0, "League of Legends (TM) Client");
 
 	return hWnd;
 }
@@ -60,3 +60,23 @@ char* Engine::GetBuildVersion()
 
 	 PrintChat(*(DWORD*)(GetBaseModule() + GameClass::ChatClient), output, Color);
  }
+
+Vector Engine::GetMouseWorldPosition() {
+	 DWORD MousePtr = GetBaseModule() + GameClass::HudInstance;
+	 auto aux1 = *(DWORD*)MousePtr;
+	 aux1 += 0x14;
+	 auto aux2 = *(DWORD*)aux1;
+	 aux2 += 0x1C;
+
+	 float X = *(float*)(aux2 + 0x0);
+	 float Y = *(float*)(aux2 + 0x4);
+	 float Z = *(float*)(aux2 + 0x8);
+
+	 return Vector{ X, Y, Z };
+
+ }
+
+int Engine::GetPing() {
+	static auto fnGetPing = reinterpret_cast<int(__thiscall*)(PVOID)>(GetBaseModule() + Function::GetPing);
+	return fnGetPing(*reinterpret_cast<PVOID*>(GetBaseModule() + GameClass::PingInstance));
+}

@@ -1,19 +1,19 @@
 #include "Orbwalker.h"
-
-bool Orbwalker::AttackReady()
+#include "Hero.hpp"
+bool Orbwalker::AttackReady(int sleep)
 {
-	if (Engine::GetGameTime() +( Engine::GetPing() / 2 + 25)* 0.001f >= attackTimer + Me->GetAttackDelay())
+	if (Engine::GetGameTime() + (Engine::GetPing() / 2 + sleep) * 0.001f >= attackTimer + Me->GetAttackDelay())
 		return true;
 
-		
+
 	return false;
 }
 
-bool Orbwalker::MoveReady(float sleep)
+bool Orbwalker::MoveReady(int sleep)
 {
-	if (Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f >= attackTimer + Me->GetAttackCastDelay()+ sleep)
+	if (Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f >= attackTimer + Me->GetAttackCastDelay() + (sleep) * 0.001f)
 		return true;
-	
+
 	return false;
 }
 
@@ -31,11 +31,16 @@ GameObject* Orbwalker::GetTarget(vector<GameObject*> targets)
 
 void Orbwalker::ComBo()
 {
+	Hero* Target = nullptr;
 
-
-
-	if (MoveReady(0.09))
+	if (!Target)
 	{
-		Me->MoveTo(Engine::GetMouseWorldPosition());
+		if (MoveReady())
+		{
+			Me->MoveTo(Engine::GetMouseWorldPosition());
+
+			attackTimer = 10;
+		}
 	}
+	
 }

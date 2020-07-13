@@ -74,5 +74,16 @@ public:
 	/// <param name="message"></param>
 	/// <param name=""></param>
 	static void PrintChats(int Color, const char* message, ...);
+
+	/// <summary>
+	/// 获取鼠标位置
+	/// </summary>
+	/// <returns></returns>
+	static Vector GetMouseWorldPosition();
+	/// <summary>
+	/// 获取游戏延迟
+	/// </summary>
+	/// <returns></returns>
+	static int GetPing();
 };
 

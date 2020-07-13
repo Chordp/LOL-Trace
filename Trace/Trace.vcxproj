@@ -165,6 +165,7 @@
     <ClCompile Include="LocalPlayer.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
+    <ClCompile Include="Orbwalker.cpp" />
     <ClCompile Include="SpellSlot.cpp" />
     <ClCompile Include="Trace.cpp" />
   </ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="Config.hpp" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Missile.h" />
+    <ClInclude Include="Orbwalker.h" />
     <ClInclude Include="SpellBook.hpp" />
     <ClInclude Include="Detour.hpp" />
     <ClInclude Include="detours.h" />

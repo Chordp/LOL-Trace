@@ -138,6 +138,9 @@
     <ClInclude Include="ObjManager.hpp">
       <Filter>引擎\对象</Filter>
     </ClInclude>
+    <ClInclude Include="Orbwalker.h">
+      <Filter>引擎\走砍</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -199,6 +202,9 @@
     </ClCompile>
     <ClCompile Include="LocalPlayer.cpp">
       <Filter>引擎\对象</Filter>
+    </ClCompile>
+    <ClCompile Include="Orbwalker.cpp">
+      <Filter>引擎\走砍</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
