@@ -135,6 +135,7 @@ namespace Function
 {
 	const auto IsAlive = 0x1B7F20;	//0x5B7F20
 	const auto IsMissile = 0x1CBAE0;	//0x5CBAE0
+	const auto IssueOrder = 0x18A3A0;
 	const auto GetPing = 0x342AC0;	//0x742AC0
 	const auto GetFirstObj = 0x2BB8E0;	//0x6BB8E0
 	const auto GetNextObj = 0x2BC8B0;	//0x6BC8B0

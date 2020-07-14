@@ -82,5 +82,5 @@ public:
 
 	int DecType();
 	ObjectType GetType();
-	//bool GetHpBarPosition(Vector& out);
+	bool GetHpBarPosition(Vector& out);
 };
