@@ -103,10 +103,13 @@ void Game::DrawMissile()
 
 		//cout << x << endl;
 		//cin.get();
-		//if (x->IsBasicAttack() || x->IsAutoAttack())
-		//	continue;
-		//if (Me->GetTeam() == x->GetTeam())
-		//	return;
+		if (x->IsBasicAttack() || x->IsAutoAttack())
+			continue;
+		if (Me->GetTeam() == x->GetTeam())
+			return;
+
+
+		auto color = IM_COL32(200, 200, 200, 200);
 
 		Vector x2, y2;
 		Vector x1 = x->GetSpellStartPos();
@@ -131,15 +134,15 @@ void Game::DrawMissile()
 		ImVec2 endLeft = ImVec2(y2.X + N * dy, y2.Y - N * dx);
 		ImVec2 endRight = ImVec2(y2.X - N * dy, y2.Y + N * dx);
 
-		//ImGui::GetOverlayDrawList()->AddCircle(ImVec2(SPos.X, SPos.Y), N, Color::ºì¹¯ºì, 12, 1);
-		ImGui::GetOverlayDrawList()->AddCircle(startLeft,10 , Color::ºì¹¯ºì,12,1);
-		ImGui::GetOverlayDrawList()->AddLine(startLeft, startRight, Color::ºì¹¯ºì, 1);
-		ImGui::GetOverlayDrawList()->AddCircle(startRight, 10, Color::ºì¹¯ºì, 12, 1);
-		ImGui::GetOverlayDrawList()->AddLine(endLeft, endRight, Color::ºì¹¯ºì, 1);
-		ImGui::GetOverlayDrawList()->AddCircle(endLeft, 10, Color::ºì¹¯ºì, 12, 1);
-		ImGui::GetOverlayDrawList()->AddLine(startLeft, endLeft, Color::ºì¹¯ºì, 1);
-		ImGui::GetOverlayDrawList()->AddCircle(endRight, 10, Color::ºì¹¯ºì, 12, 1);
-		ImGui::GetOverlayDrawList()->AddLine(startRight, endRight, Color::ºì¹¯ºì, 1);
+		//ImGui::GetOverlayDrawList()->AddCircle(ImVec2(SPos.X, SPos.Y), N, color, 12, 1);
+		ImGui::GetOverlayDrawList()->AddCircle(startLeft,10 , color,12,1);
+		ImGui::GetOverlayDrawList()->AddLine(startLeft, startRight, color, 1);
+		ImGui::GetOverlayDrawList()->AddCircle(startRight, 10, color, 12, 1);
+		ImGui::GetOverlayDrawList()->AddLine(endLeft, endRight, color, 1);
+		ImGui::GetOverlayDrawList()->AddCircle(endLeft, 10, color, 12, 1);
+		ImGui::GetOverlayDrawList()->AddLine(startLeft, endLeft, color, 1);
+		ImGui::GetOverlayDrawList()->AddCircle(endRight, 10, color, 12, 1);
+		ImGui::GetOverlayDrawList()->AddLine(startRight, endRight, color, 1);
 
 	}
 

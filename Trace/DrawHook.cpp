@@ -3,6 +3,7 @@
 #include "Menu.hpp"
 #include "Hero.hpp"
 #include "Game.h"
+#include "Orbwalker.h"
 #define pMenu Meun::GetIns()
 #define setting Config::GetIns()->Setting
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -107,8 +108,14 @@ namespace DrawHook
 				Game::GetIns()->GankTips();
 			if (setting.Path)
 				Game::GetIns()->DrawPath();
-			//Game::GetIns()->DrawMissile();
+			if(setting.EzEvade)
+				Game::GetIns()->DrawMissile();
 			Draw->EndRender();
+
+			if (GetAsyncKeyState(VK_SPACE) < 0)
+			{
+				Orbwalker::GetIns()->ComBo();
+			}
 
 
 

@@ -24,7 +24,8 @@ public:
 		}
 		ImGui::Checkbox(u8"路径预测", &setting.Path); ImGui::SameLine();
 		ImGui::Checkbox(u8"显示冷却", &setting.DrawCd); ImGui::SameLine();
-		ImGui::Checkbox(u8"Gank提示", &setting.Gank);
+		ImGui::Checkbox(u8"Gank提示", &setting.Gank); ImGui::SameLine();
+		ImGui::Checkbox(u8"Ez躲避", &setting.EzEvade);
 		ImGui::End();
 		
 	}

@@ -18,7 +18,6 @@ void OnStart()
 	while (Engine::GetGameTime() < 1.0f || !Engine::GetLocalPlayer())
 		Sleep(1);
 
-	
 	DrawHook::Start();
 }
 

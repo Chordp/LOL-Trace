@@ -53,6 +53,11 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	bool IsHero();
+	bool IsTargetable();
+	/// <summary>
+	/// 是否导弹
+	/// </summary>
+	/// <returns></returns>
 	bool IsMissile();
 	/// <summary>
 	/// 获取攻击范围
@@ -69,6 +74,7 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	float GetBoundingRadius();
+	float GetArmor();
 	/// <summary>
 	/// 获取血量
 	/// </summary>
@@ -80,7 +86,17 @@ public:
 	/// <returns></returns>
 	bool IsAlive();
 
+	float GetBaseAttackDamage();
+
+	float GetBonusAttackDamage();
+
+	float GetTotalAttackDamage();
+
 	int DecType();
 	ObjectType GetType();
 	bool GetHpBarPosition(Vector& out);
+
+	float CalcDamage(GameObject* target);
+
+	
 };

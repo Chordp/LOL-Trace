@@ -25,12 +25,12 @@ void LocalPlayer::Attack(GameObject* target, bool isMinion)
 
 float LocalPlayer::GetAttackDelay()
 {
-	static auto fnGetAttackDelay = reinterpret_cast<float(__thiscall*)(PVOID)>(Engine::GetBaseModule() + Function::GetAttackDelay);
+	static auto fnGetAttackDelay = reinterpret_cast<float(__cdecl*)(PVOID)>(Engine::GetBaseModule() + Function::GetAttackDelay);
 	return fnGetAttackDelay(this);
 }
 
 float LocalPlayer::GetAttackCastDelay()
 {
-	static auto fnGetAttackCastDelay = reinterpret_cast<float(__thiscall*)(PVOID)>(Engine::GetBaseModule()+Function::GetAttackCastDelay);
-	return fnGetAttackCastDelay(this);
+	static auto fnGetAttackCastDelay = reinterpret_cast<float(__cdecl*)(PVOID,int)>(Engine::GetBaseModule()+Function::GetAttackCastDelay);
+	return fnGetAttackCastDelay(this,64);
 }

@@ -1,6 +1,9 @@
 #pragma once
 #include "Game.h"
-
+enum class OrbwalType
+{
+	Combo
+};
 class Orbwalker
 {
 private:
@@ -13,7 +16,8 @@ public:
 	}
 	bool AttackReady(int sleep = 25);
 	bool MoveReady(int sleep = 10);
-	GameObject* GetTarget(vector<GameObject*> targets);
+	GameObject* GetTarget(OrbwalType type);
+	bool InAttackRange(GameObject* target);
 	void ComBo();
 };
 

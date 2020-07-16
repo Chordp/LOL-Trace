@@ -17,30 +17,67 @@ bool Orbwalker::MoveReady(int sleep)
 	return false;
 }
 
-GameObject* Orbwalker::GetTarget(vector<GameObject*> targets)
+GameObject* Orbwalker::GetTarget(OrbwalType type)
 {
-	//if (targets.empty())
-	//	return nullptr;
-	//GameObject* bestTarget = targets[0];
-	////for (size_t i = 1; i < targets.size(); i++)
-	////{
-	////	if(targets[i]->GetHealth() < )
-	////}
-	return nullptr;
+	vector<GameObject*> ObjArray;
+	switch (type)
+	{
+	case OrbwalType::Combo:
+		ObjArray.assign(Game::GetIns()->HeroCache.begin(), Game::GetIns()->HeroCache.end());
+		break;
+	default:
+		break;
+	}
+	GameObject* selected = nullptr;
+	float max = 0;
+	for (auto Obj: ObjArray)
+	{
+		if(Obj->IsAlive() && Me->GetTeam() != Obj->GetTeam() && Obj ->IsTargetable())
+		{
+			if(InAttackRange(Obj))
+			{ 
+				if ( (Me->CalcDamage(Obj) / (Obj->GetHealth() * 0.8f) > max))
+				{
+					max = (Me->CalcDamage(Obj) / Obj->GetHealth());
+					selected = Obj;
+				}
+			}
+		}
+	}
+
+
+	return selected;
+}
+
+bool Orbwalker::InAttackRange(GameObject* target)
+{
+	float myRange = Me->GetAttackRange() + Me->GetBoundingRadius();
+	auto LocalPos = Me->GetPos();
+	auto TargetPos = target->GetPos();
+	float dist = (LocalPos - TargetPos).length();//(LocalPos.X - TargetPos.X) * (LocalPos.X - TargetPos.X) + (LocalPos.Z - TargetPos.Z) * (LocalPos.Z - TargetPos.Z);
+	return dist < myRange;
 }
 
 void Orbwalker::ComBo()
 {
-	Hero* Target = nullptr;
+	GameObject* Target = GetTarget(OrbwalType::Combo);
 
-	if (!Target)
+	if (Target)
 	{
-		if (MoveReady())
+		if (AttackReady())
+		{
+			Me->Attack(Target, false);
+			attackTimer = Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f;
+		}
+		else if(MoveReady())
 		{
 			Me->MoveTo(Engine::GetMouseWorldPosition());
-
-			attackTimer = 10;
 		}
+	}
+	else
+	{
+		attackTimer = 0.f;
+
 	}
 	
 }

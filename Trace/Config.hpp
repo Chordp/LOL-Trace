@@ -13,6 +13,7 @@ namespace Json
 		bool DrawCd;
 		bool Gank;
 		bool Path;
+		bool EzEvade;
 		map<string, Hero> HeroOption;
 	};
 	struct Contrast

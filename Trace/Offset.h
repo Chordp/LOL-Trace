@@ -84,9 +84,12 @@ enum class Entity
 	Name = 0x006C,
 	NetworkID = 0x00CC,
 	ObjPos = 0x1D8,
+
 	Health = 0x0FA8,
 	MaxHealth = 0x0FB8,
 	Armor = 0x1484,
+	BonusAtk = 0x13DC,
+	BaseAtk = 0x145C,
 	ObjAtkRange = 0x14A4,
 	SpellBook = 0x2AF0,
 	ChampionName = 0x35AC
@@ -135,6 +138,7 @@ namespace Function
 {
 	const auto IsAlive = 0x1B7F20;	//0x5B7F20
 	const auto IsMissile = 0x1CBAE0;	//0x5CBAE0
+	const auto IsTargetable = 0x1EFBE0;	//0x5EFBE0
 	const auto IssueOrder = 0x18A3A0;
 	const auto GetPing = 0x342AC0;	//0x742AC0
 	const auto GetFirstObj = 0x2BB8E0;	//0x6BB8E0
@@ -143,7 +147,7 @@ namespace Function
 	const auto GetHpBarPos = 0x5A0990;	//0x9A0990
 	const auto WorldToScreen = 0x969AA0;	//0xD69AA0
 	const auto BaseDrawPosition = 0x179630;	//0x579630
-	const auto GetAttackDelay = 0x2B63B0;	//0x6B63B0
+	const auto GetAttackDelay = 0x2B63B0;	//0x6B63B0 
 	const auto GetAttackCastDelay = 0x2B62B0;	//0x6B62B0
 	const auto SetBaseCharacterData = 0x1B23D0;	//0x5B23D0
 };

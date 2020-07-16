@@ -12,6 +12,7 @@ namespace Json
 		j["Path"] = p.Path;
 		j["Gank"] = p.Gank;
 		j["DrawCd"] = p.DrawCd;
+		j["EzEvade"] = p.EzEvade;
 		j["HeroOption"] = p.HeroOption;
 	}
 	void from_json(const nlohmann::json& j, Setting& p) {
@@ -20,6 +21,7 @@ namespace Json
 			p.Path = j["Path"];
 			p.Gank = j["Gank"];
 			p.DrawCd = j["DrawCd"];
+			p.EzEvade = j["EzEvade"];
 			j["HeroOption"].get_to(p.HeroOption);
 				
 		}
