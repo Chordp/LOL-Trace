@@ -1,21 +1,26 @@
 #include "Orbwalker.h"
 #include "Hero.hpp"
-bool Orbwalker::AttackReady(int sleep)
+bool Orbwalker::CanAttack()
 {
-	if (Engine::GetGameTime() + (Engine::GetPing() / 2 + sleep) * 0.001f >= attackTimer + Me->GetAttackDelay())
-		return true;
-
-
-	return false;
+	//return Engine::GetGameTime() + Engine::GetPing() * 0.001f >= LastAATick + Me->GetAttackDelay();
+	return Engine::GetGameTime() + (Engine::GetPing() / 2+ 25) * 0.001f >= LastAATick + Me->GetAttackDelay();
 }
 
-bool Orbwalker::MoveReady(int sleep)
+bool Orbwalker::CanMove(int sleep)
 {
-	if (Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f >= attackTimer + Me->GetAttackCastDelay() + (sleep) * 0.001f)
-		return true;
 
-	return false;
+	//return Me->GetAttackCastDelay() < Engine::GetGameTime() - LastAATick + sleep * 0.001;
+	return Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f >= LastAATick + Me->GetAttackCastDelay() + sleep * 0.001f;
+
+
 }
+
+void Orbwalker::ResetAttackTimer(float t)
+{
+	//LastAATick = Engine::GetGameTime() + t;
+	LastAATick = Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001  + t;
+}
+
 
 GameObject* Orbwalker::GetTarget(OrbwalType type)
 {
@@ -51,7 +56,7 @@ GameObject* Orbwalker::GetTarget(OrbwalType type)
 
 bool Orbwalker::InAttackRange(GameObject* target)
 {
-	float myRange = Me->GetAttackRange() + Me->GetBoundingRadius();
+	float myRange = Me->GetAttackRange() + Me->GetBoundingRadius()+ target->GetBoundingRadius();
 	auto LocalPos = Me->GetPos();
 	auto TargetPos = target->GetPos();
 	float dist = (LocalPos - TargetPos).length();//(LocalPos.X - TargetPos.X) * (LocalPos.X - TargetPos.X) + (LocalPos.Z - TargetPos.Z) * (LocalPos.Z - TargetPos.Z);
@@ -62,22 +67,35 @@ void Orbwalker::ComBo()
 {
 	GameObject* Target = GetTarget(OrbwalType::Combo);
 
-	if (Target)
+	
+	if (Target && CanAttack())
 	{
-		if (AttackReady())
+		Me->Attack(Target);
+		if (Me->GetSpellBook()->GetActiveSpellEntry())
 		{
-			Me->Attack(Target, false);
-			attackTimer = Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f;
+			if (Me->GetSpellBook()->GetActiveSpellEntry()->isAutoAttack())
+			{
+				ResetAttackTimer();
+				cout << 1 << endl;
+			}
 		}
-		else if(MoveReady())
+		
+	}
+	else if(CanMove())
+	{
+		
+		if (Engine::GetGameTime() - LastMove > 0.3f)
 		{
 			Me->MoveTo(Engine::GetMouseWorldPosition());
-		}
-	}
-	else
-	{
-		attackTimer = 0.f;
+			LastMove = Engine::GetGameTime();
+		
 
+		}
+		
 	}
+
+
+
+	
 	
 }

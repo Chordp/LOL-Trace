@@ -1,5 +1,6 @@
 #pragma once
 #include "SpellSlot.h"
+#include "SpellEntry.h"
 class SpellSlot;
 
 enum SpellSlotID
@@ -23,6 +24,9 @@ enum SpellSlotID
 class SpellBook
 {
 public:
+    SpellEntry* GetActiveSpellEntry() {
+        return *(SpellEntry**)((DWORD)this + 0x20);
+    }
 	SpellSlot* GetSpellSlotByID(int ID) {
 		return *(SpellSlot**)((DWORD)this + 0x508 + (0x4 * ID));
 	}
@@ -30,7 +34,7 @@ public:
     std::vector<SpellSlot*> GetAllSpellSlot()
     {
         std::vector<SpellSlot*> hRet;
-        for (size_t i = 0; i < 6; i++)
+        for (size_t i = 0; i < 4; i++)
         {
             hRet.push_back(GetSpellSlotByID(i));
         }

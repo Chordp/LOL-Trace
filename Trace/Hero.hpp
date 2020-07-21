@@ -4,7 +4,16 @@
 #include "AIManager.h"
 class SpellBook;
 class GameObject;
-
+enum class IssueOrderType {
+	HoldPosition = 1,
+	MoveTo,
+	AttackUnit,
+	AutoAttackPet,
+	AutoAttack,
+	MovePet,
+	AttackTo,
+	Stop = 10
+};
 class Hero :public GameObject
 {
 public:
@@ -43,9 +52,9 @@ public:
 class LocalPlayer :public Hero
 {
 public :
-	int IssueOrder(int Order, Vector* Loc, GameObject* Target, bool IsAttackMove, bool IsMinion, DWORD Unknown);
+	int IssueOrder(IssueOrderType Order, Vector* Loc, GameObject* Target, bool IsAttackMove, bool IsMinion, DWORD Unknown);
 	void MoveTo(Vector pos);
-	void Attack(GameObject* target, bool isMinion);
+	void Attack(GameObject* target);
 	float GetAttackDelay();
 	float GetAttackCastDelay();
 

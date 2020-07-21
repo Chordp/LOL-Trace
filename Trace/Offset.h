@@ -100,7 +100,7 @@ enum class MissileClient
 	SpellInfo = 0x230,
 	StartPos = SpellInfo + 0x78,//10.1
 	EndPos = SpellInfo + 0x84, //10.1
-	IsAutoAttack = SpellInfo + 0xA8,
+	IsAutoAttack = SpellInfo + 0x04D9,
 	IsBasicAttack = SpellInfo + 0x4cc,
 	SpellWidth = SpellInfo + 0x528
 

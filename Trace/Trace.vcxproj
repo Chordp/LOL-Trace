@@ -134,7 +134,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)$(Configuration)\$(ProjectName).dll" "D:\Game\WeGameApps\英雄联盟\Game\$(ProjectName).dll" /y</Command>
+      <Command>xcopy "$(SolutionDir)$(Configuration)\$(ProjectName).dll" "D:\Game\WeGameApps\英雄联盟\Game\$(ProjectName).dll" /y /F</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,6 +173,7 @@
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
     <ClCompile Include="Orbwalker.cpp" />
+    <ClCompile Include="SpellEntry.cpp" />
     <ClCompile Include="SpellSlot.cpp" />
     <ClCompile Include="Trace.cpp" />
   </ItemGroup>
@@ -204,6 +205,7 @@
     <ClInclude Include="ObjManager.hpp" />
     <ClInclude Include="Offset.h" />
     <ClInclude Include="SmartHook.hpp" />
+    <ClInclude Include="SpellEntry.h" />
     <ClInclude Include="SpellSlot.h" />
     <ClInclude Include="Trace.h" />
     <ClInclude Include="utlis.hpp" />

@@ -9,15 +9,15 @@ void OnStart()
 	Config::GetIns()->Loader();
 
 
-	//AllocConsole(); // 控制台
-	//freopen("CONIN$", "r", stdin); //控制台
-	//freopen("CONOUT$", "w", stdout);
+	AllocConsole(); // 控制台
+	freopen("CONIN$", "r", stdin); //控制台
+	freopen("CONOUT$", "w", stdout);
 
 
 	//等待游戏
 	while (Engine::GetGameTime() < 1.0f || !Engine::GetLocalPlayer())
 		Sleep(1);
-
+	Sleep(1000);
 	DrawHook::Start();
 }
 

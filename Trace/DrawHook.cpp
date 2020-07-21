@@ -112,10 +112,10 @@ namespace DrawHook
 				Game::GetIns()->DrawMissile();
 			Draw->EndRender();
 
-			if (GetAsyncKeyState(VK_SPACE) < 0)
-			{
-				Orbwalker::GetIns()->ComBo();
-			}
+			//if (GetAsyncKeyState(VK_SPACE) < 0)
+			//{
+			//	Orbwalker::GetIns()->ComBo();
+			//}
 
 
 

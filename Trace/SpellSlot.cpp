@@ -22,5 +22,5 @@
 }
 
 float SpellSlot::GetCD() {
-	return *(float*)((DWORD)this + 0x18);
+	return *(float*)((DWORD)this + 0x78);
 }

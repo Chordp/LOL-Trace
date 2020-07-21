@@ -10,8 +10,8 @@ void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 
 	ImGui_ImplWin32_Init(hWnd);
 	ImGui_ImplDX9_Init(device);
-
-	_Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
+	Font16F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 16.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
+	Font14F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 
 	ImGuiStyle style = ImGui::GetStyle();
 	ImGui::StyleColorsLight();

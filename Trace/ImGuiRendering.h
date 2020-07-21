@@ -7,7 +7,7 @@
 class ImGuiRendering
 {
 private:
-	ImFont* _Font;
+	
 	IDirect3DDevice9* _Device;
 	DWORD _D3DRS_COLORWRITEENABLE;
 	ImDrawList* _DrawList;
@@ -15,6 +15,8 @@ private:
 	ImGuiRendering() {};
 
 public:
+	ImFont* Font14F;
+	ImFont* Font16F;
 	static auto GetIns()
 	{
 		static auto _Draw = new ImGuiRendering();
