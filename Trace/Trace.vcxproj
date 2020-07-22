@@ -173,7 +173,9 @@
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
     <ClCompile Include="Orbwalker.cpp" />
+    <ClCompile Include="SpellData.cpp" />
     <ClCompile Include="SpellEntry.cpp" />
+    <ClCompile Include="SpellInfo.cpp" />
     <ClCompile Include="SpellSlot.cpp" />
     <ClCompile Include="Trace.cpp" />
   </ItemGroup>
@@ -205,8 +207,11 @@
     <ClInclude Include="ObjManager.hpp" />
     <ClInclude Include="Offset.h" />
     <ClInclude Include="SmartHook.hpp" />
+    <ClInclude Include="SpellData.h" />
     <ClInclude Include="SpellEntry.h" />
+    <ClInclude Include="SpellInfo.h" />
     <ClInclude Include="SpellSlot.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="Trace.h" />
     <ClInclude Include="utlis.hpp" />
     <ClInclude Include="Vector.h" />

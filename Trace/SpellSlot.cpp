@@ -24,3 +24,8 @@
 float SpellSlot::GetCD() {
 	return *(float*)((DWORD)this + 0x78);
 }
+
+SpellInfo* SpellSlot::GetSpellInfo()
+{
+	return *(SpellInfo**)((DWORD)this + 0x134);
+}

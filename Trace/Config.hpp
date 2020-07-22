@@ -16,13 +16,18 @@ namespace Json
 		bool EzEvade;
 		map<string, Hero> HeroOption;
 	};
-	struct Contrast
+	struct Champion
 	{
 		string name;
 		string title;
 
 	};
+	struct Contrast
+	{
+		map<string, Json::Champion> Champion;
+		map<string, vector<BYTE>> Summoner;
 
+	};
 
 }
 class Config
@@ -30,7 +35,7 @@ class Config
 private:
 	Config() {};
 public:
-	map<string,Json::Contrast> Contrast;
+	Json::Contrast Contrast;
 	Json::Setting Setting;
 public:
 	/// <summary>

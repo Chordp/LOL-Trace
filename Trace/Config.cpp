@@ -33,7 +33,7 @@ namespace Json
 
 	}
 
-	void from_json(const nlohmann::json& j, Contrast& p) {
+	void from_json(const nlohmann::json& j, Champion& p) {
 		try
 		{
 			//j[u8"HeroOption"].get_to(p.HeroOption);
@@ -44,10 +44,19 @@ namespace Json
 		{
 
 		}
-
-
 	}
+	void from_json(const nlohmann::json& j, Contrast& p) {
+		try
+		{
+			//j[u8"HeroOption"].get_to(p.HeroOption);
+			j["champion"].get_to(p.Champion);
+			j["Summoner"].get_to(p.Summoner);
+		}
+		catch (const std::exception&)
+		{
 
+		}
+	}
 }
 
 
@@ -67,7 +76,7 @@ Json::Setting Config::Loader()
 		if (InFile.is_open())
 			InFile >> j;
 	
-		j.get_to(Contrast);
+		Contrast = j;
 		InFile.close();
 	}
 	catch (const std::exception&)

@@ -2,9 +2,9 @@
 
 string Hero::GetTitle()
 {
-	if (Config::GetIns()->Contrast.empty())
+	if (Config::GetIns()->Contrast.Champion.empty())
 		return GetChampionName();
-	return Config::GetIns()->Contrast[GetChampionName()].name;
+	return Config::GetIns()->Contrast.Champion[GetChampionName()].name;
 }
 
 char* Hero::GetChampionName() {

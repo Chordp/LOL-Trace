@@ -144,6 +144,15 @@
     <ClInclude Include="SpellEntry.h">
       <Filter>引擎\技能</Filter>
     </ClInclude>
+    <ClInclude Include="SpellInfo.h">
+      <Filter>引擎\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellData.h">
+      <Filter>引擎\技能</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>工具</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -210,6 +219,12 @@
       <Filter>引擎\走砍</Filter>
     </ClCompile>
     <ClCompile Include="SpellEntry.cpp">
+      <Filter>引擎\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellInfo.cpp">
+      <Filter>引擎\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellData.cpp">
       <Filter>引擎\技能</Filter>
     </ClCompile>
   </ItemGroup>

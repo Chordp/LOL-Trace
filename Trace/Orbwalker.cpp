@@ -71,11 +71,12 @@ void Orbwalker::ComBo()
 	if (Target && CanAttack())
 	{
 		Me->Attack(Target);
+		ResetAttackTimer();
 		if (Me->GetSpellBook()->GetActiveSpellEntry())
 		{
 			if (Me->GetSpellBook()->GetActiveSpellEntry()->isAutoAttack())
 			{
-				ResetAttackTimer();
+				//ResetAttackTimer();
 				cout << 1 << endl;
 			}
 		}
@@ -84,7 +85,7 @@ void Orbwalker::ComBo()
 	else if(CanMove())
 	{
 		
-		if (Engine::GetGameTime() - LastMove > 0.3f)
+		if (Engine::GetGameTime() - LastMove > 0.03f)
 		{
 			Me->MoveTo(Engine::GetMouseWorldPosition());
 			LastMove = Engine::GetGameTime();

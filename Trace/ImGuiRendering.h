@@ -8,13 +8,14 @@ class ImGuiRendering
 {
 private:
 	
-	IDirect3DDevice9* _Device;
+	
 	DWORD _D3DRS_COLORWRITEENABLE;
 	ImDrawList* _DrawList;
 	bool _IsSetup = false;
 	ImGuiRendering() {};
 
 public:
+	IDirect3DDevice9* _Device;
 	ImFont* Font14F;
 	ImFont* Font16F;
 	static auto GetIns()

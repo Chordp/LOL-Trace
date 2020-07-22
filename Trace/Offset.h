@@ -94,7 +94,20 @@ enum class Entity
 	SpellBook = 0x2AF0,
 	ChampionName = 0x35AC
 };
+enum class SpellDataClient
+{
+	missileName = 0x58,
+	spellName = 0x7c,
+	missileSpeed = 0x418
+};
+enum class SpellInfoClient
+{
+	StartPos = 0x78,//10.1
+	EndPos =  0x84, //10.1
+	SpellData = 0x44,
+	SpellWidth = 0x528
 
+};
 enum class MissileClient
 {
 	SpellInfo = 0x230,
