@@ -133,34 +133,35 @@ enum class AI_Manager
 
 //[*] League of Legends Client Update Tool
 //[*] By Chord
-//[*] Started at: 2020-07-13 17:01:55.119000
+//[*] Started at: 2020-07-23 12:24:05.233000
 //----------------------------
 namespace GameClass
 {
-	const auto GameTime = 0x34FA7BC;	//0x38FA7BC
-	const auto BuildVersion = 0x3512A50;	//0x3912A50
-	const auto ObjManager = 0x1C5F930;	//0x205F930
-	const auto LocalPlayer = 0x3501F1C;	//0x3901F1C
-	const auto ChatClient = 0x1C5D320;	//0x205D320
-	const auto HudInstance = 0x1C5F96C;	//0x205F96C
-	const auto PingInstance = 0x3508F9C;	//0x3908F9C
+	const auto GameTime = 0x34F7704;	//0x38F7704
+	const auto BuildVersion = 0x350FC98;	//0x390FC98
+	const auto ObjManager = 0x1C5C8B0;	//0x205C8B0
+	const auto LocalPlayer = 0x34FF448;	//0x38FF448
+	const auto ChatClient = 0x1C5A194;	//0x205A194
+	const auto HudInstance = 0x1C5C8EC;	//0x205C8EC
+	const auto PingInstance = 0x35062AC;	//0x39062AC
 };
 
 
 namespace Function
 {
-	const auto IsAlive = 0x1B7F20;	//0x5B7F20
-	const auto IsMissile = 0x1CBAE0;	//0x5CBAE0
-	const auto IsTargetable = 0x1EFBE0;	//0x5EFBE0
-	const auto IssueOrder = 0x18A3A0;
-	const auto GetPing = 0x342AC0;	//0x742AC0
-	const auto GetFirstObj = 0x2BB8E0;	//0x6BB8E0
-	const auto GetNextObj = 0x2BC8B0;	//0x6BC8B0
-	const auto PrintChat = 0x57A9D0;	//0x97A9D0
-	const auto GetHpBarPos = 0x5A0990;	//0x9A0990
-	const auto WorldToScreen = 0x969AA0;	//0xD69AA0
-	const auto BaseDrawPosition = 0x179630;	//0x579630
-	const auto GetAttackDelay = 0x2B63B0;	//0x6B63B0 
-	const auto GetAttackCastDelay = 0x2B62B0;	//0x6B62B0
-	const auto SetBaseCharacterData = 0x1B23D0;	//0x5B23D0
+	const auto GetPing = 0x343060;	//0x743060
+	const auto IsAlive = 0x1B8810;	//0x5B8810
+	const auto IsMissile = 0x1CC430;	//0x5CC430
+	const auto IsTargetable = 0x1EFDB0;	//0x5EFDB0
+	const auto IssueOrder = 0x18B0E0;	//0x58B0E0
+	const auto GetFirstObj = 0x2BC400;	//0x6BC400
+	const auto GetNextObj = 0x2BD5B0;	//0x6BD5B0
+	const auto PrintChat = 0x57E7C0;	//0x97E7C0
+	const auto GetHpBarPos = 0x5A3660;	//0x9A3660
+	const auto GetAiManager = 0x181740;
+	const auto WorldToScreen = 0x966A90;	//0xD66A90
+	const auto BaseDrawPosition = 0x17A180;	//0x57A180
+	const auto GetAttackDelay = 0x2B6D50;	//0x6B6D50
+	const auto GetAttackCastDelay = 0x2B6C50;	//0x6B6C50
+	const auto SetBaseCharacterData = 0x1B2BE0;	//0x5B2BE0
 };

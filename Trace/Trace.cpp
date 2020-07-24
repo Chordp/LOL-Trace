@@ -9,9 +9,9 @@ void OnStart()
 	Config::GetIns()->Loader();
 
 
-	AllocConsole(); // 控制台
-	freopen("CONIN$", "r", stdin); //控制台
-	freopen("CONOUT$", "w", stdout);
+	//AllocConsole(); // 控制台
+	//freopen("CONIN$", "r", stdin); //控制台
+	//freopen("CONOUT$", "w", stdout);
 
 
 	//等待游戏

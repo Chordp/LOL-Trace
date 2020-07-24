@@ -147,7 +147,7 @@ void Game::DrawPath()
 			continue;
 
 		AIManager* AiMGR = hero->GetAIManager();
-
+	
 		if (AiMGR && AiMGR->IsMoving())
 		{
 			auto path = AiMGR->GetPathList();

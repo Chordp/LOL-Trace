@@ -2,9 +2,10 @@
 
 string Hero::GetTitle()
 {
-	if (Config::GetIns()->Contrast.Champion.empty())
-		return GetChampionName();
-	return Config::GetIns()->Contrast.Champion[GetChampionName()].name;
+	string name = GetChampionName();
+	if (Config::GetIns()->Contrast.Champion.empty() || Config::GetIns()->Contrast.Champion.count(name) == 0)
+		return name;
+	return Config::GetIns()->Contrast.Champion[name].name;
 }
 
 char* Hero::GetChampionName() {
@@ -28,8 +29,10 @@ SpellBook* Hero::GetSpellBook() {
 }
 
 AIManager* Hero::GetAIManager() {
-	typedef AIManager* (__thiscall* OriginalFn)(PVOID);
-	return CallVirtual<OriginalFn>(this, 150)(this);
+	//typedef AIManager* (__thiscall* OriginalFn)(PVOID);
+	//return CallVirtual<OriginalFn>(this, 150)(this);
+	static auto fnGetAiManager = reinterpret_cast<AIManager * (__thiscall*)(PVOID)>(Engine::GetBaseModule() + Function::GetAiManager);
+	return fnGetAiManager(this);
 }
 
 //bool Hero::GetHpBarPosition(Vector& out)
