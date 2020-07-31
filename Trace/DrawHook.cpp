@@ -123,7 +123,19 @@ namespace DrawHook
 			return Present.CallOriginal(_this, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
 		});
 
-		Reset.Apply(GetDeviceAddress(16), Inline, []( LPDIRECT3DDEVICE9 _this, D3DPRESENT_PARAMETERS* pp)->auto { if (Init) { ImGui_ImplDX9_InvalidateDeviceObjects(); auto hRet = Reset.CallOriginal(_this, pp); ImGui_ImplDX9_CreateDeviceObjects(); return hRet; } return Reset.CallOriginal(_this, pp); }); 
+		Reset.Apply(GetDeviceAddress(16), Inline, []( LPDIRECT3DDEVICE9 _this, D3DPRESENT_PARAMETERS* pp)->auto 
+		{
+			if (Init) {
+				Draw->Clear();
+				ImGui_ImplDX9_InvalidateDeviceObjects(); 
+		
+				auto hRet = Reset.CallOriginal(_this, pp);
+				ImGui_ImplDX9_CreateDeviceObjects();
+				//Draw->Create();
+				return hRet; 
+			} 
+			return Reset.CallOriginal(_this, pp);
+		}); 
 	}
 
 }

@@ -1,6 +1,5 @@
 #include "Config.hpp"
 #include <fstream>
-
 namespace Json 
 {
 
@@ -63,10 +62,11 @@ namespace Json
 
 Json::Setting Config::Loader()
 {
+
 	try
 	{
 		nlohmann::json j;
-		ifstream InFile("Trace.json");
+		ifstream InFile( "Trace.json");
 		if (InFile.is_open())
 			InFile >> j;
 		InFile.close();

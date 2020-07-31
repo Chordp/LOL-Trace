@@ -1,7 +1,8 @@
 #include "ImGuiRendering.h"
-
+#include "stb_image.h"
 void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 {
+
 	if (_IsSetup) return;
 	_Device = device;
 
@@ -10,6 +11,7 @@ void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 
 	ImGui_ImplWin32_Init(hWnd);
 	ImGui_ImplDX9_Init(device);
+	//ImGui_ImplDX9_CreateDeviceObjects();
 	Font16F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 16.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 	Font14F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 
@@ -18,9 +20,85 @@ void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 	_DrawList = ImGui::GetOverlayDrawList();
 	_IsSetup = true;
 }
+LPDIRECT3DTEXTURE9 ImGuiRendering::CreateTexture(vector<BYTE> &p)
+{
+	LPDIRECT3DTEXTURE9 m_pTexture;
+	BYTE* Image_data = new BYTE[p.size()];
+	std::copy(p.begin(), p.end(), Image_data);
+	int width, height, channel;
+	auto data = stbi_load_from_memory(Image_data, p.size(), &width, &height, &channel, 3);
+
+	_Device->CreateTexture(width, height, 1, D3DUSAGE_DYNAMIC, D3DFMT_X8R8G8B8,
+		D3DPOOL_DEFAULT, &m_pTexture, nullptr);
+	D3DLOCKED_RECT lock_rect;
+	unsigned char* buffer = new unsigned char[width * height * (channel + 1)];
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			buffer[(i * width + j) * 4 + 0] = data[(i * width + j) * 3 + 2];
+			buffer[(i * width + j) * 4 + 1] = data[(i * width + j) * 3 + 1];
+			buffer[(i * width + j) * 4 + 2] = data[(i * width + j) * 3 + 0];
+			buffer[(i * width + j) * 4 + 3] = 0xff;
+		}
+	}
+	m_pTexture->LockRect(0, &lock_rect, NULL, 0);
+	for (int y = 0; y < height; y++)
+		memcpy((unsigned char*)lock_rect.pBits + lock_rect.Pitch * y, buffer + (width * (channel + 1)) * y, (width * (channel + 1)));
+	m_pTexture->UnlockRect(0);
+
+	delete[] buffer;
+	delete[] Image_data;
+
+	return m_pTexture;
+}
+LPDIRECT3DTEXTURE9 ImGuiRendering::GetTexture(string name)
+{
+	if (Texture.count(name) == 0)
+	{
+		auto& Summoner = Config::GetIns()->Contrast.Summoner;
+
+		if (Summoner.count(name) == 0)
+			return nullptr;
+		Texture[name] = CreateTexture(Summoner[name]);
+		return Texture[name];
+	}
+	else
+	{
+		return Texture[name];
+	}
+}
+
+void ImGuiRendering::Create()
+{
+	if (!_IsSetup)return;
+	auto& Summoner = Config::GetIns()->Contrast.Summoner;
+	for (auto t : Texture)
+	{
+		if (t.second)
+		{
+			t.second = CreateTexture(Summoner[t.first]);
+			cout << t.first << "\t" << "create" << endl;
+		}
+	}
+
+}
+
 void ImGuiRendering::Clear()
 {
 	if (!_IsSetup)return;
+
+	for (auto t : Texture)
+	{
+		auto& p = t.second;
+		if (p != nullptr)
+		{
+			p->Release();
+			p = nullptr;
+		}
+
+	}
+	Texture.clear();
 }
 
 void ImGuiRendering::PreRender()

@@ -9,8 +9,9 @@ BOOL APIENTRY DllMain(
 	{
 		case DLL_PROCESS_ATTACH:
 		{
+			
 			LoadLibraryA("LOL Trace.dll");
 		}
 	}
-	return FALSE;
+	return TRUE;
 }
