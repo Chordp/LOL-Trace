@@ -72,9 +72,9 @@ void Orbwalker::ComBo()
 	{
 		Me->Attack(Target);
 		ResetAttackTimer();
-		if (Me->GetSpellBook()->GetActiveSpellEntry())
+		if (Me->GetSpellBook()->GetActiveSpell())
 		{
-			if (Me->GetSpellBook()->GetActiveSpellEntry()->isAutoAttack())
+			if (Me->GetSpellBook()->GetActiveSpell()->isAutoAttack())
 			{
 				//ResetAttackTimer();
 				cout << 1 << endl;

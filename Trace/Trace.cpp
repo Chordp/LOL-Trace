@@ -1,17 +1,18 @@
 #include "Trace.h"
 #include "DrawHook.h"
+#include "AIO.h"
 /// <summary>
 /// 梦开始的地方
 /// </summary>
 
 void OnStart()
 {
-	Config::GetIns()->Loader();
+	Menu::GetIns()->Load();
+	AIO::GetIns();
 
-
-	//AllocConsole(); // 控制台
-	//freopen("CONIN$", "r", stdin); //控制台
-	//freopen("CONOUT$", "w", stdout);
+	AllocConsole(); // 控制台
+	freopen("CONIN$", "r", stdin); //控制台
+	freopen("CONOUT$", "w", stdout);
 
 
 	//等待游戏

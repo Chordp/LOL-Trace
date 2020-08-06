@@ -24,7 +24,7 @@ enum SpellSlotID
 class SpellBook
 {
 public:
-    SpellEntry* GetActiveSpellEntry() {
+    SpellEntry* GetActiveSpell() {
         return *(SpellEntry**)((DWORD)this + 0x20);
     }
 	SpellSlot* GetSpellSlotByID(int ID) {

@@ -34,9 +34,6 @@
     <Filter Include="引擎\对象">
       <UniqueIdentifier>{9f9a9d23-23b4-44ef-953d-1275eec05988}</UniqueIdentifier>
     </Filter>
-    <Filter Include="工具\配置">
-      <UniqueIdentifier>{cb894faf-fd07-45f3-9d1d-0daa94039f51}</UniqueIdentifier>
-    </Filter>
     <Filter Include="引擎\技能">
       <UniqueIdentifier>{982bd2d5-242d-4d56-aed7-cf3f04cc7bc2}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,9 @@
     </Filter>
     <Filter Include="引擎\走砍">
       <UniqueIdentifier>{e8fec8c5-ff21-48c0-922b-571ecd9efc73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="引擎\AIO">
+      <UniqueIdentifier>{f6078927-2881-4aa8-9eac-644bfb189c8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,12 +108,6 @@
     <ClInclude Include="Offset.h">
       <Filter>引擎</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.hpp">
-      <Filter>绘制</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.hpp">
-      <Filter>工具\配置</Filter>
-    </ClInclude>
     <ClInclude Include="SpellBook.hpp">
       <Filter>引擎\技能</Filter>
     </ClInclude>
@@ -132,9 +126,6 @@
     <ClInclude Include="Missile.h">
       <Filter>引擎\对象</Filter>
     </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>工具</Filter>
-    </ClInclude>
     <ClInclude Include="ObjManager.hpp">
       <Filter>引擎\对象</Filter>
     </ClInclude>
@@ -152,6 +143,18 @@
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandle.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>绘制</Filter>
+    </ClInclude>
+    <ClInclude Include="Skin.h">
+      <Filter>引擎\AIO</Filter>
+    </ClInclude>
+    <ClInclude Include="AIO.h">
+      <Filter>引擎\AIO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +191,6 @@
     <ClCompile Include="Hero.cpp">
       <Filter>引擎\对象</Filter>
     </ClCompile>
-    <ClCompile Include="Config.cpp">
-      <Filter>工具\配置</Filter>
-    </ClCompile>
     <ClCompile Include="SpellSlot.cpp">
       <Filter>引擎\技能</Filter>
     </ClCompile>
@@ -205,9 +205,6 @@
     </ClCompile>
     <ClCompile Include="Missile.cpp">
       <Filter>引擎\对象</Filter>
-    </ClCompile>
-    <ClCompile Include="Event.cpp">
-      <Filter>工具</Filter>
     </ClCompile>
     <ClCompile Include="ObjManager.cpp">
       <Filter>引擎\对象</Filter>
@@ -226,6 +223,15 @@
     </ClCompile>
     <ClCompile Include="SpellData.cpp">
       <Filter>引擎\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>绘制</Filter>
+    </ClCompile>
+    <ClCompile Include="Skin.cpp">
+      <Filter>引擎\AIO</Filter>
+    </ClCompile>
+    <ClCompile Include="AIO.cpp">
+      <Filter>引擎\AIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

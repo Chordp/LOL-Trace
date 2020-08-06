@@ -84,15 +84,15 @@ enum class Entity
 	Name = 0x006C,
 	NetworkID = 0x00CC,
 	ObjPos = 0x1D8,
-
+	Visibility = 0x39C,
 	Health = 0x0FA8,
 	MaxHealth = 0x0FB8,
-	Armor = 0x1484,
-	BonusAtk = 0x13DC,
-	BaseAtk = 0x145C,
-	ObjAtkRange = 0x14A4,
-	SpellBook = 0x2AF0,
-	ChampionName = 0x35AC
+	Armor = 0x1494,
+	BonusAtk = 0x13EC,
+	BaseAtk = 0x146C,
+	ObjAtkRange = 0x14B4,
+	SpellBook = 0x2B08,
+	ChampionName = 0x35BC
 };
 enum class SpellDataClient
 {
@@ -114,7 +114,7 @@ enum class MissileClient
 	StartPos = SpellInfo + 0x78,//10.1
 	EndPos = SpellInfo + 0x84, //10.1
 	IsAutoAttack = SpellInfo + 0x04D9,
-	IsBasicAttack = SpellInfo + 0x4cc,
+	IsBasicAttack = SpellInfo + 0x4D8,
 	SpellWidth = SpellInfo + 0x528
 
 };
@@ -131,37 +131,41 @@ enum class AI_Manager
 	VELOCITY = 0x2C0 //NOT VERIFIED
 };
 
+
 //[*] League of Legends Client Update Tool
 //[*] By Chord
-//[*] Started at: 2020-07-23 12:24:05.233000
+//[*] Started at: 2020-08-06 14:32:12.323000
 //----------------------------
 namespace GameClass
 {
-	const auto GameTime = 0x34F7704;	//0x38F7704
-	const auto BuildVersion = 0x350FC98;	//0x390FC98
-	const auto ObjManager = 0x1C5C8B0;	//0x205C8B0
-	const auto LocalPlayer = 0x34FF448;	//0x38FF448
-	const auto ChatClient = 0x1C5A194;	//0x205A194
-	const auto HudInstance = 0x1C5C8EC;	//0x205C8EC
-	const auto PingInstance = 0x35062AC;	//0x39062AC
+	const auto GameTime = 0x34F7A7C;	//0x38F7A7C
+	const auto BuildVersion = 0x350FFE0;	//0x390FFE0
+	const auto ObjManager = 0x1C5CC30;	//0x205CC30
+	const auto LocalPlayer = 0x34FF634;	//0x38FF634
+	const auto ChatClient = 0x1C5A570;	//0x205A570
+	const auto HudInstance = 0x1C5CC6C;	//0x205CC6C
+	const auto PingInstance = 0x3506864;	//0x3906864
 };
 
 
 namespace Function
 {
-	const auto GetPing = 0x343060;	//0x743060
-	const auto IsAlive = 0x1B8810;	//0x5B8810
-	const auto IsMissile = 0x1CC430;	//0x5CC430
-	const auto IsTargetable = 0x1EFDB0;	//0x5EFDB0
-	const auto IssueOrder = 0x18B0E0;	//0x58B0E0
-	const auto GetFirstObj = 0x2BC400;	//0x6BC400
-	const auto GetNextObj = 0x2BD5B0;	//0x6BD5B0
-	const auto PrintChat = 0x57E7C0;	//0x97E7C0
-	const auto GetHpBarPos = 0x5A3660;	//0x9A3660
-	const auto GetAiManager = 0x181740;
-	const auto WorldToScreen = 0x966A90;	//0xD66A90
-	const auto BaseDrawPosition = 0x17A180;	//0x57A180
-	const auto GetAttackDelay = 0x2B6D50;	//0x6B6D50
-	const auto GetAttackCastDelay = 0x2B6C50;	//0x6B6C50
-	const auto SetBaseCharacterData = 0x1B2BE0;	//0x5B2BE0
+	const auto GetPing = 0x343DC0;	//0x743DC0
+	const auto IsAlive = 0x1B75C0;	//0x5B75C0
+	const auto IsMissile = 0x1CB340;	//0x5CB340
+	const auto IsTargetable = 0x1EEFF0;	//0x5EEFF0
+	const auto IssueOrder = 0x18B150;	//0x58B150
+	const auto GetFirstObj = 0x2BBAF0;	//0x6BBAF0
+	const auto GetNextObj = 0x2BCCA0;	//0x6BCCA0
+	const auto PrintChat = 0x582450;	//0x982450
+	const auto GetHpBarPos = 0x5A8300;	//0x9A8300
+	const auto GetAiManager = 0x181650;	//0x581650
+	const auto WorldToScreen = 0x964330;	//0xD64330
+	const auto BaseDrawPosition = 0x17A090;	//0x57A090
+	const auto GetAttackDelay = 0x2B6460;	//0x6B6460
+	const auto GetAttackCastDelay = 0x2B6360;	//0x6B6360
+	const auto SetBaseCharacterData = 0x1B1960;	//0x5B1960
+	const auto OnCreateObject = 0x2C9670;	//0x6C9670
+	const auto OnDeleteObject = 0x2B7A60;	//0x6B7A60
+	const auto OnProcessSpell = 0x51AD70;	//0x91AD70
 };

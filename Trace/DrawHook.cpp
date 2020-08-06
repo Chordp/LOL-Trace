@@ -1,10 +1,9 @@
 #include "DrawHook.h"
 #include "SmartHook.hpp"
-#include "Menu.hpp"
 #include "Hero.hpp"
-#include "Game.h"
 #include "Orbwalker.h"
-#define pMenu Meun::GetIns()
+#include "Skin.h"
+#include "AIO.h"
 #define setting Config::GetIns()->Setting
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace DrawHook
@@ -40,28 +39,27 @@ namespace DrawHook
 
 	LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
+		EventHandle<EventType::OnWndProc>::GetIns()->Invoke<HWND, UINT, WPARAM, LPARAM>(hwnd, uMsg, wParam, lParam);
 		switch (uMsg)
 		{
 		case WM_KEYDOWN:
 		{
+			
 			switch (wParam)
 			{
 			case VK_HOME: {
-				pMenu->Open = !pMenu->Open;
+				Menu::GetIns()->Open = !Menu::GetIns()->Open;
 				break;
 			}
 			default:break;
 			}
 			break;
 		}
-		case WM_CLOSE:
-			Config::GetIns()->Save();
-
 		default:
 			break;
 		}
 
-		if (pMenu->Open)
+		if (Menu::GetIns()->Open)
 		{
 			ImGui_ImplWin32_WndProcHandler(hwnd, uMsg, wParam, lParam);
 		}
@@ -71,9 +69,9 @@ namespace DrawHook
 
 	void init()
 	{
-		auto Skin = Config::GetIns()->Setting.HeroOption[Me->GetChampionName()].Skin;
-		//Engine::PrintChats(Color::White, "%s", Me->GetChampionName());
-		Me->SetCharacter(Skin);
+		Skin::GetIns();
+		EventHandle<EventType::OnWndProc>::GetIns()->Add(Skin::WndProc);
+		EventHandle<EventType::OnPresent>::GetIns()->Add(AIO::Present);
 
 
 	}
@@ -92,31 +90,25 @@ namespace DrawHook
 
 				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
 				Draw->Setup(Engine::GetWindow(), _this);
-
-				//thread(init).detach();
 				init();
 				Init = true;
 			}
 
 			Draw->PreRender();
 
-			pMenu->Show();
 			Game::GetIns()->GetCache();
-			if(setting.DrawCd)
-				Game::GetIns()->DrawCD();
-			if(setting.Gank)
-				Game::GetIns()->GankTips();
-			if (setting.Path)
-				Game::GetIns()->DrawPath();
-			if(setting.EzEvade)
-				Game::GetIns()->DrawMissile();
+
+			Menu::GetIns()->Show();
+			EventHandle<EventType::OnPresent>::GetIns()->Invoke();
+			//if(setting.DrawCd)
+			//	Game::GetIns()->DrawCD();
+			//if(setting.Gank)
+			//	Game::GetIns()->GankTips();
+			//if (setting.Path)
+			//	Game::GetIns()->DrawPath();
+			//if(setting.EzEvade)
+			//	Game::GetIns()->DrawMissile();
 			Draw->EndRender();
-
-	/*		if (GetAsyncKeyState(VK_SPACE) < 0)
-			{
-				Orbwalker::GetIns()->ComBo();
-			}*/
-
 
 
 
@@ -131,7 +123,6 @@ namespace DrawHook
 		
 				auto hRet = Reset.CallOriginal(_this, pp);
 				ImGui_ImplDX9_CreateDeviceObjects();
-				//Draw->Create();
 				return hRet; 
 			} 
 			return Reset.CallOriginal(_this, pp);

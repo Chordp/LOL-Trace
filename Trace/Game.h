@@ -10,8 +10,8 @@ private:
 	
 	Game() {};
 public:
-	vector<Hero*> HeroCache;
-	vector<Missile*> MissileCache;
+	static vector<Hero*> HeroCache;
+	static vector<Missile*> MissileCache;
 	void GetCache()
 	{
 		HeroCache.clear();
@@ -66,9 +66,6 @@ public:
 		static auto _Game = new Game();
 		return _Game;
 	}
-	void GankTips();
-	void DrawCD();
-	void DrawPath();
 
 	void DrawMissile();
 };

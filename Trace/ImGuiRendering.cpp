@@ -15,7 +15,8 @@ void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 	Font16F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 16.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 	Font14F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 
-	ImGuiStyle style = ImGui::GetStyle();
+	ImGuiStyle& style = ImGui::GetStyle();
+	style.WindowRounding = 0;
 	ImGui::StyleColorsLight();
 	_DrawList = ImGui::GetOverlayDrawList();
 	_IsSetup = true;
@@ -56,7 +57,7 @@ LPDIRECT3DTEXTURE9 ImGuiRendering::GetTexture(string name)
 {
 	if (Texture.count(name) == 0)
 	{
-		auto& Summoner = Config::GetIns()->Contrast.Summoner;
+		auto& Summoner = Menu::GetIns()->Contrast.Summoner;
 
 		if (Summoner.count(name) == 0)
 			return nullptr;
@@ -72,7 +73,7 @@ LPDIRECT3DTEXTURE9 ImGuiRendering::GetTexture(string name)
 void ImGuiRendering::Create()
 {
 	if (!_IsSetup)return;
-	auto& Summoner = Config::GetIns()->Contrast.Summoner;
+	auto& Summoner = Menu::GetIns()->Contrast.Summoner;
 	for (auto t : Texture)
 	{
 		if (t.second)

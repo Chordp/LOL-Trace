@@ -137,7 +137,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)$(Configuration)\$(ProjectName).dll" "D:\Game\WeGameApps\英雄联盟\Game\$(ProjectName).dll" /y /F</Command>
+      <Command>xcopy "$(SolutionDir)$(Configuration)\$(ProjectName).dll" "$(SolutionDir)loader\bin\Release\$(ProjectName).dll" /y /F</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,9 +158,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AIManager.cpp" />
-    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="AIO.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Config.cpp" />
     <ClCompile Include="DrawHook.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -173,9 +172,11 @@
     <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="LocalPlayer.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
     <ClCompile Include="Orbwalker.cpp" />
+    <ClCompile Include="Skin.cpp" />
     <ClCompile Include="SpellData.cpp" />
     <ClCompile Include="SpellEntry.cpp" />
     <ClCompile Include="SpellInfo.cpp" />
@@ -184,13 +185,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIManager.h" />
-    <ClInclude Include="Event.h" />
+    <ClInclude Include="AIO.h" />
+    <ClInclude Include="EventHandle.h" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Color.hpp" />
-    <ClInclude Include="Config.hpp" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Missile.h" />
     <ClInclude Include="Orbwalker.h" />
+    <ClInclude Include="Skin.h" />
     <ClInclude Include="SpellBook.hpp" />
     <ClInclude Include="Detour.hpp" />
     <ClInclude Include="detours.h" />
@@ -206,7 +209,6 @@
     <ClInclude Include="ImGui\imstb_rectpack.h" />
     <ClInclude Include="ImGui\imstb_textedit.h" />
     <ClInclude Include="ImGui\imstb_truetype.h" />
-    <ClInclude Include="Menu.hpp" />
     <ClInclude Include="ObjManager.hpp" />
     <ClInclude Include="Offset.h" />
     <ClInclude Include="SmartHook.hpp" />
@@ -224,12 +226,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\nlohmann.json.3.7.3\build\native\nlohmann.json.targets" Condition="Exists('..\packages\nlohmann.json.3.7.3\build\native\nlohmann.json.targets')" />
+    <Import Project="..\packages\nlohmann.json.3.9.0\build\native\nlohmann.json.targets" Condition="Exists('..\packages\nlohmann.json.3.9.0\build\native\nlohmann.json.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\nlohmann.json.3.7.3\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nlohmann.json.3.7.3\build\native\nlohmann.json.targets'))" />
+    <Error Condition="!Exists('..\packages\nlohmann.json.3.9.0\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nlohmann.json.3.9.0\build\native\nlohmann.json.targets'))" />
   </Target>
 </Project>
