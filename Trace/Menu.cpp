@@ -30,9 +30,9 @@ namespace Json
 
 
 
-void Menu::SuperShow(json &j,json &c)
+void Menu::SuperShow(json& j, json& c)
 {
-    
+
     try
     {
         int RadioButton = 0;
@@ -40,6 +40,7 @@ void Menu::SuperShow(json &j,json &c)
         {
             bool issvae = false;
             int type = menu[0];
+
             switch (MenuType(type))
             {
             case MenuType::Menu:
@@ -87,25 +88,6 @@ void Menu::SuperShow(json &j,json &c)
             {
                 ImGui::SameLine();
             }break;
-            case MenuType::SliderFloat:
-            {
-                tuple<MenuType, string, float, float, DWORD> x = menu;
-                auto& a = c[std::get<1>(x)];
-                if (a.empty())
-                    a = 0;
-                auto v = (float*)a.get_ptr<__int64*>();
-
-
-
-
-                if (ImGui::SliderFloat(std::get<1>(x).c_str(), v, std::get<2>(x), std::get<3>(x)))
-                {
-                    auto CallBack = reinterpret_cast<void*>(std::get<4>(x));
-                    if (CallBack != nullptr)
-                        reinterpret_cast<SliderFloatCallBack>(CallBack)(v);
-                    issvae = true;
-                }
-            }break;
             case MenuType::Map:
             {
                 MenuTuple x = menu;
@@ -121,13 +103,12 @@ void Menu::SuperShow(json &j,json &c)
                 MenuTuple x = menu;
                 auto& a = c[std::get<1>(x)];
                 if (a.empty())
-                    a = IM_COL32(255,255,255,255);
+                    a = IM_COL32(255, 255, 255, 255);
                 int v = a;
                 ImVec4 color;
                 color = ImColor(v);
                 issvae = ImGui::ColorEdit4(std::get<1>(x).c_str(), (float*)&color, ImGuiColorEditFlags_AlphaBar);
-                v = ImColor(color);
-                a = v;
+                a = v = ImColor(color);
             }break;
             case MenuType::RadioButton:
             {
@@ -136,7 +117,7 @@ void Menu::SuperShow(json &j,json &c)
                 if (a.empty())
                     a = 0;
                 auto v = (int*)a.get_ptr<INT64*>();
-                issvae = ImGui::RadioButton(std::get<2>(x).c_str(), v, RadioButton++);
+                issvae =  ImGui::RadioButton(std::get<2>(x).c_str(), v, RadioButton++);
             }
             default:
                 break;
@@ -156,7 +137,7 @@ tuple<MenuType, string, string> Menu::RadioButton(string name, string v)
 void Menu::Show()
 {
     if (!Open)return;
-    ImGui::Begin("…µ±∆÷˙ ÷", &Open, ImGuiWindowFlags_NoCollapse);
+    ImGui::Begin(u8"…µ±∆÷˙ ÷", nullptr, ImGuiWindowFlags_NoCollapse);
     SuperShow(control,config);
     ImGui::End();
 }
@@ -224,10 +205,7 @@ tuple<MenuType, string, int, int, DWORD> Menu::SliderInt(string name, int min, i
     return std::make_tuple(MenuType::SliderInt, name, min, max, (DWORD)(callback));
 }
 
-tuple<MenuType, string, float, float, DWORD> Menu::SliderFloat(string name, float min, float max, SliderFloatCallBack callback)
-{
-    return std::make_tuple(MenuType::SliderFloat, name, min, max, (DWORD)(callback));
-}
+
 
 MenuTuple Menu::ColorEdit4(string name)
 {

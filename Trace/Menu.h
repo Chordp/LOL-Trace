@@ -29,7 +29,6 @@ enum class MenuType :int
     Menu,
     Checkbox,
     SliderInt,
-    SliderFloat,
     SameLine,
     Map,
     BulletText,
@@ -38,7 +37,6 @@ enum class MenuType :int
 };
 using MenuTuple = tuple<MenuType, string>;
 using SliderIntCallBack = void(*)(int*);
-using SliderFloatCallBack = void(*)(float*);
 class Menu
 {
    json control;
@@ -57,7 +55,7 @@ public:
     static MenuTuple  Checkbox(string name);
     static tuple<MenuType, string, string> RadioButton(string name, string v);
     static tuple<MenuType, string, int, int, DWORD> SliderInt(string name, int min, int max, SliderIntCallBack callback = nullptr);
-    static tuple<MenuType, string, float, float, DWORD> SliderFloat(string name, float min, float max, SliderFloatCallBack callback = nullptr);
+ 
     static MenuTuple ColorEdit4(string name);
     static json& AddMenu(json& j, string name);
     static tuple<MenuType, string, json> AddMenu(string name, json j);

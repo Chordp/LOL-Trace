@@ -47,7 +47,7 @@ void Skin::WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			auto& skin = Config[u8"Æ¤·ô"][Me->GetChampionName()][u8"Skin"];
 			auto& SkinID = skin.get_ref<INT64&>();
 			Me->SetCharacter(++SkinID);
-
+			Menu::GetIns()->Save();
 			break;
 		}
 		case VK_NEXT:
@@ -55,6 +55,7 @@ void Skin::WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			auto& skin = Config[u8"Æ¤·ô"][Me->GetChampionName()][u8"Skin"];
 			auto& SkinID = skin.get_ref<INT64&>();
 			Me->SetCharacter(--SkinID);
+			Menu::GetIns()->Save();
 			break;
 		}
 		default:

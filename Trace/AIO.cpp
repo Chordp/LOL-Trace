@@ -13,13 +13,13 @@ AIO::AIO()
 		Menu::AddMenu(u8"路径预测",
 		{
 			Menu::Checkbox(u8"开启"),
-			Menu::SliderFloat(u8"线宽",1,10),
+			Menu::SliderInt(u8"线宽",1,10),
 			Menu::ColorEdit4(u8"颜色")
 		}),
 		Menu::AddMenu(u8"Gank提示",
 		{
 			Menu::Checkbox(u8"开启"),
-			Menu::SliderFloat(u8"线宽",1,50),
+			Menu::SliderInt(u8"线宽",1,50),
 			Menu::SliderInt(u8"距离",1000,10000),
 			Menu::ColorEdit4(u8"颜色")
 		})
@@ -28,35 +28,43 @@ AIO::AIO()
 	try
 	{
 		auto& jGank = Config[u8"Gank提示"];
-		auto& jPath  = Config[u8"路径预测"];
-		tuple <bool, float, int, int>  Gank(jGank[u8"开启"], jGank[u8"线宽"], jGank[u8"距离"], jGank[u8"颜色"]);
-		tuple <bool, float, int> Path(jPath[u8"开启"], jPath[u8"线宽"], jPath[u8"颜色"]);
-		bool CoolDown = Config[u8"绘制CD"];
+		auto& jPath = Config[u8"路径预测"];
+		tuple <bool, int, int, int>  Gank(
+			jGank[u8"开启"].get<bool>(),
+			jGank[u8"线宽"].get<int>(),
+			jGank[u8"距离"].get<int>(),
+			jGank[u8"颜色"].get<int>());
+		tuple <bool, int, int> Path(
+			jPath[u8"开启"].get<bool>(),
+			jPath[u8"线宽"].get<int>(),
+			jPath[u8"颜色"].get<int>());
 	}
 	catch (const std::exception&)
 	{
-		Config =
+		Config[u8"绘制CD"] = true;
+		Config[u8"路径预测"] =
 		{
-			"u8Gank提示",
-			{
-				{"u8开启",true},
-				{u8"线宽",10},
-				{u8"距离",3000},
-				{u8"颜色",Color::Red}
-			},
-			u8"路径预测",
-			{
-				{u8"开启",true},
-				{u8"线宽",4},
-				{u8"颜色",Color::Red}
-			},
-			{u8"绘制CD",true}
+			{u8"开启",true},
+			{u8"线宽",4},
+			{u8"颜色",Color::Red}
 		};
-	}
-	
-}
 
-void AIO::GankTips(tuple <bool, float, int, int> & v)
+
+		Config[u8"Gank提示"] =
+		{
+			{u8"开启",true},
+			{u8"线宽",10},
+			{u8"距离",3000},
+			{u8"颜色",Color::Red}
+		};
+
+			
+	};
+}
+	
+
+
+void AIO::GankTips(tuple <bool, int, int, int> & v)
 {
 	for (auto hero : Game::HeroCache)
 	{
@@ -81,9 +89,10 @@ void AIO::GankTips(tuple <bool, float, int, int> & v)
 }
 void AIO::DrawCD()
 {
+
 	for (auto hero : Game::HeroCache)
 	{
-
+		
 		//if (hero->GetTeam() == Me->GetTeam())
 		//	continue;
 		////if (hero->IsAlive())
@@ -91,16 +100,15 @@ void AIO::DrawCD()
 			int i = 0;
 			auto Screen = Vector();
 			//if (Engine::WorldToScreens(hero->GetPos(), Screen))
+
 			if (hero->GetHpBarPosition(Screen))
 			{
-
 				auto DrawList = ImGui::GetOverlayDrawList();
 				ImVec2 pos = ImVec2(Screen.X - 44, Screen.Y - 3);
 				const float width = 26;
 				float height = pos.y + 5;
 
 				DrawList->AddRectFilled(pos, ImVec2(pos.x + 107, height), IM_COL32(0, 0, 0, 200));
-
 				for (auto Spell : hero->GetSpellBook()->GetAllSpellSlot())
 				{
 					auto IsReady = Spell->IsReady();
@@ -158,7 +166,7 @@ void AIO::DrawCD()
 		}
 	}
 }
-void AIO::DrawPath(tuple <bool, float, int >& v)
+void AIO::DrawPath(tuple <bool, int, int >& v)
 {
 	for (auto hero : Game::HeroCache)
 	{
@@ -198,13 +206,22 @@ void AIO::Present()
 		
 		auto& jGank = Config[u8"Gank提示"];
 		auto& jPath = Config[u8"路径预测"];
-		tuple <bool, float, int, int>  Gank(jGank[u8"开启"], jGank[u8"线宽"], jGank[u8"距离"], jGank[u8"颜色"]);
-		tuple <bool, float, int> Path(jPath[u8"开启"], jPath[u8"线宽"], jPath[u8"颜色"]);
+		tuple <bool, int, int, int>  Gank(
+			jGank[u8"开启"].get<bool>(),
+			jGank[u8"线宽"].get<int>(),
+			jGank[u8"距离"].get<int>(),
+			jGank[u8"颜色"].get<int>());
+		tuple <bool, int, int> Path(
+			jPath[u8"开启"].get<bool>(),
+			jPath[u8"线宽"].get<int>(),
+			jPath[u8"颜色"].get<int>());
+
+
+
 		bool CoolDown = Config[u8"绘制CD"];
 		if(CoolDown) AIO::GetIns()->DrawCD();
 		if(get<0>(Path))AIO::GetIns()->DrawPath(Path);
 		if (get<0>(Gank))AIO::GetIns()->GankTips(Gank);
-		cout << 123 << endl;
 
 
 	}

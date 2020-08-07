@@ -43,7 +43,10 @@
     <Filter Include="引擎\走砍">
       <UniqueIdentifier>{e8fec8c5-ff21-48c0-922b-571ecd9efc73}</UniqueIdentifier>
     </Filter>
-    <Filter Include="引擎\AIO">
+    <Filter Include="脚本">
+      <UniqueIdentifier>{f5eb11aa-b58c-436a-a5b1-911b1a3b1965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="脚本\AIO">
       <UniqueIdentifier>{f6078927-2881-4aa8-9eac-644bfb189c8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -151,10 +154,10 @@
       <Filter>绘制</Filter>
     </ClInclude>
     <ClInclude Include="Skin.h">
-      <Filter>引擎\AIO</Filter>
+      <Filter>脚本\AIO</Filter>
     </ClInclude>
     <ClInclude Include="AIO.h">
-      <Filter>引擎\AIO</Filter>
+      <Filter>脚本\AIO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -228,10 +231,10 @@
       <Filter>绘制</Filter>
     </ClCompile>
     <ClCompile Include="Skin.cpp">
-      <Filter>引擎\AIO</Filter>
+      <Filter>脚本\AIO</Filter>
     </ClCompile>
     <ClCompile Include="AIO.cpp">
-      <Filter>引擎\AIO</Filter>
+      <Filter>脚本\AIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

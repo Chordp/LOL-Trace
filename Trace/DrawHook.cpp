@@ -69,7 +69,9 @@ namespace DrawHook
 
 	void init()
 	{
+		AIO::GetIns();
 		Skin::GetIns();
+		
 		EventHandle<EventType::OnWndProc>::GetIns()->Add(Skin::WndProc);
 		EventHandle<EventType::OnPresent>::GetIns()->Add(AIO::Present);
 
@@ -87,19 +89,22 @@ namespace DrawHook
 		{
 			if (!Init)
 			{
-
+				init();
 				oWndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(Engine::GetWindow(), GWLP_WNDPROC, reinterpret_cast<ULONG_PTR>(WndProc)));
 				Draw->Setup(Engine::GetWindow(), _this);
-				init();
+				
 				Init = true;
 			}
 
 			Draw->PreRender();
 
 			Game::GetIns()->GetCache();
+			EventHandle<EventType::OnPresent>::GetIns()->Invoke();
+
+
 
 			Menu::GetIns()->Show();
-			EventHandle<EventType::OnPresent>::GetIns()->Invoke();
+			
 			//if(setting.DrawCd)
 			//	Game::GetIns()->DrawCD();
 			//if(setting.Gank)

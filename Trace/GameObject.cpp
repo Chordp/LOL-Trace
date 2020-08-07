@@ -98,9 +98,9 @@ GameObject* GameObject::GetNext() {
 }
 PVOID GameObject::GetUnitInfoComponent()
 {
-
-	auto a3 = *(DWORD*)((DWORD)(this) + 4 * *(unsigned __int8*)((DWORD)(this) + 0x4AD8) + 0x4ADC);
-	auto v32 = *(DWORD*)((DWORD)(this) + 0x4AD4);
+	//a3 = *(_DWORD *)(v3 + 4 * *(unsigned __int8 *)(v3 + 0x4AE8) + 0x4AEC);
+	auto a3 = *(DWORD*)((DWORD)(this) + 4 * *(unsigned __int8*)((DWORD)(this) + 0x4AE8) + 0x4AEC);
+	auto v32 = *(DWORD*)((DWORD)(this) + 0x4AE4);
 	a3 ^= ~v32;
 	return PVOID(a3);
 }
