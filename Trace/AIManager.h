@@ -15,5 +15,6 @@ public:
 	Vector** GetNavigationEnd();
 
 	std::vector<Vector>GetPathList();
+	Vector GetDestination();
 };
 

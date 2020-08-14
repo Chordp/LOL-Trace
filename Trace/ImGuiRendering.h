@@ -31,6 +31,7 @@ public:
 	void Clear();
 	void PreRender();
 	void EndRender();
+
 	void  DrawString(ImFont* font, float x, float y, ImU32 color, const char* message, ...);
 	void  DrawString(float x, float y, ImU32 color, const char* message, ...);
 	void  DrawBox(float x, float y, float w, float h, ImU32 clr, float width);

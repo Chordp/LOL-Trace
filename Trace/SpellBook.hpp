@@ -25,7 +25,7 @@ class SpellBook
 {
 public:
     SpellEntry* GetActiveSpell() {
-        return *(SpellEntry**)((DWORD)this + 0x20);
+        return *(SpellEntry**)((DWORD)this + 0x10);
     }
 	SpellSlot* GetSpellSlotByID(int ID) {
 		return *(SpellSlot**)((DWORD)this + 0x508 + (0x4 * ID));

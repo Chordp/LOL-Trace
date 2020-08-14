@@ -67,13 +67,27 @@ public:
 	/// <param name="Massage"></param>
 	/// <param name="Color"></param>
 	static void PrintChat(DWORD ChatClient, const char* Massage, int Color);
+
 	/// <summary>
 	/// 游戏聊天窗口 打印字体
 	/// </summary>
 	/// <param name="Color"></param>
 	/// <param name="message"></param>
 	/// <param name=""></param>
-	static void PrintChats(int Color, const char* message, ...);
+	static void PrintChats(const char* message, ...);
+	/// <summary>
+	/// 发送消息
+	/// </summary>
+	/// <param name="message"></param>
+	/// <param name=""></param>
+	static void SendChats(const char* message, ...);
+	/// <summary>
+	/// 发送消息
+	/// </summary>
+	/// <param name="ChatClient"></param>
+	/// <param name="Massage"></param>
+	/// <param name="Color"></param>
+	static void SendChat(DWORD ChatClient, const char* Massage, int Color);
 
 	/// <summary>
 	/// 获取鼠标位置

@@ -99,7 +99,6 @@ void AIO::DrawCD()
 		{
 			int i = 0;
 			auto Screen = Vector();
-			//if (Engine::WorldToScreens(hero->GetPos(), Screen))
 
 			if (hero->GetHpBarPosition(Screen))
 			{
@@ -111,6 +110,8 @@ void AIO::DrawCD()
 				DrawList->AddRectFilled(pos, ImVec2(pos.x + 107, height), IM_COL32(0, 0, 0, 200));
 				for (auto Spell : hero->GetSpellBook()->GetAllSpellSlot())
 				{
+
+					
 					auto IsReady = Spell->IsReady();
 					auto Cooldown = Spell->GetCooldown();
 
@@ -181,8 +182,6 @@ void AIO::DrawPath(tuple <bool, int, int >& v)
 			if (!path.empty())
 			{
 				Vector start, end;
-
-
 				if (Engine::WorldToScreens(hero->GetPos(), start) &&
 					Engine::WorldToScreens(path.back(), end))
 				{

@@ -2,23 +2,23 @@
 #include "Hero.hpp"
 bool Orbwalker::CanAttack()
 {
-	//return Engine::GetGameTime() + Engine::GetPing() * 0.001f >= LastAATick + Me->GetAttackDelay();
-	return Engine::GetGameTime() + (Engine::GetPing() / 2+ 25) * 0.001f >= LastAATick + Me->GetAttackDelay();
+	//return Engine::GetGameTime() + (Engine::GetPing() / 2+ 25) * 0.001f >= LastAATick + Me->GetAttackDelay();
+	return Engine::GetGameTime()  > LastAATick + Me->GetAttackDelay();
 }
 
 bool Orbwalker::CanMove(int sleep)
 {
 
-	//return Me->GetAttackCastDelay() < Engine::GetGameTime() - LastAATick + sleep * 0.001;
-	return Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f >= LastAATick + Me->GetAttackCastDelay() + sleep * 0.001f;
 
+	//return Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001f >= LastAATick + Me->GetAttackCastDelay() + sleep * 0.001f;
 
+	return Engine::GetGameTime() > LastAATick + Me->GetAttackCastDelay();
 }
 
 void Orbwalker::ResetAttackTimer(float t)
 {
-	//LastAATick = Engine::GetGameTime() + t;
-	LastAATick = Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001  + t;
+	LastAATick = 0 + t;
+	//LastAATick = Engine::GetGameTime() + (Engine::GetPing() / 2) * 0.001  + t;
 }
 
 
@@ -28,7 +28,7 @@ GameObject* Orbwalker::GetTarget(OrbwalType type)
 	switch (type)
 	{
 	case OrbwalType::Combo:
-		ObjArray.assign(Game::GetIns()->HeroCache.begin(), Game::GetIns()->HeroCache.end());
+		ObjArray.assign(Game::HeroCache.begin(), Game::HeroCache.end());
 		break;
 	default:
 		break;
@@ -63,21 +63,28 @@ bool Orbwalker::InAttackRange(GameObject* target)
 	return dist < myRange;
 }
 
-void Orbwalker::ComBo()
+void Orbwalker::Present()
+{
+
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+	{
+		GetIns()->Orbwal();
+	}
+}
+
+void Orbwalker::Orbwal()
 {
 	GameObject* Target = GetTarget(OrbwalType::Combo);
-
 	
 	if (Target && CanAttack())
 	{
 		Me->Attack(Target);
-		ResetAttackTimer();
+		
 		if (Me->GetSpellBook()->GetActiveSpell())
 		{
 			if (Me->GetSpellBook()->GetActiveSpell()->isAutoAttack())
 			{
-				//ResetAttackTimer();
-				cout << 1 << endl;
+				LastAATick = Engine::GetGameTime() - 0.055;
 			}
 		}
 		

@@ -143,6 +143,7 @@ namespace GameClass
 	const auto ObjManager = 0x1C5CC30;	//0x205CC30
 	const auto LocalPlayer = 0x34FF634;	//0x38FF634
 	const auto ChatClient = 0x1C5A570;	//0x205A570
+	const auto MenuGuiIns = 0x34FF610;
 	const auto HudInstance = 0x1C5CC6C;	//0x205CC6C
 	const auto PingInstance = 0x3506864;	//0x3906864
 };
@@ -157,6 +158,7 @@ namespace Function
 	const auto IssueOrder = 0x18B150;	//0x58B150
 	const auto GetFirstObj = 0x2BBAF0;	//0x6BBAF0
 	const auto GetNextObj = 0x2BCCA0;	//0x6BCCA0
+	const auto SendChat = 0x5fa8d0;
 	const auto PrintChat = 0x582450;	//0x982450
 	const auto GetHpBarPos = 0x5A8300;	//0x9A8300
 	const auto GetAiManager = 0x181650;	//0x581650

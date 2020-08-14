@@ -40,14 +40,14 @@
     <Filter Include="引擎\路径">
       <UniqueIdentifier>{11b8ca51-03be-4810-9741-c69ba411e11e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="引擎\走砍">
-      <UniqueIdentifier>{e8fec8c5-ff21-48c0-922b-571ecd9efc73}</UniqueIdentifier>
-    </Filter>
     <Filter Include="脚本">
       <UniqueIdentifier>{f5eb11aa-b58c-436a-a5b1-911b1a3b1965}</UniqueIdentifier>
     </Filter>
     <Filter Include="脚本\AIO">
       <UniqueIdentifier>{f6078927-2881-4aa8-9eac-644bfb189c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="脚本\走砍">
+      <UniqueIdentifier>{e8fec8c5-ff21-48c0-922b-571ecd9efc73}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,7 +133,7 @@
       <Filter>引擎\对象</Filter>
     </ClInclude>
     <ClInclude Include="Orbwalker.h">
-      <Filter>引擎\走砍</Filter>
+      <Filter>脚本\走砍</Filter>
     </ClInclude>
     <ClInclude Include="SpellEntry.h">
       <Filter>引擎\技能</Filter>
@@ -216,7 +216,7 @@
       <Filter>引擎\对象</Filter>
     </ClCompile>
     <ClCompile Include="Orbwalker.cpp">
-      <Filter>引擎\走砍</Filter>
+      <Filter>脚本\走砍</Filter>
     </ClCompile>
     <ClCompile Include="SpellEntry.cpp">
       <Filter>引擎\技能</Filter>

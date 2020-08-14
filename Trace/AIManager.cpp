@@ -50,3 +50,8 @@ std::vector<Vector> AIManager::GetPathList()
 
 	return bufflist;
 }
+
+Vector AIManager::GetDestination()
+{
+	return *(Vector*)((DWORD)this + (int)AI_Manager::TARGETPOS);
+}

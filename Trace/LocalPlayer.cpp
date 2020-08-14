@@ -32,6 +32,7 @@ float LocalPlayer::GetAttackDelay()
 
 float LocalPlayer::GetAttackCastDelay()
 {
-	static auto fnGetAttackCastDelay = reinterpret_cast<float(__cdecl*)(PVOID,int)>(Engine::GetBaseModule()+Function::GetAttackCastDelay);
-	return fnGetAttackCastDelay(this,64);
+	static auto fnGetAttackCastDelay = reinterpret_cast<float(__cdecl*)(PVOID)>(Engine::GetBaseModule()+Function::GetAttackCastDelay);
+
+	return fnGetAttackCastDelay(this);
 }

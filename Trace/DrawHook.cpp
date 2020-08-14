@@ -51,6 +51,21 @@ namespace DrawHook
 				Menu::GetIns()->Open = !Menu::GetIns()->Open;
 				break;
 			}
+			case VK_END:
+			{
+				for (size_t i = 0; i < 10; i++)
+				{
+					Engine::SendChats(u8"/all 就这?");
+					//Engine::PrintChats("就这?");
+				}
+				
+				//thread([]() { for (size_t i = 0; i < 50; i++)
+				//{
+				//	Engine::SendChats("/all ?");
+				//	Sleep(50);
+				//}}).detach();
+				break;
+			}
 			default:break;
 			}
 			break;
@@ -71,10 +86,10 @@ namespace DrawHook
 	{
 		AIO::GetIns();
 		Skin::GetIns();
-		
+		Orbwalker::GetIns();
 		EventHandle<EventType::OnWndProc>::GetIns()->Add(Skin::WndProc);
 		EventHandle<EventType::OnPresent>::GetIns()->Add(AIO::Present);
-
+		//EventHandle<EventType::OnPresent>::GetIns()->Add(Orbwalker::Present);
 
 	}
 	void Start()
@@ -104,15 +119,7 @@ namespace DrawHook
 
 
 			Menu::GetIns()->Show();
-			
-			//if(setting.DrawCd)
-			//	Game::GetIns()->DrawCD();
-			//if(setting.Gank)
-			//	Game::GetIns()->GankTips();
-			//if (setting.Path)
-			//	Game::GetIns()->DrawPath();
-			//if(setting.EzEvade)
-			//	Game::GetIns()->DrawMissile();
+
 			Draw->EndRender();
 
 
