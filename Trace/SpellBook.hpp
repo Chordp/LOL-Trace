@@ -3,7 +3,7 @@
 #include "SpellEntry.h"
 class SpellSlot;
 
-enum SpellSlotID
+enum class SpellSlotID
 {
     Q = 0,
     W = 1,
@@ -20,24 +20,25 @@ enum SpellSlotID
     Trinket = 12,
     Recall = 13
 };
+enum class SpellState
+{
+    //Possible flags
+
+    Ready = 0,
+    NotAvailable = 4,
+    Surpressed = 8,
+    NotLearned = 12,
+    Cooldown = 32,
+    NoMana = 64,
+    Unknown
+};
 
 class SpellBook
 {
 public:
-    SpellEntry* GetActiveSpell() {
-        return *(SpellEntry**)((DWORD)this + 0x10);
-    }
-	SpellSlot* GetSpellSlotByID(int ID) {
-		return *(SpellSlot**)((DWORD)this + 0x508 + (0x4 * ID));
-	}
+    SpellEntry* GetActiveSpell();
+    SpellSlot* GetSpellSlotByID(SpellSlotID ID);
 
-    std::vector<SpellSlot*> GetAllSpellSlot()
-    {
-        std::vector<SpellSlot*> hRet;
-        for (size_t i = 0; i < 4; i++)
-        {
-            hRet.push_back(GetSpellSlotByID(i));
-        }
-        return hRet;
-    }
+    SpellState GetSpellState(SpellSlotID ID);
+
 };

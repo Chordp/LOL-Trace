@@ -103,18 +103,19 @@ namespace Loader
             try
             {
                 initTimer();
-                var RegPath = Registry.CurrentUser.OpenSubKey(@"Software\Tencent\LOL");
-                var path =  RegPath.GetValue("InstallPath").ToString() + "\\Game\\contrast.json";
-                var FileMd5 = WinApi.GetMD5HashFromFile(path);
-                if (FileMd5 != null && !FileMd5.Equals(WinApi.GetMD5HashFromFile("contrast.json")))
+                var RegPath = Registry.CurrentUser.OpenSubKey(@"Software\FuckTp",true);
+                if(RegPath == null)
                 {
-                    File.Copy(path, "contrast.json", true);
+                    RegPath =  Registry.CurrentUser.CreateSubKey(@"Software\FuckTp");
+
                 }
+                RegPath.SetValue("Path", System.AppDomain.CurrentDomain.BaseDirectory);
+
                 
             }
             catch (Exception)
             {
-
+                Debug.WriteLine("???");
               
             }
         

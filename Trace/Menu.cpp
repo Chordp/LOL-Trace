@@ -104,7 +104,7 @@ void Menu::SuperShow(json& j, json& c)
                 auto& a = c[std::get<1>(x)];
                 if (a.empty())
                     a = IM_COL32(255, 255, 255, 255);
-                int v = a;
+                ImU32 v = a;
                 ImVec4 color;
                 color = ImColor(v);
                 issvae = ImGui::ColorEdit4(std::get<1>(x).c_str(), (float*)&color, ImGuiColorEditFlags_AlphaBar);
@@ -155,13 +155,34 @@ json Menu::SameLine()
     return{ MenuType::SameLine };
 }
 
+string Menu::GetPath()
+{
+    HKEY hKey;
+    if (RegOpenKeyEx(HKEY_CURRENT_USER, "Software\\FuckTp", NULL, KEY_QUERY_VALUE, &hKey) == ERROR_SUCCESS)
+    {
+        BYTE buffer[500] = "";
+        DWORD dwSize = 500;
+        if (RegQueryValueEx(hKey, "Path", NULL, NULL, buffer, &dwSize) == ERROR_SUCCESS)
+        {
+            RegCloseKey(hKey);
+            return (char*)buffer;
+        }
+
+        RegCloseKey(hKey);
+    }
+
+    return string();
+
+    
+}
+
 
 
 
 void Menu::Save()
 {
 
-    ofstream outFile("Trace.json");
+    ofstream outFile(GetPath() + "Trace.json");
     if (outFile.is_open())
     {
 
@@ -176,12 +197,13 @@ void Menu::Load()
 
     try
     {
+        string Path = GetPath();
         nlohmann::json j;
-        ifstream InFile("Trace.json");
+        ifstream InFile(Path + "Trace.json");
         if (InFile.is_open())
             InFile >> config;
         InFile.close();
-        InFile.open("contrast.json");
+        InFile.open(Path + "contrast.json");
         if (InFile.is_open())
             InFile >> j;
         Contrast = j;

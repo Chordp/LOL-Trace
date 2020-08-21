@@ -236,6 +236,9 @@
     <ClCompile Include="AIO.cpp">
       <Filter>脚本\AIO</Filter>
     </ClCompile>
+    <ClCompile Include="SpellBook.cpp">
+      <Filter>引擎\技能</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

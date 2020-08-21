@@ -61,8 +61,11 @@ public:
     static tuple<MenuType, string, json> AddMenu(string name, json j);
     static tuple<MenuType, string, json> Map(string name, json j);
     static MenuTuple BulletText(const char* message, ...);
-    json SameLine();
+    static json SameLine();
 public:
+    static string GetPath();
+public:
+    
     void Show();
     json& AddMenu(string name);
     

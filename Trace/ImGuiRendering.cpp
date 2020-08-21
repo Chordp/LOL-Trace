@@ -1,5 +1,7 @@
 #include "ImGuiRendering.h"
 #include "stb_image.h"
+#include <filesystem>
+using Path = std::filesystem::path;
 void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 {
 
@@ -11,10 +13,16 @@ void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 
 	ImGui_ImplWin32_Init(hWnd);
 	ImGui_ImplDX9_Init(device);
+	Path path("C:\\Windows\\Fonts\\msyhbd.ttc");
+	if (!std::filesystem::exists(path))
+	{
+		path = "C:\\Windows\\Fonts\\msyhbd.ttf";
+		
+	}
+	Font16F = io.Fonts->AddFontFromFileTTF(path.string().c_str(), 16.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
+	Font14F = io.Fonts->AddFontFromFileTTF(path.string().c_str(), 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
 	//ImGui_ImplDX9_CreateDeviceObjects();
-	Font16F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 16.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
-	Font14F = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msyhbd.ttc", 14.f, NULL, io.Fonts->GetGlyphRangesChineseFull());
-
+	
 	ImGuiStyle& style = ImGui::GetStyle();
 	style.WindowRounding = 0;
 	ImGui::StyleColorsLight();

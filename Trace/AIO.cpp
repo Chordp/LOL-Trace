@@ -33,11 +33,11 @@ AIO::AIO()
 			jGank[u8"开启"].get<bool>(),
 			jGank[u8"线宽"].get<int>(),
 			jGank[u8"距离"].get<int>(),
-			jGank[u8"颜色"].get<int>());
+			jGank[u8"颜色"].get<ImU32>());
 		tuple <bool, int, int> Path(
 			jPath[u8"开启"].get<bool>(),
 			jPath[u8"线宽"].get<int>(),
-			jPath[u8"颜色"].get<int>());
+			jPath[u8"颜色"].get<ImU32>());
 	}
 	catch (const std::exception&)
 	{
@@ -46,16 +46,16 @@ AIO::AIO()
 		{
 			{u8"开启",true},
 			{u8"线宽",4},
-			{u8"颜色",Color::Red}
+			{u8"颜色",0x980F48D7}
 		};
 
 
 		Config[u8"Gank提示"] =
 		{
 			{u8"开启",true},
-			{u8"线宽",10},
+			{u8"线宽",3},
 			{u8"距离",3000},
-			{u8"颜色",Color::Red}
+			{u8"颜色",0xA100FF2E}
 		};
 
 			
@@ -64,7 +64,7 @@ AIO::AIO()
 	
 
 
-void AIO::GankTips(tuple <bool, int, int, int> & v)
+void AIO::GankTips(tuple <bool, int, int, ImU32> & v)
 {
 	for (auto hero : Game::HeroCache)
 	{
@@ -92,7 +92,8 @@ void AIO::DrawCD()
 
 	for (auto hero : Game::HeroCache)
 	{
-		
+		if (hero == Me)
+			continue;
 		//if (hero->GetTeam() == Me->GetTeam())
 		//	continue;
 		////if (hero->IsAlive())
@@ -108,27 +109,33 @@ void AIO::DrawCD()
 				float height = pos.y + 5;
 
 				DrawList->AddRectFilled(pos, ImVec2(pos.x + 107, height), IM_COL32(0, 0, 0, 200));
-				for (auto Spell : hero->GetSpellBook()->GetAllSpellSlot())
+				for (size_t i = 0; i < 4; i++)
 				{
-
-					
-					auto IsReady = Spell->IsReady();
-					auto Cooldown = Spell->GetCooldown();
+					auto Spell = hero->GetSpellBook()->GetSpellSlotByID((SpellSlotID)i);
+					auto SpellState = (int)hero->GetSpellBook()->GetSpellState((SpellSlotID)i);
+					auto IsReady = Spell->IsReady() ;
+				
 
 					if (IsReady)
 					{
 						DrawList->AddRectFilled(pos, ImVec2(pos.x + width, height), IM_COL32(18, 170, 156, 200)); // q
 					}
+					else if ((SpellState & (int)SpellState::Cooldown) != 0)
+					{
+						auto Cooldown = Spell->GetCooldown();
+						float percent = 1 - Cooldown / Spell->GetCD();
+						DrawList->AddRectFilled(pos, ImVec2(pos.x + width * percent, height), IM_COL32(238, 72, 99, 200)); // q
+						Draw->DrawString(Draw->Font16F, pos.x + 10, pos.y + 5, Color::White, "%0.0f", Cooldown);	
+					}
+					else if ((SpellState & (int)SpellState::NoMana) != 0)
+					{
+
+						DrawList->AddRectFilled(pos, ImVec2(pos.x + width, height), IM_COL32(82, 82, 136, 200)); // q
+					}
 					else
 					{
-						if (Spell->GetLevel() > 0)
-						{
-							float percent = 1 - Cooldown / Spell->GetCD();
-							DrawList->AddRectFilled(pos, ImVec2(pos.x + width * percent, height), IM_COL32(238, 72, 99, 200)); // q
-							Draw->DrawString(Draw->Font16F, pos.x + 10, pos.y + 5, Color::White, "%0.0f", Cooldown);
-						}
-						else
-							DrawList->AddRectFilled(pos, ImVec2(pos.x + width, height), IM_COL32(238, 72, 99, 200)); // q
+						
+						DrawList->AddRectFilled(pos, ImVec2(pos.x + width, height), IM_COL32(238, 72, 99, 200)); // q
 					}
 
 					pos.x += width + 1;
@@ -138,11 +145,13 @@ void AIO::DrawCD()
 				const int size = 15;
 				for (size_t i = 4; i < 6; i++)
 				{
-					auto Spell = hero->GetSpellBook()->GetSpellSlotByID(i);
+					auto Spell = hero->GetSpellBook()->GetSpellSlotByID((SpellSlotID)i);
 					auto SpellName = Spell->GetSpellInfo()->GetSpellName();
 
 					auto Texture = Draw->GetTexture(SpellName);
+
 					auto Cooldown = Spell->GetCooldown();
+					 
 
 					if (Texture != nullptr)
 					{
@@ -167,7 +176,7 @@ void AIO::DrawCD()
 		}
 	}
 }
-void AIO::DrawPath(tuple <bool, int, int >& v)
+void AIO::DrawPath(tuple <bool, int, ImU32 >& v)
 {
 	for (auto hero : Game::HeroCache)
 	{
@@ -205,15 +214,15 @@ void AIO::Present()
 		
 		auto& jGank = Config[u8"Gank提示"];
 		auto& jPath = Config[u8"路径预测"];
-		tuple <bool, int, int, int>  Gank(
+		tuple <bool, int, int, ImU32>  Gank(
 			jGank[u8"开启"].get<bool>(),
 			jGank[u8"线宽"].get<int>(),
 			jGank[u8"距离"].get<int>(),
-			jGank[u8"颜色"].get<int>());
-		tuple <bool, int, int> Path(
+			jGank[u8"颜色"].get<ImU32>());
+		tuple <bool, int, ImU32> Path(
 			jPath[u8"开启"].get<bool>(),
 			jPath[u8"线宽"].get<int>(),
-			jPath[u8"颜色"].get<int>());
+			jPath[u8"颜色"].get<ImU32>());
 
 
 

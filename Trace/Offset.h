@@ -162,6 +162,7 @@ namespace Function
 	const auto PrintChat = 0x582450;	//0x982450
 	const auto GetHpBarPos = 0x5A8300;	//0x9A8300
 	const auto GetAiManager = 0x181650;	//0x581650
+	const auto GetSpellState = 0x50a570;
 	const auto WorldToScreen = 0x964330;	//0xD64330
 	const auto BaseDrawPosition = 0x17A090;	//0x57A090
 	const auto GetAttackDelay = 0x2B6460;	//0x6B6460
