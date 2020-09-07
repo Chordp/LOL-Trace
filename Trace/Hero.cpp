@@ -19,8 +19,8 @@ void Hero::SetBaseCharacterData(char* dataName, int skinID, bool one)
 void Hero::SetCharacter(int SkinId)
 {
 	auto _this = reinterpret_cast<DWORD>(this);
-	auto key = ~*reinterpret_cast<DWORD*>(_this + 0x10C0);
-	*reinterpret_cast<DWORD*>(_this + *reinterpret_cast<BYTE*>(_this + 0x10C4) * 4 + 0x10C8) = key ^ SkinId;
+	auto key = ~*reinterpret_cast<DWORD*>(_this + 0xED8);
+	*reinterpret_cast<DWORD*>(_this + *reinterpret_cast<BYTE*>(_this + 0xEDC) * 4 + 0x0EE0) = key ^ SkinId;
 	SetBaseCharacterData(GetChampionName(), SkinId, true);
 }
 

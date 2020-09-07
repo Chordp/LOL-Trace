@@ -42,7 +42,7 @@ LocalPlayer* Engine::GetLocalPlayer()
 
 char* Engine::GetBuildVersion()
 {
-	return (char*)(GetBaseModule() + GameClass::BuildVersion);
+	//return (char*)(GetBaseModule() + GameClass::BuildVersion);
 }
  void Engine::PrintChat(DWORD ChatClient, const char* Massage, int Color)
 {

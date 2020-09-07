@@ -55,7 +55,7 @@ namespace DrawHook
 			{
 				for (size_t i = 0; i < 10; i++)
 				{
-					Engine::SendChats(u8"/all 就这?");
+					//Engine::SendChats(u8"/all 就这?");
 					//Engine::PrintChats("就这?");
 				}
 				
