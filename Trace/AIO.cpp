@@ -89,7 +89,7 @@ void AIO::GankTips(tuple <bool, int, int, ImU32> & v)
 }
 void AIO::DrawCD()
 {
-
+ 
 	for (auto hero : Game::HeroCache)
 	{
 		if (hero == Me)

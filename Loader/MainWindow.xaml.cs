@@ -20,6 +20,7 @@ using System.IO;
 using Microsoft.Win32;
 namespace Loader
 {
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -102,7 +103,7 @@ namespace Loader
         {
             try
             {
-                initTimer();
+               // initTimer();
                 var RegPath = Registry.CurrentUser.OpenSubKey(@"Software\FuckTp",true);
                 if(RegPath == null)
                 {
@@ -164,7 +165,11 @@ namespace Loader
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            timer.Start();
+
+            var DriverLoader = new KernelServiceLoader();
+            DriverLoader.SetServiceName("disk");
+            DriverLoader.SetOwnership(false);
+            //timer.Start();
         }
     }
 }

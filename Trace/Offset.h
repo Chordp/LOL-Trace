@@ -84,15 +84,15 @@ enum class Entity
 	Name = 0x006C,
 	NetworkID = 0x00CC,
 	ObjPos = 0x1D8,
-	Visibility = 0x39C,
-	Health = 0x0FA8,
-	MaxHealth = 0x0FB8,
-	Armor = 0x1494,
+	Visibility = 0x48C,
+	Health = 0xDC4,
+	MaxHealth = Health+0x10,
+	Armor = 0x12AC,
 	BonusAtk = 0x13EC,
 	BaseAtk = 0x146C,
-	ObjAtkRange = 0x14B4,
-	SpellBook = 0x2B08,
-	ChampionName = 0x35BC
+	ObjAtkRange = 0x12CC,
+	SpellBook = 0x2708,
+	ChampionName = 0x3134
 };
 enum class SpellDataClient
 {
@@ -134,41 +134,41 @@ enum class AI_Manager
 
 //[*] League of Legends Client Update Tool
 //[*] By Chord
-//[*] Started at: 2020-08-06 14:32:12.323000
+//[*] Started at: 2020-09-30 13:39:40.466000
 //----------------------------
 namespace GameClass
 {
-	const auto GameTime = 0x34F7A7C;	//0x38F7A7C
-	const auto BuildVersion = 0x350FFE0;	//0x390FFE0
-	const auto ObjManager = 0x1C5CC30;	//0x205CC30
-	const auto LocalPlayer = 0x34FF634;	//0x38FF634
-	const auto ChatClient = 0x1C5A570;	//0x205A570
-	const auto MenuGuiIns = 0x34FF610;
-	const auto HudInstance = 0x1C5CC6C;	//0x205CC6C
-	const auto PingInstance = 0x3506864;	//0x3906864
+	const auto GameTime = 0x34EB794;	//0x38EB794
+	const auto ObjManager = 0x1C56B04;	//0x2056B04
+	const auto LocalPlayer = 0x34F36CC;	//0x38F36CC
+	const auto ChatClient = 0x1C54460;	//0x2054460
+	const auto MenuGuiIns = 0x34F2F58;	//0x38F2F58
+	const auto HudInstance = 0x34EC808;	//0x38EC808
+	const auto PingInstance = 0x34FA3FC;	//0x38FA3FC
 };
 
 
 namespace Function
 {
-	const auto GetPing = 0x343DC0;	//0x743DC0
-	const auto IsAlive = 0x1B75C0;	//0x5B75C0
-	const auto IsMissile = 0x1CB340;	//0x5CB340
-	const auto IsTargetable = 0x1EEFF0;	//0x5EEFF0
-	const auto IssueOrder = 0x18B150;	//0x58B150
-	const auto GetFirstObj = 0x2BBAF0;	//0x6BBAF0
-	const auto GetNextObj = 0x2BCCA0;	//0x6BCCA0
-	const auto SendChat = 0x5fa8d0;
-	const auto PrintChat = 0x582450;	//0x982450
-	const auto GetHpBarPos = 0x5A8300;	//0x9A8300
-	const auto GetAiManager = 0x181650;	//0x581650
-	const auto GetSpellState = 0x50a570;
-	const auto WorldToScreen = 0x964330;	//0xD64330
-	const auto BaseDrawPosition = 0x17A090;	//0x57A090
-	const auto GetAttackDelay = 0x2B6460;	//0x6B6460
-	const auto GetAttackCastDelay = 0x2B6360;	//0x6B6360
-	const auto SetBaseCharacterData = 0x1B1960;	//0x5B1960
-	const auto OnCreateObject = 0x2C9670;	//0x6C9670
-	const auto OnDeleteObject = 0x2B7A60;	//0x6B7A60
-	const auto OnProcessSpell = 0x51AD70;	//0x91AD70
+	const auto GetPing = 0x29D250;	//0x69D250
+	const auto IsAlive = 0x1A5090;	//0x5A5090
+	const auto IsMissile = 0x1B34A0;	//0x5B34A0
+	const auto IsTargetable = 0x4F2900;	//0x8F2900
+	const auto IssueOrder = 0x17CE80;	//0x57CE80
+	const auto GetFirstObj = 0x27B1E0;	//0x67B1E0
+	const auto GetNextObj = 0x27CD40;	//0x67CD40
+	const auto GetSpellState = 0x4F2900;	//0x8F2900
+	const auto SendChat = 0x5E61A0;	//0x9E61A0
+	const auto PrintChat = 0x5738F0;	//0x9738F0
+	const auto GetHpBarPos = 0x593D90;	//0x993D90
+	const auto GetAiManager = 0x132170;	//0x532170
+	const auto WorldToScreen = 0x963FB0;	//0xD63FB0
+	const auto BaseDrawPosition = 0x172FB0;	//0x572FB0
+	const auto GetAttackDelay = 0x29D250;	//0x69D250
+	const auto GetAttackCastDelay = 0x29D150;	//0x69D150
+	const auto SetBaseCharacterData = 0x1421D0;	//0x5421D0
+	const auto OnCreateObject = 0x285C20;	//0x685C20
+	const auto OnDeleteObject = 0x11BE259;	//0x15BE259
+	const auto OnProcessSpell = 0x5032F0;	//0x9032F0
 };
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

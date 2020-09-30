@@ -86,7 +86,7 @@ namespace DrawHook
 	{
 		AIO::GetIns();
 		Skin::GetIns();
-		Orbwalker::GetIns();
+		//Orbwalker::GetIns();
 		EventHandle<EventType::OnWndProc>::GetIns()->Add(Skin::WndProc);
 		EventHandle<EventType::OnPresent>::GetIns()->Add(AIO::Present);
 		//EventHandle<EventType::OnPresent>::GetIns()->Add(Orbwalker::Present);

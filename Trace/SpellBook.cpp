@@ -2,7 +2,7 @@
 #include "SpellBook.hpp"
 #include "Engine.hpp"
 SpellSlot* SpellBook::GetSpellSlotByID(SpellSlotID ID) {
-	return *(SpellSlot**)((DWORD)this + 0x508 + (0x4 * (UINT)ID));
+	return *(SpellSlot**)((DWORD)this + 0x478 + (0x4 * (UINT)ID));
 }
 
 SpellEntry* SpellBook::GetActiveSpell() {
