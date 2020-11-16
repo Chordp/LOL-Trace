@@ -12,11 +12,11 @@ public:
 	}
 
 
-	void GankTips(tuple<bool, int, int, ImU32>& v);
+	static void  GankTips(tuple<bool, int, int, ImU32>& v);
 
-	void DrawCD();
+	static void DrawCD();
 
-	void DrawPath(tuple<bool, int, ImU32>& v);
+	static void DrawPath(tuple<bool, int, ImU32>& v);
 
 
 	static void Present();

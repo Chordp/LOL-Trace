@@ -49,6 +49,9 @@
     <Filter Include="脚本\走砍">
       <UniqueIdentifier>{e8fec8c5-ff21-48c0-922b-571ecd9efc73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="脚本\躲避">
+      <UniqueIdentifier>{5d6c90e4-6791-46b6-bd88-1b404ba396aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Trace.h">
@@ -159,6 +162,12 @@
     <ClInclude Include="AIO.h">
       <Filter>脚本\AIO</Filter>
     </ClInclude>
+    <ClInclude Include="Evader.h">
+      <Filter>脚本\躲避</Filter>
+    </ClInclude>
+    <ClInclude Include="Prediction.h">
+      <Filter>脚本\躲避</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Trace.cpp">
@@ -238,6 +247,12 @@
     </ClCompile>
     <ClCompile Include="SpellBook.cpp">
       <Filter>引擎\技能</Filter>
+    </ClCompile>
+    <ClCompile Include="Evader.cpp">
+      <Filter>脚本\躲避</Filter>
+    </ClCompile>
+    <ClCompile Include="Prediction.cpp">
+      <Filter>脚本\躲避</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

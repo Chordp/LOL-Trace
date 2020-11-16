@@ -148,6 +148,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="AIManager.cpp" />
     <ClCompile Include="AIO.cpp" />
+    <ClCompile Include="Evader.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="DrawHook.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -176,6 +178,7 @@
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="ObjManager.cpp" />
     <ClCompile Include="Orbwalker.cpp" />
+    <ClCompile Include="Prediction.cpp" />
     <ClCompile Include="Skin.cpp" />
     <ClCompile Include="SpellBook.cpp" />
     <ClCompile Include="SpellData.cpp" />
@@ -187,6 +190,7 @@
   <ItemGroup>
     <ClInclude Include="AIManager.h" />
     <ClInclude Include="AIO.h" />
+    <ClInclude Include="Evader.h" />
     <ClInclude Include="EventHandle.h" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Color.hpp" />
@@ -194,6 +198,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Missile.h" />
     <ClInclude Include="Orbwalker.h" />
+    <ClInclude Include="Prediction.h" />
     <ClInclude Include="Skin.h" />
     <ClInclude Include="SpellBook.hpp" />
     <ClInclude Include="Detour.hpp" />

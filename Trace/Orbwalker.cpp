@@ -59,7 +59,7 @@ bool Orbwalker::InAttackRange(GameObject* target)
 	float myRange = Me->GetAttackRange() + Me->GetBoundingRadius()+ target->GetBoundingRadius();
 	auto LocalPos = Me->GetPos();
 	auto TargetPos = target->GetPos();
-	float dist = (LocalPos - TargetPos).length();//(LocalPos.X - TargetPos.X) * (LocalPos.X - TargetPos.X) + (LocalPos.Z - TargetPos.Z) * (LocalPos.Z - TargetPos.Z);
+	float dist = (LocalPos - TargetPos).Length();//(LocalPos.X - TargetPos.X) * (LocalPos.X - TargetPos.X) + (LocalPos.Z - TargetPos.Z) * (LocalPos.Z - TargetPos.Z);
 	return dist < myRange;
 }
 

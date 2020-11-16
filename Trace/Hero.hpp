@@ -43,7 +43,7 @@ public:
 	SpellBook* GetSpellBook();
 	
 	AIManager* GetAIManager();
-
+	float GetMoveSpeed();
 	//bool GetHpBarPosition(Vector& out);
 
 };

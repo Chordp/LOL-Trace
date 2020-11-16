@@ -1,6 +1,7 @@
 #include "ImGuiRendering.h"
 #include "stb_image.h"
 #include <filesystem>
+#include "Engine.hpp"
 using Path = std::filesystem::path;
 void ImGuiRendering::Setup(HWND hWnd, LPDIRECT3DDEVICE9 device)
 {
@@ -171,8 +172,8 @@ void ImGuiRendering::DrawBox(ImVec4 scr, ImU32 clr, float width)
 }
 void ImGuiRendering::DrawBox(Vector leftUpCorn, Vector rightDownCorn, ImU32 clr, float width)
 {
-	ImVec2 min = ImVec2(leftUpCorn.X, leftUpCorn.Y);
-	ImVec2 max = ImVec2(rightDownCorn.X, rightDownCorn.Y);
+	ImVec2 min = ImVec2(leftUpCorn.x, leftUpCorn.y);
+	ImVec2 max = ImVec2(rightDownCorn.x, rightDownCorn.y);
 	_DrawList->AddRect(min, max, clr, 0.0F, -1, width);
 }
 void ImGuiRendering::DrawLine(float x1, float y1, float x2, float y2, ImU32 clr, float thickness = 1.0f)
@@ -196,13 +197,13 @@ void ImGuiRendering::DrawCircle3D(Vector vPos, float flPoints, float flRadius, I
 
 	for (float flAngle = 0; flAngle < (M_PI * 2.0f); flAngle += flPoint)
 	{
-		Vector vStart(flRadius * cosf(flAngle) + vPos.X, vPos.Y, flRadius * sinf(flAngle) + vPos.Z);
-		Vector vEnd(flRadius * cosf(flAngle + flPoint) + vPos.X, vPos.Y, flRadius * sinf(flAngle + flPoint) + vPos.Z);
+		Vector vStart(flRadius * cosf(flAngle) + vPos.x, vPos.y, flRadius * sinf(flAngle) + vPos.z);
+		Vector vEnd(flRadius * cosf(flAngle + flPoint) + vPos.x, vPos.y, flRadius * sinf(flAngle + flPoint) + vPos.z);
 
 		Vector vStartScreen, vEndScreen;
 		//if (!Engine::WorldToScreen(&vStart, &vStartScreen) || !Engine::WorldToScreen(&vEnd, &vEndScreen))
 		//	continue;
 		Engine::WorldToScreen(&vStart, &vStartScreen); Engine::WorldToScreen(&vEnd, &vEndScreen);
-		DrawLine(vStartScreen.X, vStartScreen.Y, vEndScreen.X, vEndScreen.Y, clrColor, flThickness);
+		DrawLine(vStartScreen.x, vStartScreen.y, vEndScreen.x, vEndScreen.y, clrColor, flThickness);
 	}
 }

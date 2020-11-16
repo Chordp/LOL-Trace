@@ -7,6 +7,7 @@
 #include <d3d9.h>
 #include "Vector.h"
 using namespace std;
+using Vector = Vector3;
 #include "Offset.h"
 
 

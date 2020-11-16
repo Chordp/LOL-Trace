@@ -98,5 +98,6 @@ public:
 
 	float CalcDamage(GameObject* target);
 
-	
+	float GetMaxHealth();
+	bool IsVisible();
 };

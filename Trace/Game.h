@@ -3,7 +3,7 @@
 #define ObjManager Engine::GetObjManager()
 #include "Hero.hpp"
 #include "Missile.h"
-
+//#include <iostream>
 class Game
 {
 private:
@@ -12,11 +12,14 @@ private:
 public:
 	static vector<Hero*> HeroCache;
 	static vector<Missile*> MissileCache;
+	static vector<GameObject*>MinionCache;
 	void GetCache()
 	{
 		HeroCache.clear();
 		MissileCache.clear();
 		auto Obj = GameObject::GetFirst();
+		//printf_s("%p\n", Obj);
+		//cout << Obj << endl;
 		while (Obj)
 		{
 			switch (Obj->GetType())
@@ -36,6 +39,7 @@ public:
 			case ObjectType::AI:
 				break;
 			case ObjectType::Minion:
+				MinionCache.push_back(Obj);
 				break;
 			case ObjectType::Troy:
 				break;
@@ -66,7 +70,5 @@ public:
 		static auto _Game = new Game();
 		return _Game;
 	}
-
-	void DrawMissile();
 };
 

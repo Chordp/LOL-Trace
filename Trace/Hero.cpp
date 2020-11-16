@@ -35,6 +35,11 @@ AIManager* Hero::GetAIManager() {
 	return fnGetAiManager(this);
 }
 
+float Hero::GetMoveSpeed()
+{
+	return *(float*)((DWORD)this + (int)Entity::MoveSpeed);
+}
+
 //bool Hero::GetHpBarPosition(Vector& out)
 //{
 //	static auto  BaseDrawPosition = reinterpret_cast<int(__thiscall*)(GameObject*, Vector*)> (Engine::GetBaseModule() + Function::BaseDrawPosition);

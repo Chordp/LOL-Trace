@@ -1,6 +1,9 @@
+#include "Trace.h"
 #include "AIO.h"
 #include "Hero.hpp"
 #include "Game.h"
+#include "Menu.h"
+
 namespace St
 {
 
@@ -23,6 +26,13 @@ AIO::AIO()
 			Menu::SliderInt(u8"æ‡¿Î",1000,10000),
 			Menu::ColorEdit4(u8"—’…´")
 		})
+		//Menu::AddMenu("π•ª˜∑∂Œß",
+		//	{
+		//		Menu::Checkbox(u8"π•ª˜∑∂Œßi"),
+		//		Menu::Checkbox(u8"Q∑∂Œß"),
+		//		Menu::Checkbox(u8"W∑∂Œß"),
+		//		Menu::Checkbox(u8"E∑∂Œß"),
+		//	})
 	};
 	auto& Config = Menu::GetIns()->config[u8"“‚ ∂"];
 	try
@@ -72,7 +82,7 @@ void AIO::GankTips(tuple <bool, int, int, ImU32> & v)
 		{
 			auto LocalPos = Me->GetPos();
 			auto TargetPos = hero->GetPos();
-			auto length = (TargetPos - LocalPos).length();
+			auto length = (TargetPos - LocalPos).Length();
 			if (length < get<2>(v))
 			{
 				Vector start, end;
@@ -80,8 +90,8 @@ void AIO::GankTips(tuple <bool, int, int, ImU32> & v)
 				{
 					Engine::WorldToScreen(&LocalPos, &start);
 
-					Draw->DrawLine(start.X, start.Y, end.X, end.Y, get<3>(v), get<1>(v));
-					Draw->DrawString(Draw->Font16F, start.X, start.Y, Color::White, u8"[%s]%0.f√◊", hero->GetTitle().c_str(), length);
+					Draw->DrawLine(start.x, start.y, end.x, end.y, get<3>(v), get<1>(v));
+					Draw->DrawString(Draw->Font16F, start.x, start.y, Color::White, u8"[%s]%0.f√◊", hero->GetTitle().c_str(), length);
 				}
 			}
 		}
@@ -89,14 +99,12 @@ void AIO::GankTips(tuple <bool, int, int, ImU32> & v)
 }
 void AIO::DrawCD()
 {
- 
+	///cout << Game::HeroCache.size() << endl;
 	for (auto hero : Game::HeroCache)
 	{
+
 		if (hero == Me)
 			continue;
-		//if (hero->GetTeam() == Me->GetTeam())
-		//	continue;
-		////if (hero->IsAlive())
 		{
 			int i = 0;
 			auto Screen = Vector();
@@ -104,7 +112,7 @@ void AIO::DrawCD()
 			if (hero->GetHpBarPosition(Screen))
 			{
 				auto DrawList = ImGui::GetOverlayDrawList();
-				ImVec2 pos = ImVec2(Screen.X - 44, Screen.Y - 3);
+				ImVec2 pos = ImVec2(Screen.x - 44, Screen.y - 3);
 				const float width = 26;
 				float height = pos.y + 5;
 
@@ -195,8 +203,8 @@ void AIO::DrawPath(tuple <bool, int, ImU32 >& v)
 					Engine::WorldToScreens(path.back(), end))
 				{
 
-					Draw->DrawLine(start.X, start.Y, end.X, end.Y, get<2>(v), get<1>(v));
-					Draw->DrawString(Draw->Font16F, end.X, end.Y, Color::White, "[%s]", hero->GetTitle().c_str());
+					Draw->DrawLine(start.x, start.y, end.x, end.y, get<2>(v), get<1>(v));
+					Draw->DrawString(Draw->Font16F, end.x, end.y, Color::White, "[%s]", hero->GetTitle().c_str());
 				}
 			}
 		}
@@ -208,6 +216,7 @@ void AIO::DrawPath(tuple <bool, int, ImU32 >& v)
 
 void AIO::Present()
 {
+	//cout << Menu::GetIns()->config << endl;
 	auto& Config = Menu::GetIns()->config[u8"“‚ ∂"];
 	try
 	{
@@ -227,15 +236,16 @@ void AIO::Present()
 
 
 		bool CoolDown = Config[u8"ªÊ÷∆CD"];
-		if(CoolDown) AIO::GetIns()->DrawCD();
-		if(get<0>(Path))AIO::GetIns()->DrawPath(Path);
-		if (get<0>(Gank))AIO::GetIns()->GankTips(Gank);
+		//bool Range = Config[u8"ªÊ÷∆π•ª˜∑∂Œß"];
+		if(CoolDown) DrawCD();
+		if(get<0>(Path))DrawPath(Path);
+		if (get<0>(Gank))GankTips(Gank);
 
 
 	}
 	catch (const std::exception&)
 	{
-
+		//cout << "“Ï≥£????????" << endl;
 	}
 
 

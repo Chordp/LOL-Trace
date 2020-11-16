@@ -10,7 +10,7 @@ void LocalPlayer::MoveTo(Vector pos)
 {
 	if (this->GetPos().DistTo(pos) < 150.0f) {
 		Vector test = pos - (pos - this->GetPos()) * (150.0f / this->GetPos().DistTo(pos));
-		Vector maxERange = Vector(-test.X, -test.Y, -test.Z);
+		Vector maxERange = Vector(-test.x, -test.y, -test.z);
 
 		IssueOrder(IssueOrderType::MoveTo, &maxERange, nullptr, false, false, false);
 	}
@@ -21,7 +21,8 @@ void LocalPlayer::MoveTo(Vector pos)
 }
 void LocalPlayer::Attack(GameObject* target)
 {
-	IssueOrder(IssueOrderType::AttackUnit, &target->GetPos(), target, true, false, false);
+	auto pos = target->GetPos();
+	IssueOrder(IssueOrderType::AttackUnit,&pos , target, true, false, false);
 }
 
 float LocalPlayer::GetAttackDelay()

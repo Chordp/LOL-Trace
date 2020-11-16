@@ -1,6 +1,6 @@
 #include "Trace.h"
 #include "GameObject.hpp"
-
+#include "Engine.hpp"
 
 int GameObject::DecType()
 {
@@ -54,6 +54,8 @@ ObjectType GameObject::GetType()
 		return ObjectType::Hero;
 	if (this->IsMissile())
 		return ObjectType::Missile;
+	if (DecType() & (int)ObjectType::Minion != 0)
+		return ObjectType::Minion;
 	return (ObjectType)0;
 }
 bool GameObject::GetHpBarPosition(Vector& out)
@@ -86,6 +88,16 @@ float GameObject::CalcDamage(GameObject* target)
 	return ((adMultiplier * this->GetTotalAttackDamage()));
 }
 
+float GameObject::GetMaxHealth()
+{
+	return *(float*)((DWORD)this + (int)Entity::MaxHealth);
+}
+
+bool GameObject::IsVisible()
+{
+	return *(bool*)((DWORD)this + (int)Entity::Visibility);
+}
+
 GameObject* GameObject::GetFirst() {
 	static auto fnGetFirst = reinterpret_cast<GameObject * (__thiscall*)(ObjManager*)>(Engine::GetBaseModule() + Function::GetFirstObj);
 	static auto ObjMana = Engine::GetObjManager();
@@ -98,8 +110,8 @@ GameObject* GameObject::GetNext() {
 }
 PVOID GameObject::GetUnitInfoComponent()
 {
-	auto a3 = *(DWORD*)((DWORD)(this) + 4 * *(unsigned __int8*)((DWORD)(this) + 0x3280) + 0x3284);
-	auto v32 = *(DWORD*)((DWORD)(this) + 0x327C);
+	auto a3 = *(DWORD*)((DWORD)(this) + 4 * *(unsigned __int8*)((DWORD)(this) + 0x3298) + 0x329C);
+	auto v32 = *(DWORD*)((DWORD)(this) + 0x3294);
 	a3 ^= ~v32;
 	return PVOID(a3);
 }

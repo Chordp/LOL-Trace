@@ -1,3 +1,4 @@
+#include "Trace.h"
 #include "AIManager.h"
 
 Vector AIManager::GetVelocity() {
@@ -34,7 +35,7 @@ std::vector<Vector> AIManager::GetPathList()
 
 			if (buffNode != nullptr && !IsBadReadPtr(buffNode, 12))
 			{
-				if (buffNode->X > 20 && buffNode->Y > 20 && buffNode->Z > 20 && buffNode->X < 50000)
+				if (buffNode->x > 20 && buffNode->y > 20 && buffNode->z > 20 && buffNode->x < 50000)
 				{
 					//Console.print("%f , %f , %f \n", buffNode->X, buffNode->Y, buffNode->Z);
 
